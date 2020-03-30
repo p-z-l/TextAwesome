@@ -5,9 +5,10 @@
 </p>
 
 ## Features
-- iOS Native file browser
-- Creat,view,edit `.txt` file
-- Font Customize (monospace,serif,sans-serif)
+- iOS Native document browser
+- Dark Mode support
+- Creat,view,edit `.txt` files
+- Customized font style & font size
 
 ## TODO
 - Text searching
