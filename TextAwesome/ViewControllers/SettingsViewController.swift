@@ -10,9 +10,18 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
+    @IBOutlet weak var fontSizeSlider: UISlider!
+    
     // MARK: Actions
     @IBAction func btDownTouchUpInside(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func fontSizeSliderChanged(_ sender: UISlider) {
+        let size = Int(sender.value)
+        Settings.fontSize = CGFloat(size)
+        
+        self.updateCells()
     }
     
     // MARK: ViewController lifecycle
@@ -21,13 +30,14 @@ class SettingsViewController: UITableViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.fontSizeSlider.value = Float(Settings.fontSize)
     }
     
     // MARK: TableView
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        updateCellSelections()
-        return 1
+        updateCells()
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -46,12 +56,12 @@ class SettingsViewController: UITableViewController {
         default:
             return
         }
-        updateCellSelections()
+        updateCells()
     }
     
     // MARK: Private methods
     
-    private func updateCellSelections() {
+    private func updateCells() {
         switch Settings.fontStyle {
         case .monoSpace:
             setCellSelection(atRow: 0, section: 0, selected: true)
@@ -66,6 +76,10 @@ class SettingsViewController: UITableViewController {
             setCellSelection(atRow: 1, section: 0, selected: false)
             setCellSelection(atRow: 2, section: 0, selected: true)
         }
+        
+        // Update font size display
+        let fontSizeText = "Font size: \(Settings.fontSize)"
+        self.tableView.cellForRow(at: IndexPath(row: 0, section: 1))?.textLabel?.text = fontSizeText
     }
     
     private func setCellSelection(atRow row: Int, section: Int, selected isSelected: Bool) {

@@ -116,7 +116,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     }
     
     private func setupSettings() {
-        guard let font = Constants.fontDict[Settings.fontStyle] else { return }
+        
+        guard let fontName = Constants.fontDict[Settings.fontStyle] else { return }
+        let font = UIFont(name: fontName, size: Settings.fontSize)
+        print(Settings.fontSize)
+        
         self.documentTextView.font = font
     }
 }

@@ -10,11 +10,12 @@ import UIKit
 
 class Constants {
     // UserDefault Keys
-    static let fontTypeKey = "TextAwesome_FontType"
+    static let fontStyleKey = "TextAwesome_FontStyle"
+    static let fontSizeKey = "TextAwesome_FontSize"
     
-    static let fontDict : [FontStyle:UIFont?] = [
-        .monoSpace: UIFont(name: "Menlo", size: 18),
-        .serif: UIFont(name: "Helvetica Neue", size: 18),
-        .sansSerif: UIFont(name: "Times New Roman", size: 18)
+    static let fontDict : [FontStyle:String] = [
+        .monoSpace: "Menlo",
+        .serif: "Helvetica Neue",
+        .sansSerif: "Times New Roman"
     ]
 }
