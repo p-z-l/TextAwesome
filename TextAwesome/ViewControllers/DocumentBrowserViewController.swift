@@ -18,6 +18,16 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         allowsDocumentCreation = true
         allowsPickingMultipleItems = false
+        
+        let btSettings = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(showSettings))
+        self.additionalLeadingNavigationBarButtonItems.append(btSettings)
+    }
+    
+    @objc private func showSettings() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let settingsVC = storyboard.instantiateViewController(identifier: "SettingsNav")
+        
+        self.present(settingsVC, animated: true)
     }
     
     

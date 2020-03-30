@@ -22,6 +22,34 @@
             </objects>
             <point key="canvasLocation" x="26" y="654"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="pRB-dO-eCS">
+            <objects>
+                <viewController storyboardIdentifier="Settings" id="cd5-Sb-3ux" customClass="SettingsViewController" customModule="TextAwesome" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XSh-09-qvA">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5bH-ge-apr">
+                                <rect key="frame" x="0.0" y="102" width="1194" height="712"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5bH-ge-apr" firstAttribute="leading" secondItem="cgx-FJ-PE7" secondAttribute="leading" id="DFt-CV-59E"/>
+                            <constraint firstItem="5bH-ge-apr" firstAttribute="top" secondItem="cgx-FJ-PE7" secondAttribute="top" id="JX9-QR-5WV"/>
+                            <constraint firstItem="cgx-FJ-PE7" firstAttribute="trailing" secondItem="5bH-ge-apr" secondAttribute="trailing" id="ZlG-cn-rW4"/>
+                            <constraint firstItem="cgx-FJ-PE7" firstAttribute="bottom" secondItem="5bH-ge-apr" secondAttribute="bottom" id="gJi-DR-9Rd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cgx-FJ-PE7"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="Mkg-av-OTR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fMl-Me-Hrw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686.9346733668342" y="-241.00719424460434"/>
+        </scene>
         <!--Document View Controller-->
         <scene sceneID="dkP-xk-x6W">
             <objects>
@@ -64,7 +92,7 @@
                                 </constraints>
                                 <state key="normal" image="keyboard.chevron.compact.down" catalog="system"/>
                                 <connections>
-                                    <action selector="resignKeyboardTouchUpInside:" destination="M2k-L8-Olo" eventType="touchUpInside" id="ghg-Sp-lXe"/>
+                                    <action selector="resignKeyboardTouchUpInside:" destination="M2k-L8-Olo" eventType="touchUpInside" id="bmJ-k9-vpP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -94,6 +122,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rl9-ES-qQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="687" y="654"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rMW-N2-1ap">
+            <objects>
+                <navigationController storyboardIdentifier="SettingsNav" automaticallyAdjustsScrollViewInsets="NO" id="obc-TN-nKu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="0d0-c1-A37">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cd5-Sb-3ux" kind="relationship" relationship="rootViewController" id="oZH-Ht-ywa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2jC-t1-I8g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="26" y="-241"/>
         </scene>
     </scenes>
     <resources>

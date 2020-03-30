@@ -64,20 +64,12 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
             
             self.documentTextViewBottom.constant -= keyboardHeight
             
-            self.animateTextView(textView: self.documentTextView, up: false, distance: keyboardHeight)
+            self.animateTextView(textView: self.documentTextView, distance: keyboardHeight)
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
         self.resetTextViewFrame()
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            self.documentTextViewBottom.constant += keyboardHeight
-            
-            self.animateTextView(textView: self.documentTextView, up: true, distance: keyboardHeight)
-        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -103,21 +95,12 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private func animateTextView(textView: UITextView, up: Bool, distance: CGFloat) {
-        
-        var heightOffset : CGFloat = 0
-        
-        if up {
-            heightOffset = distance
-        } else {
-            heightOffset = -distance
-        }
-        
+    private func animateTextView(textView: UITextView, distance: CGFloat) {
         UIView.animate(withDuration: 0.1) {
             textView.frame = CGRect(x: textView.frame.minX,
                                     y: textView.frame.minY,
                                     width: textView.frame.width,
-                                    height: textView.frame.height + heightOffset)
+                                    height: textView.frame.height - distance)
         }
     }
 }
