@@ -14,4 +14,3 @@
 - More customizations
 - RTF support
 - Markdown support
-

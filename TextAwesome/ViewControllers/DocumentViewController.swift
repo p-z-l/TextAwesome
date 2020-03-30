@@ -10,13 +10,17 @@ import UIKit
 
 class DocumentViewController: UIViewController, UITextViewDelegate {
     
+    // MARK: Definitions
+    
     @IBOutlet weak var documentNameLabel: UILabel!
     
     @IBOutlet weak var documentTextView: UITextView!
     
     @IBOutlet weak var documentTextViewBottom: NSLayoutConstraint!
     
-    var document: Document?
+    var document: TextDocument?
+    
+    // MARK: ViewController lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +48,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
                                                object: nil)
         self.setupSettings()
     }
+    
+    // MARK: Actions
     
     @IBAction func dismissDocumentViewController() {
         self.saveFile()
@@ -73,9 +79,13 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         self.resetTextViewFrame()
     }
     
+    // MARK: UITextViewDelegate
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         self.saveFile()
     }
+    
+    // MARK: Private methods
     
     private func resetTextViewFrame() {
         self.documentTextViewBottom.constant = 0
@@ -106,16 +116,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     }
     
     private func setupSettings() {
-        var font : UIFont?
-        switch Settings.fontStyle {
-        case .monoSpace:
-            font = UIFont(name: "Menlo", size: 18)
-        case .sansSerif:
-            font = UIFont(name: "Helvetica Neue", size: 18)
-        case .serif:
-            font = UIFont(name: "Times New Roman", size: 18)
-        }
-        guard font != nil else { return }
+        guard let font = Constants.fontDict[Settings.fontStyle] else { return }
         self.documentTextView.font = font
     }
 }

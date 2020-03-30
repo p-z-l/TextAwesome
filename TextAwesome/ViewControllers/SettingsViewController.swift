@@ -10,15 +10,20 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
+    // MARK: Actions
     @IBAction func btDownTouchUpInside(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    // MARK: TableView
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         updateCellSelections()
@@ -43,6 +48,8 @@ class SettingsViewController: UITableViewController {
         }
         updateCellSelections()
     }
+    
+    // MARK: Private methods
     
     private func updateCellSelections() {
         switch Settings.fontStyle {

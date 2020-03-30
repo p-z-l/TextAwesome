@@ -11,6 +11,8 @@ import UIKit
 
 class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate {
     
+    // MARK: ViewController lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +24,8 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         let btSettings = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(showSettings))
         self.additionalLeadingNavigationBarButtonItems.append(btSettings)
     }
+    
+    // MARK: Actions
     
     @objc private func showSettings() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -67,7 +71,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let documentViewController = storyBoard.instantiateViewController(withIdentifier: "DocumentViewController") as! DocumentViewController
-        documentViewController.document = Document(fileURL: documentURL)
+        documentViewController.document = TextDocument(fileURL: documentURL)
         documentViewController.modalPresentationStyle = .fullScreen
         
         present(documentViewController, animated: true, completion: nil)

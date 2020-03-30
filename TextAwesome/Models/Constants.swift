@@ -6,10 +6,15 @@
 //  Copyright © 2020 Peter Luo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Constants {
     // UserDefault Keys
-    static let appearanceKey = "TextAwesome_Appearance"
-    static let fontTypeKey   = "TextAwesome_FontType"
+    static let fontTypeKey = "TextAwesome_FontType"
+    
+    static let fontDict : [FontStyle:UIFont?] = [
+        .monoSpace: UIFont(name: "Menlo", size: 18),
+        .serif: UIFont(name: "Helvetica Neue", size: 18),
+        .sansSerif: UIFont(name: "Times New Roman", size: 18)
+    ]
 }

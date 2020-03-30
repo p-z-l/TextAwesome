@@ -1,5 +1,5 @@
 //
-//  Document.swift
+//  TextDocument.swift
 //  TextAwesome
 //
 //  Created by Peter Luo on 2020/3/29.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Document: UIDocument {
+class TextDocument: UIDocument {
     
     var userText: String? = ""
     
