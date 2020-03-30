@@ -42,6 +42,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
                                                selector: #selector(keyboardWillHide(_:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
+        self.setupSettings()
     }
     
     @IBAction func dismissDocumentViewController() {
@@ -102,5 +103,19 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
                                     width: textView.frame.width,
                                     height: textView.frame.height - distance)
         }
+    }
+    
+    private func setupSettings() {
+        var font : UIFont?
+        switch Settings.fontStyle {
+        case .monoSpace:
+            font = UIFont(name: "Menlo", size: 18)
+        case .sansSerif:
+            font = UIFont(name: "Helvetica Neue", size: 18)
+        case .serif:
+            font = UIFont(name: "Times New Roman", size: 18)
+        }
+        guard font != nil else { return }
+        self.documentTextView.font = font
     }
 }
