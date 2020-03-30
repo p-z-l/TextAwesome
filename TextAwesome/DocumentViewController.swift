@@ -51,6 +51,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    @IBAction func resignKeyboardTouchUpInside(_ sender: UIButton) {
+        self.saveFile()
+        self.documentTextView.resignFirstResponder()
+    }
+    
     @objc func keyboardWillShow(_ notification: Notification) {
         self.resetTextViewFrame()
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {

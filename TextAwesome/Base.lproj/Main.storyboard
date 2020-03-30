@@ -57,13 +57,26 @@
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yH1-wC-dgp">
+                                <rect key="frame" x="1006" y="14" width="80" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="R7j-ar-TOE"/>
+                                </constraints>
+                                <state key="normal" image="keyboard.chevron.compact.down" catalog="system"/>
+                                <connections>
+                                    <action selector="resignKeyboardTouchUpInside:" destination="M2k-L8-Olo" eventType="touchUpInside" id="ghg-Sp-lXe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="BoZ-jc-2Y8" firstAttribute="trailing" secondItem="vbp-Ai-KTL" secondAttribute="trailing" priority="1" constant="20" id="2ms-Nf-DV2"/>
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" priority="1" constant="20" id="8De-ai-Sdd"/>
+                            <constraint firstItem="WAb-IC-g0u" firstAttribute="centerY" secondItem="yH1-wC-dgp" secondAttribute="centerY" id="Bvd-JV-c73"/>
                             <constraint firstItem="BoZ-jc-2Y8" firstAttribute="trailing" secondItem="WAb-IC-g0u" secondAttribute="trailing" constant="20" id="Emx-Dt-bD6"/>
+                            <constraint firstItem="yH1-wC-dgp" firstAttribute="top" secondItem="BoZ-jc-2Y8" secondAttribute="top" constant="14" id="KL1-No-eTM"/>
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="bottom" secondItem="BoZ-jc-2Y8" secondAttribute="bottom" id="MpJ-Gs-tbd"/>
+                            <constraint firstItem="WAb-IC-g0u" firstAttribute="leading" secondItem="yH1-wC-dgp" secondAttribute="trailing" constant="8" id="Sa1-WB-kW4"/>
                             <constraint firstItem="s46-Uc-0IM" firstAttribute="top" secondItem="BoZ-jc-2Y8" secondAttribute="top" constant="20" id="dmB-gf-9MN"/>
                             <constraint firstItem="WAb-IC-g0u" firstAttribute="top" secondItem="BoZ-jc-2Y8" secondAttribute="top" constant="13" id="gMQ-17-ojw"/>
                             <constraint firstItem="s46-Uc-0IM" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" constant="20" id="ihS-z5-BXI"/>
@@ -83,4 +96,7 @@
             <point key="canvasLocation" x="687" y="654"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="keyboard.chevron.compact.down" catalog="system" width="64" height="44"/>
+    </resources>
 </document>
