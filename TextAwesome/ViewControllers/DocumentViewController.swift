@@ -20,7 +20,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var SearchField: UITextField!
+    @IBOutlet weak var searchField: UITextField!
+    
+    private var searchBarIsShown = false
     
     var document: TextDocument?
     
@@ -56,10 +58,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Actions
     
-    @IBAction func searchFieldEditingChanged(_ sender: UITextField) {
-        if let pattern = sender.text {
-            self.textSearch(pattern: pattern, caseSensitive: false)
-        }
+    @IBAction func searchFieldHitReturn(_ sender: UITextField) {
+        self.textSearch(caseSensitive: false)
+        sender.resignFirstResponder()
     }
     
     @IBAction func dismissDocumentViewController() {
@@ -72,11 +73,17 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     @IBAction func resignKeyboardTouchUpInside(_ sender: UIButton) {
         self.saveFile()
         self.documentTextView.resignFirstResponder()
-        self.SearchField.resignFirstResponder()
+        self.searchField.resignFirstResponder()
     }
     
     @IBAction func btSearchTouchUpInside(_ sender: UIButton) {
-        self.SearchField.isHidden.toggle()
+        if searchBarIsShown {
+            self.hideSearchField()
+            self.resetTextAttribute()
+        } else {
+            self.showSearchField()
+            self.textSearch(caseSensitive: false)
+        }
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -151,14 +158,38 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         self.documentTextView.attributedText = attributedText
     }
     
-    private func textSearch(pattern: String, caseSensitive: Bool) {
+    private func textSearch(caseSensitive: Bool) {
         self.resetTextAttribute()
         let attributedText = NSMutableAttributedString(attributedString: self.documentTextView.attributedText)
-        Utils.attributeMatchingResults(attributedText, pattern: pattern, caseSensitive: caseSensitive, attributes: [
+        Utils.attributeMatchingResults(attributedText, pattern: self.searchField.text ?? "", caseSensitive: caseSensitive, attributes: [
             NSAttributedString.Key.backgroundColor: UIColor.yellow,
             NSAttributedString.Key.foregroundColor: UIColor.darkText
         ])
         
         self.documentTextView.attributedText = attributedText
+    }
+    
+    @IBOutlet weak var upConstraint: NSLayoutConstraint!
+    
+    private func showSearchField() {
+        searchBarIsShown = true
+        self.upConstraint?.constant = 8
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+            if (self.isViewLoaded && self.view.window != nil) {
+                self.view.layoutIfNeeded()
+            }
+        }, completion: nil)
+        self.searchField.becomeFirstResponder()
+    }
+    
+    private func hideSearchField() {
+        searchBarIsShown = false
+        self.upConstraint?.constant = -40
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+            if (self.isViewLoaded && self.view.window != nil) {
+                 self.view.layoutIfNeeded()
+            }
+        }, completion: nil)
+        self.searchField.resignFirstResponder()
     }
 }
