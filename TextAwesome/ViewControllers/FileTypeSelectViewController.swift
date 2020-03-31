@@ -24,6 +24,12 @@ class FileTypeTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        if let handler = self.cancelHandler {
+            handler()
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -32,5 +38,11 @@ class FileTypeTableViewController: UITableViewController {
     
     internal func didSelectFileType(_ handler: @escaping (FileType) -> Void) {
         self.selectionHandler = handler
+    }
+    
+    private var cancelHandler: (() -> Void)?
+    
+    internal func willCancelSelection(_ handler: @escaping () -> Void) {
+        self.cancelHandler = handler
     }
 }

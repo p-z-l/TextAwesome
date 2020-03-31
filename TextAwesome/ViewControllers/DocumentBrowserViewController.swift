@@ -40,22 +40,24 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let fileTypeVC = storyboard.instantiateViewController(identifier: "FileTypesVC") as? FileTypeTableViewController {
-            self.present(fileTypeVC, animated: true)
-            fileTypeVC.didSelectFileType { (fileType) in
-                let url : URL?
-                
-                url = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                    .appendingPathComponent("\(fileType.defaultName).\(fileType.fileExtension)")
-                
-                if url != nil {
-                    FileManager.default.createFile(atPath: url!.path, contents: Data())
-                    let document = TextDocument(fileURL: url!)
-                    document.save(to: url!, for: .forCreating, completionHandler: nil)
-                }
-                
-                importHandler(url, .copy)
-            }
+        guard let fileTypeVC = storyboard.instantiateViewController(identifier: "FileTypesVC") as? FileTypeTableViewController
+            else { importHandler(nil, .none); return }
+        self.present(fileTypeVC, animated: true)
+        fileTypeVC.didSelectFileType { (fileType) in
+            let url : URL?
+            
+            url = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                .appendingPathComponent("\(fileType.defaultName).\(fileType.fileExtension)")
+            
+            guard url != nil else { importHandler(nil, .none); return }
+            FileManager.default.createFile(atPath: url!.path, contents: Data())
+            let document = TextDocument(fileURL: url!)
+            document.save(to: url!, for: .forCreating, completionHandler: nil)
+            
+            importHandler(url, .copy)
+        }
+        fileTypeVC.willCancelSelection {
+            importHandler(nil, .none)
         }
         
     }
