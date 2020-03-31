@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050EFE2432D09500FCF2E3 /* FileType.swift */; };
+		B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */; };
 		B3C0655F2430F6D300B21238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C0655E2430F6D300B21238 /* AppDelegate.swift */; };
 		B3C065612430F6D300B21238 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C065602430F6D300B21238 /* DocumentBrowserViewController.swift */; };
 		B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C065622430F6D300B21238 /* DocumentViewController.swift */; };
@@ -14,13 +16,14 @@
 		B3C065682430F6D300B21238 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C065662430F6D300B21238 /* Main.storyboard */; };
 		B3C0656A2430F6D400B21238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C065692430F6D400B21238 /* Assets.xcassets */; };
 		B3C0656D2430F6D400B21238 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C0656B2430F6D400B21238 /* LaunchScreen.storyboard */; };
-		B3C065752430F8E500B21238 /* New Plain Text.txt in Resources */ = {isa = PBXBuildFile; fileRef = B3C065742430F8E500B21238 /* New Plain Text.txt */; };
 		B3EEA7AA2431F03F00BFEB34 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EEA7A92431F03F00BFEB34 /* Settings.swift */; };
 		B3EEA7AC2431F37800BFEB34 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EEA7AB2431F37800BFEB34 /* Constants.swift */; };
 		B3EEA7AE2432045F00BFEB34 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EEA7AD2432045F00BFEB34 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B3050EFE2432D09500FCF2E3 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
+		B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeSelectViewController.swift; sourceTree = "<group>"; };
 		B3C0655B2430F6D300B21238 /* TextAwesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextAwesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C0655E2430F6D300B21238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C065602430F6D300B21238 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -30,7 +33,6 @@
 		B3C065692430F6D400B21238 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3C0656C2430F6D400B21238 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3C0656E2430F6D400B21238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3C065742430F8E500B21238 /* New Plain Text.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "New Plain Text.txt"; sourceTree = "<group>"; };
 		B3EEA7A92431F03F00BFEB34 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B3EEA7AB2431F37800BFEB34 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B3EEA7AD2432045F00BFEB34 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -72,18 +74,9 @@
 				B3C065662430F6D300B21238 /* Main.storyboard */,
 				B3C065692430F6D400B21238 /* Assets.xcassets */,
 				B3C0656B2430F6D400B21238 /* LaunchScreen.storyboard */,
-				B3C06576243109F600B21238 /* Template Files */,
 				B3C0656E2430F6D400B21238 /* Info.plist */,
 			);
 			path = TextAwesome;
-			sourceTree = "<group>";
-		};
-		B3C06576243109F600B21238 /* Template Files */ = {
-			isa = PBXGroup;
-			children = (
-				B3C065742430F8E500B21238 /* New Plain Text.txt */,
-			);
-			path = "Template Files";
 			sourceTree = "<group>";
 		};
 		B3EEA7A52431E32300BFEB34 /* ViewControllers */ = {
@@ -92,6 +85,7 @@
 				B3C065602430F6D300B21238 /* DocumentBrowserViewController.swift */,
 				B3C065622430F6D300B21238 /* DocumentViewController.swift */,
 				B3EEA7AD2432045F00BFEB34 /* SettingsViewController.swift */,
+				B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -100,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				B3C065642430F6D300B21238 /* TextDocument.swift */,
+				B3050EFE2432D09500FCF2E3 /* FileType.swift */,
 				B3EEA7A92431F03F00BFEB34 /* Settings.swift */,
 				B3EEA7AB2431F37800BFEB34 /* Constants.swift */,
 			);
@@ -167,7 +162,6 @@
 				B3C0656D2430F6D400B21238 /* LaunchScreen.storyboard in Resources */,
 				B3C0656A2430F6D400B21238 /* Assets.xcassets in Resources */,
 				B3C065682430F6D300B21238 /* Main.storyboard in Resources */,
-				B3C065752430F8E500B21238 /* New Plain Text.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,9 +175,11 @@
 				B3EEA7AA2431F03F00BFEB34 /* Settings.swift in Sources */,
 				B3C065652430F6D300B21238 /* TextDocument.swift in Sources */,
 				B3EEA7AE2432045F00BFEB34 /* SettingsViewController.swift in Sources */,
+				B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */,
 				B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */,
 				B3C065612430F6D300B21238 /* DocumentBrowserViewController.swift in Sources */,
 				B3EEA7AC2431F37800BFEB34 /* Constants.swift in Sources */,
+				B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */,
 				B3C0655F2430F6D300B21238 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
