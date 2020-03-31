@@ -49,6 +49,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B3050F032432E21300FCF2E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B3C065662430F6D300B21238 /* Main.storyboard */,
+				B3C0656B2430F6D400B21238 /* LaunchScreen.storyboard */,
+				B3C065692430F6D400B21238 /* Assets.xcassets */,
+				B3C0656E2430F6D400B21238 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B3C065522430F6D300B21238 = {
 			isa = PBXGroup;
 			children = (
@@ -71,10 +82,7 @@
 				B3C0655E2430F6D300B21238 /* AppDelegate.swift */,
 				B3EEA7A52431E32300BFEB34 /* ViewControllers */,
 				B3EEA7A62431E32B00BFEB34 /* Models */,
-				B3C065662430F6D300B21238 /* Main.storyboard */,
-				B3C065692430F6D400B21238 /* Assets.xcassets */,
-				B3C0656B2430F6D400B21238 /* LaunchScreen.storyboard */,
-				B3C0656E2430F6D400B21238 /* Info.plist */,
+				B3050F032432E21300FCF2E3 /* Resources */,
 			);
 			path = TextAwesome;
 			sourceTree = "<group>";
@@ -326,7 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VGURA84Q2L;
-				INFOPLIST_FILE = TextAwesome/Info.plist;
+				INFOPLIST_FILE = TextAwesome/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -345,7 +353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VGURA84Q2L;
-				INFOPLIST_FILE = TextAwesome/Info.plist;
+				INFOPLIST_FILE = TextAwesome/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
