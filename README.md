@@ -5,13 +5,16 @@
 </p>
 
 ## Features
+- Creat/View/Edit multiple types of documents
+> txt,swift,python,html,css,js,etc.
+
 - iOS Native document browser
 - Dark Mode support
-- Creat,view,edit `.txt` files
 - Customized font style & font size
 
 ## TODO
 - Text searching
 - More customizations
-- RTF support
-- Markdown support
+- Code Highlighting
+- Better Markdown support
+- RTF/RTFD support
