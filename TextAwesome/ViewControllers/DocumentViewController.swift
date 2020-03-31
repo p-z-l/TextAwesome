@@ -142,7 +142,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         
         guard let fontName = Constants.fontDict[Settings.fontStyle] else { return }
         let font = UIFont(name: fontName, size: Settings.fontSize)
-        print(Settings.fontSize)
         
         self.documentTextView.font = font
     }

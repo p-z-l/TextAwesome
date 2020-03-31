@@ -18,3 +18,4 @@
 - Code Highlighting
 - Better Markdown support
 - RTF/RTFD support
+- Undo & Redo
