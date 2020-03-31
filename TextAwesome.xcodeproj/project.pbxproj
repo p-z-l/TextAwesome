@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050EFE2432D09500FCF2E3 /* FileType.swift */; };
 		B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */; };
+		B3050F062432E49E00FCF2E3 /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050F052432E49E00FCF2E3 /* String Extension.swift */; };
+		B3050F082432E53F00FCF2E3 /* Character Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050F072432E53F00FCF2E3 /* Character Extension.swift */; };
+		B3050F0A2432E5B500FCF2E3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050F092432E5B500FCF2E3 /* Utils.swift */; };
 		B3C0655F2430F6D300B21238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C0655E2430F6D300B21238 /* AppDelegate.swift */; };
 		B3C065612430F6D300B21238 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C065602430F6D300B21238 /* DocumentBrowserViewController.swift */; };
 		B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C065622430F6D300B21238 /* DocumentViewController.swift */; };
@@ -24,6 +27,9 @@
 /* Begin PBXFileReference section */
 		B3050EFE2432D09500FCF2E3 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeSelectViewController.swift; sourceTree = "<group>"; };
+		B3050F052432E49E00FCF2E3 /* String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
+		B3050F072432E53F00FCF2E3 /* Character Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character Extension.swift"; sourceTree = "<group>"; };
+		B3050F092432E5B500FCF2E3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B3C0655B2430F6D300B21238 /* TextAwesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextAwesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C0655E2430F6D300B21238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C065602430F6D300B21238 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +66,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B3050F042432E48800FCF2E3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B3050F052432E49E00FCF2E3 /* String Extension.swift */,
+				B3050F072432E53F00FCF2E3 /* Character Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B3C065522430F6D300B21238 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +97,7 @@
 				B3C0655E2430F6D300B21238 /* AppDelegate.swift */,
 				B3EEA7A52431E32300BFEB34 /* ViewControllers */,
 				B3EEA7A62431E32B00BFEB34 /* Models */,
+				B3050F042432E48800FCF2E3 /* Extensions */,
 				B3050F032432E21300FCF2E3 /* Resources */,
 			);
 			path = TextAwesome;
@@ -105,6 +121,7 @@
 				B3050EFE2432D09500FCF2E3 /* FileType.swift */,
 				B3EEA7A92431F03F00BFEB34 /* Settings.swift */,
 				B3EEA7AB2431F37800BFEB34 /* Constants.swift */,
+				B3050F092432E5B500FCF2E3 /* Utils.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,10 +202,13 @@
 				B3EEA7AE2432045F00BFEB34 /* SettingsViewController.swift in Sources */,
 				B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */,
 				B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */,
+				B3050F062432E49E00FCF2E3 /* String Extension.swift in Sources */,
 				B3C065612430F6D300B21238 /* DocumentBrowserViewController.swift in Sources */,
 				B3EEA7AC2431F37800BFEB34 /* Constants.swift in Sources */,
 				B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */,
+				B3050F082432E53F00FCF2E3 /* Character Extension.swift in Sources */,
 				B3C0655F2430F6D300B21238 /* AppDelegate.swift in Sources */,
+				B3050F0A2432E5B500FCF2E3 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

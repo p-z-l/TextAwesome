@@ -27,7 +27,11 @@ class Settings {
     
     static var fontSize: CGFloat {
         get {
-            return CGFloat(UserDefaults.standard.float(forKey: Constants.fontSizeKey))
+            var size = CGFloat(UserDefaults.standard.float(forKey: Constants.fontSizeKey))
+            if size < 12 {
+                size = 18
+            }
+            return size
         }
         set(newSize) {
             UserDefaults.standard.set(newSize, forKey: Constants.fontSizeKey)

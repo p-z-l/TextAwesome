@@ -12,11 +12,15 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Definitions
     
-    @IBOutlet weak var documentNameLabel: UILabel!
-    
     @IBOutlet weak var documentTextView: UITextView!
     
     @IBOutlet weak var documentTextViewBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var btDismiss: UIButton!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var SearchField: UITextField!
     
     var document: TextDocument?
     
@@ -29,7 +33,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         document?.open(completionHandler: { (success) in
             if success {
                 // Display the content of the document, e.g.:
-                self.documentNameLabel.text = self.document?.fileURL.lastPathComponent
+                self.nameLabel.text = self.document?.fileURL.lastPathComponent
+                
                 self.documentTextView.text = self.document?.userText
             } else {
                 print("Error opening Document.")
@@ -51,6 +56,12 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Actions
     
+    @IBAction func searchFieldEditingChanged(_ sender: UITextField) {
+        if let pattern = sender.text {
+            self.textSearch(pattern: pattern, caseSensitive: false)
+        }
+    }
+    
     @IBAction func dismissDocumentViewController() {
         self.saveFile()
         dismiss(animated: true) {
@@ -61,6 +72,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     @IBAction func resignKeyboardTouchUpInside(_ sender: UIButton) {
         self.saveFile()
         self.documentTextView.resignFirstResponder()
+        self.SearchField.resignFirstResponder()
+    }
+    
+    @IBAction func btSearchTouchUpInside(_ sender: UIButton) {
+        self.SearchField.isHidden.toggle()
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -122,5 +138,27 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         print(Settings.fontSize)
         
         self.documentTextView.font = font
+    }
+    
+    private func resetTextAttribute() {
+        guard let string = self.documentTextView.text else { return }
+        let textColor = UIColor(named: "Text Color")
+        let font = UIFont(name: Constants.fontDict[Settings.fontStyle]!, size: Settings.fontSize)
+        let attributedText = NSMutableAttributedString(string: string, attributes: [
+            NSAttributedString.Key.foregroundColor: textColor!,
+            NSAttributedString.Key.font: font!
+        ])
+        self.documentTextView.attributedText = attributedText
+    }
+    
+    private func textSearch(pattern: String, caseSensitive: Bool) {
+        self.resetTextAttribute()
+        let attributedText = NSMutableAttributedString(attributedString: self.documentTextView.attributedText)
+        Utils.attributeMatchingResults(attributedText, pattern: pattern, caseSensitive: caseSensitive, attributes: [
+            NSAttributedString.Key.backgroundColor: UIColor.yellow,
+            NSAttributedString.Key.foregroundColor: UIColor.darkText
+        ])
+        
+        self.documentTextView.attributedText = attributedText
     }
 }
