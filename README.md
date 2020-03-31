@@ -11,9 +11,9 @@
 - iOS Native document browser
 - Dark Mode support
 - Customized font style & font size
+- Text searching
 
 ## TODO
-- Text searching
 - More customizations
 - Code Highlighting
 - Better Markdown support
