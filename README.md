@@ -12,10 +12,11 @@
 - Dark Mode support
 - Customized font style & font size
 - Text searching
+- Basic code highlight for Swift
 
 ## TODO
 - More customizations
-- Code Highlighting
+- Better code Highlighting
 - Better Markdown support
 - RTF/RTFD support
 - Undo & Redo
