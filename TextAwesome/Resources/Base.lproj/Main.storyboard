@@ -44,7 +44,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
-                                    <action selector="searchFieldHitReturn:" destination="M2k-L8-Olo" eventType="primaryActionTriggered" id="4ZI-fI-aTE"/>
+                                    <action selector="searchFieldEditingChanged:" destination="M2k-L8-Olo" eventType="editingChanged" id="HX2-9c-YGt"/>
+                                    <action selector="searchFieldHitReturn:" destination="M2k-L8-Olo" eventType="primaryActionTriggered" id="5Dv-JT-ds0"/>
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quP-Xy-T8a">

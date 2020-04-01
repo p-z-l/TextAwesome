@@ -10,30 +10,31 @@ import UIKit
 
 class Utils {
     static func findNSRangeOfPattern(string: String, pattern: String, caseSensitive: Bool) -> [NSRange] {
-        guard !pattern.isEmpty else { return [NSRange]() }
-        var results = [NSRange]()
-        var beginIndex: Int?
-        var endIndex: Int?
-        var matchCount = 0
-        for i in 0..<string.count {
-            let char = string.getCharOfIndex(i)
-            if char.isEquivalentTo(pattern.getCharOfIndex(matchCount), caseSensitive: caseSensitive) {
-                if matchCount == 0 {
-                    beginIndex = i
-                }
-                matchCount += 1
-            } else {
-                matchCount = 0
-            }
-            if matchCount == pattern.count {
-                endIndex = i
-                if beginIndex != nil && endIndex != nil {
-                    results.append(NSRange(location: beginIndex!, length: endIndex!-beginIndex!+1))
-                }
-                matchCount = 0
+        guard pattern != "" else { return [NSRange]() }
+        let range = NSRange(location: 0, length: string.utf16.count)
+        var regex = try! NSRegularExpression(pattern: pattern)
+        if caseSensitive {
+            regex = try! NSRegularExpression(pattern: pattern,options: .caseInsensitive)
+        }
+        
+        let matches = regex.matches(in: string, options: [], range: range)
+        
+        var result = [NSRange]()
+        for match in matches {
+            result.append(match.range)
+        }
+        return result
+    }
+    
+    static func findNSRangeOfMultiplePatterns(string: String, patterns: [String], caseSensitive: Bool) -> [NSRange] {
+        var result = [NSRange]()
+        for pattern in patterns {
+            let ranges = Utils.findNSRangeOfPattern(string: string, pattern: pattern, caseSensitive: caseSensitive)
+            for range in ranges {
+                result.append(range)
             }
         }
-        return results
+        return result
     }
     
     static func attributeMatchingResults(_ attributedString: NSMutableAttributedString,

@@ -28,8 +28,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     // MARK: ViewController lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         // Access the document
         document?.open(completionHandler: { (success) in
@@ -37,7 +37,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
                 // Display the content of the document, e.g.:
                 self.nameLabel.text = self.document?.fileURL.lastPathComponent
                 
-                self.documentTextView.text = self.document?.userText
+                let text = self.document?.userText
+                self.documentTextView.attributedText = NSAttributedString(string: text ?? "")
+                
+                self.resetTextAttribute()
             } else {
                 print("Error opening Document.")
             }
@@ -53,14 +56,16 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
                                                selector: #selector(keyboardWillHide(_:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
-        self.setupSettings()
     }
     
     // MARK: Actions
     
-    @IBAction func searchFieldHitReturn(_ sender: UITextField) {
+    @IBAction func searchFieldEditingChanged(_ sender: UITextField) {
         self.textSearch(caseSensitive: false)
-        sender.resignFirstResponder()
+    }
+    
+    @IBAction func searchFieldHitReturn(_ sender: UITextField) {
+        self.searchField.resignFirstResponder()
     }
     
     @IBAction func dismissDocumentViewController() {
@@ -108,6 +113,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         self.saveFile()
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        self.resetTextAttribute()
+    }
+    
     // MARK: Private methods
     
     private func resetTextViewFrame() {
@@ -144,16 +153,19 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         let font = UIFont(name: fontName, size: Settings.fontSize)
         
         self.documentTextView.font = font
+        self.resetTextAttribute()
     }
     
     private func resetTextAttribute() {
         guard let string = self.documentTextView.text else { return }
         let textColor = UIColor(named: "Text Color")
         let font = UIFont(name: Constants.fontDict[Settings.fontStyle]!, size: Settings.fontSize)
-        let attributedText = NSMutableAttributedString(string: string, attributes: [
+        var attributedText = NSAttributedString(string: string, attributes: [
             NSAttributedString.Key.foregroundColor: textColor!,
             NSAttributedString.Key.font: font!
         ])
+        let fileExtension = self.document!.fileURL.pathExtension
+        attributedText = CodeHighlighter.highlight(attributedText, fileExtension: fileExtension)
         self.documentTextView.attributedText = attributedText
     }
     

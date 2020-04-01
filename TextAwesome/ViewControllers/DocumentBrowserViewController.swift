@@ -23,6 +23,8 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         let btSettings = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(showSettings))
         self.additionalLeadingNavigationBarButtonItems.append(btSettings)
+        
+        CodeHighlighter.initializeLangDictionaries()
     }
     
     // MARK: Actions
