@@ -31,10 +31,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vbp-Ai-KTL">
-                                <rect key="frame" x="20" y="96" width="335" height="682"/>
+                                <rect key="frame" x="0.0" y="96" width="375" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" keyboardType="webSearch"/>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Find text..." textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="86g-tV-S8L">
                                 <rect key="frame" x="111" y="36" width="256" height="34"/>
@@ -101,9 +101,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="BoZ-jc-2Y8" firstAttribute="trailing" secondItem="vbp-Ai-KTL" secondAttribute="trailing" priority="1" constant="20" id="2ms-Nf-DV2"/>
+                            <constraint firstItem="BoZ-jc-2Y8" firstAttribute="trailing" secondItem="vbp-Ai-KTL" secondAttribute="trailing" priority="1" id="2ms-Nf-DV2"/>
                             <constraint firstItem="6TY-NX-SWX" firstAttribute="leading" secondItem="QDS-5W-Ot7" secondAttribute="trailing" constant="20" id="6xf-g9-Uue"/>
-                            <constraint firstItem="vbp-Ai-KTL" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" priority="1" constant="20" id="8De-ai-Sdd"/>
+                            <constraint firstItem="vbp-Ai-KTL" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" priority="1" id="8De-ai-Sdd"/>
                             <constraint firstItem="WAb-IC-g0u" firstAttribute="top" secondItem="BoZ-jc-2Y8" secondAttribute="top" constant="20" id="AKL-f0-h4m"/>
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="top" secondItem="QDS-5W-Ot7" secondAttribute="bottom" constant="8" id="E4O-BN-9ND"/>
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="top" secondItem="quP-Xy-T8a" secondAttribute="bottom" id="IUx-Ev-2qb"/>
@@ -120,7 +120,6 @@
                             <constraint firstItem="yH1-wC-dgp" firstAttribute="centerY" secondItem="WAb-IC-g0u" secondAttribute="centerY" id="e7F-R3-jY5"/>
                             <constraint firstItem="6TY-NX-SWX" firstAttribute="centerY" secondItem="WAb-IC-g0u" secondAttribute="centerY" id="h2O-Ho-SVD"/>
                             <constraint firstItem="86g-tV-S8L" firstAttribute="top" secondItem="quP-Xy-T8a" secondAttribute="bottom" constant="-60" identifier="searchField top" id="hcn-5f-Q24"/>
-                            <constraint firstItem="vbp-Ai-KTL" firstAttribute="centerX" secondItem="SIE-Uh-Zny" secondAttribute="centerX" id="j3K-2M-WSm"/>
                             <constraint firstItem="yH1-wC-dgp" firstAttribute="leading" secondItem="6TY-NX-SWX" secondAttribute="trailing" constant="20" id="sAV-es-CGn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BoZ-jc-2Y8"/>
