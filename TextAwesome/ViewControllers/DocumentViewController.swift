@@ -12,9 +12,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Definitions
     
-    @IBOutlet weak var documentTextView: UITextView!
+    @IBOutlet weak var fakeNavBarView: UIView!
     
-    @IBOutlet weak var documentTextViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var documentTextView: UITextView!
     
     @IBOutlet weak var btDismiss: UIButton!
     
@@ -46,6 +46,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
             }
         })
         
+        self.setupFakeNavBarBlurEffect()
+        
         self.documentTextView.delegate = self
         
         NotificationCenter.default.addObserver(self,
@@ -56,6 +58,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
                                                selector: #selector(keyboardWillHide(_:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
+        
+        self.resetTextViewContentInset()
     }
     
     // MARK: Actions
@@ -92,19 +96,17 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        self.resetTextViewFrame()
+        self.resetTextViewContentInset()
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            self.documentTextViewBottom.constant -= keyboardHeight
-            
-            self.animateTextView(textView: self.documentTextView, distance: keyboardHeight)
+            self.adjustTextViewContentInset(distance: keyboardHeight)
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        self.resetTextViewFrame()
+        self.resetTextViewContentInset()
     }
     
     // MARK: UITextViewDelegate
@@ -119,9 +121,32 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Private methods
     
-    private func resetTextViewFrame() {
-        self.documentTextViewBottom.constant = 0
-        self.documentTextView.layoutIfNeeded()
+    private func setupFakeNavBarBlurEffect() {
+        if !UIAccessibility.isReduceTransparencyEnabled {
+            fakeNavBarView.alpha = 0
+            let blurEffect = UIBlurEffect(style: .systemMaterial)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = fakeNavBarView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            self.view.addSubview(blurEffectView)
+            self.view.sendSubviewToBack(blurEffectView)
+            self.view.sendSubviewToBack(documentTextView)
+            self.view.sendSubviewToBack(searchField)
+        }
+    }
+    
+    private func resetTextViewContentInset() {
+        let top = self.fakeNavBarView.frame.height
+        UIView.animate(withDuration: 0.1) {
+            self.documentTextView.contentInset = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
+        }
+    }
+    
+    private func adjustTextViewContentInset(distance: CGFloat) {
+        let top = self.fakeNavBarView.frame.height
+        UIView.animate(withDuration: 0.1) {
+            self.documentTextView.contentInset = UIEdgeInsets(top: top, left: 0, bottom: distance, right: 0)
+        }
     }
     
     private func saveFile() {
@@ -135,15 +160,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
                 }
                 
             })
-        }
-    }
-    
-    private func animateTextView(textView: UITextView, distance: CGFloat) {
-        UIView.animate(withDuration: 0.1) {
-            textView.frame = CGRect(x: textView.frame.minX,
-                                    y: textView.frame.minY,
-                                    width: textView.frame.width,
-                                    height: textView.frame.height - distance)
         }
     }
     

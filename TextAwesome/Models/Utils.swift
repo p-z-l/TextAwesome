@@ -13,7 +13,7 @@ class Utils {
         guard pattern != "" else { return [NSRange]() }
         let range = NSRange(location: 0, length: string.utf16.count)
         var regex = try! NSRegularExpression(pattern: pattern)
-        if caseSensitive {
+        if !caseSensitive {
             regex = try! NSRegularExpression(pattern: pattern,options: .caseInsensitive)
         }
         

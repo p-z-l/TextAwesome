@@ -31,13 +31,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vbp-Ai-KTL">
-                                <rect key="frame" x="0.0" y="96" width="375" height="682"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" keyboardType="webSearch"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Find text..." textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="86g-tV-S8L">
-                                <rect key="frame" x="111" y="36" width="256" height="34"/>
+                                <rect key="frame" x="111" y="44" width="256" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="256" id="ovk-Fp-w0M"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quP-Xy-T8a">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAb-IC-g0u">
@@ -101,15 +101,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="BoZ-jc-2Y8" firstAttribute="top" secondItem="quP-Xy-T8a" secondAttribute="bottom" constant="-60" id="0bZ-ry-pB7"/>
                             <constraint firstItem="BoZ-jc-2Y8" firstAttribute="trailing" secondItem="vbp-Ai-KTL" secondAttribute="trailing" priority="1" id="2ms-Nf-DV2"/>
                             <constraint firstItem="6TY-NX-SWX" firstAttribute="leading" secondItem="QDS-5W-Ot7" secondAttribute="trailing" constant="20" id="6xf-g9-Uue"/>
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" priority="1" id="8De-ai-Sdd"/>
                             <constraint firstItem="WAb-IC-g0u" firstAttribute="top" secondItem="BoZ-jc-2Y8" secondAttribute="top" constant="20" id="AKL-f0-h4m"/>
-                            <constraint firstItem="vbp-Ai-KTL" firstAttribute="top" secondItem="QDS-5W-Ot7" secondAttribute="bottom" constant="8" id="E4O-BN-9ND"/>
-                            <constraint firstItem="vbp-Ai-KTL" firstAttribute="top" secondItem="quP-Xy-T8a" secondAttribute="bottom" id="IUx-Ev-2qb"/>
                             <constraint firstItem="WAb-IC-g0u" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" constant="20" id="Kzm-xe-W1C"/>
                             <constraint firstItem="QDS-5W-Ot7" firstAttribute="centerY" secondItem="WAb-IC-g0u" secondAttribute="centerY" id="MRF-9h-rNq"/>
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="bottom" secondItem="BoZ-jc-2Y8" secondAttribute="bottom" id="MpJ-Gs-tbd"/>
+                            <constraint firstItem="vbp-Ai-KTL" firstAttribute="top" secondItem="SIE-Uh-Zny" secondAttribute="top" id="PXZ-dB-Azh"/>
                             <constraint firstAttribute="trailing" secondItem="quP-Xy-T8a" secondAttribute="trailing" id="RgW-IH-PH7"/>
                             <constraint firstItem="QDS-5W-Ot7" firstAttribute="leading" secondItem="WAb-IC-g0u" secondAttribute="trailing" constant="20" id="RjY-Gi-upL"/>
                             <constraint firstItem="quP-Xy-T8a" firstAttribute="leading" secondItem="SIE-Uh-Zny" secondAttribute="leading" id="Uwd-au-XGM"/>
@@ -127,7 +127,7 @@
                     <connections>
                         <outlet property="btDismiss" destination="WAb-IC-g0u" id="9WK-Dt-8t9"/>
                         <outlet property="documentTextView" destination="vbp-Ai-KTL" id="3Ed-a3-CUa"/>
-                        <outlet property="documentTextViewBottom" destination="MpJ-Gs-tbd" id="C3U-Vv-M8m"/>
+                        <outlet property="fakeNavBarView" destination="quP-Xy-T8a" id="8le-AF-Wvi"/>
                         <outlet property="nameLabel" destination="QDS-5W-Ot7" id="h8h-eX-B3W"/>
                         <outlet property="searchField" destination="86g-tV-S8L" id="5qW-eR-dHK"/>
                         <outlet property="upConstraint" destination="hcn-5f-Q24" id="zKL-aF-kPj"/>
