@@ -46,8 +46,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
             }
         })
         
-        self.setupFakeNavBarBlurEffect()
-        
         self.documentTextView.delegate = self
         
         NotificationCenter.default.addObserver(self,
@@ -121,25 +119,13 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Private methods
     
-    private func setupFakeNavBarBlurEffect() {
-        if !UIAccessibility.isReduceTransparencyEnabled {
-            fakeNavBarView.alpha = 0
-            let blurEffect = UIBlurEffect(style: .systemMaterial)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = fakeNavBarView.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            self.view.addSubview(blurEffectView)
-            self.view.sendSubviewToBack(blurEffectView)
-            self.view.sendSubviewToBack(searchField)
-            self.view.sendSubviewToBack(documentTextView)
-        }
-    }
-    
     private func resetTextViewContentInset() {
-        let top = self.fakeNavBarView.frame.height
+        let safeAreaTopMargin = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+        let top = self.fakeNavBarView.frame.height - safeAreaTopMargin
         UIView.animate(withDuration: 0.1) {
             self.documentTextView.contentInset = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
         }
+        self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
     }
     
     private func adjustTextViewContentInset(distance: CGFloat) {
@@ -173,6 +159,16 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     }
     
     private func resetTextAttribute() {
+        // Get cursor position
+        var cursorPositionStart: UITextPosition?
+        if let cursorPosition = documentTextView.selectedTextRange?.start {
+            cursorPositionStart = cursorPosition
+        }
+        var cursorPositionEnd: UITextPosition?
+        if let cursorPosition = documentTextView.selectedTextRange?.end {
+            cursorPositionEnd = cursorPosition
+        }
+        
         guard let string = self.documentTextView.text else { return }
         let textColor = UIColor(named: "Text Color")
         let font = UIFont(name: Constants.fontDict[Settings.fontStyle]!, size: Settings.fontSize)
@@ -183,6 +179,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         let fileExtension = self.document!.fileURL.pathExtension
         attributedText = CodeHighlighter.highlight(attributedText, fileExtension: fileExtension)
         self.documentTextView.attributedText = attributedText
+        
+        if cursorPositionStart != nil && cursorPositionEnd != nil {
+            self.documentTextView.selectedTextRange = documentTextView.textRange(from: cursorPositionStart!, to: cursorPositionEnd!)
+        }
     }
     
     private func textSearch(caseSensitive: Bool) {

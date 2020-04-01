@@ -48,7 +48,15 @@
                                     <action selector="searchFieldHitReturn:" destination="M2k-L8-Olo" eventType="primaryActionTriggered" id="5Dv-JT-ds0"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quP-Xy-T8a" customClass="UIVisualEffectView">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpu-Kt-no2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="K06-Na-LKu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quP-Xy-T8a" customClass="UIVisualEffectView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -112,6 +120,8 @@
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="top" secondItem="SIE-Uh-Zny" secondAttribute="top" id="PXZ-dB-Azh"/>
                             <constraint firstAttribute="trailing" secondItem="quP-Xy-T8a" secondAttribute="trailing" id="RgW-IH-PH7"/>
                             <constraint firstItem="QDS-5W-Ot7" firstAttribute="leading" secondItem="WAb-IC-g0u" secondAttribute="trailing" constant="20" id="RjY-Gi-upL"/>
+                            <constraint firstItem="vpu-Kt-no2" firstAttribute="top" secondItem="SIE-Uh-Zny" secondAttribute="top" id="SKx-M7-Edl"/>
+                            <constraint firstAttribute="trailing" secondItem="vpu-Kt-no2" secondAttribute="trailing" id="TjE-cp-Mud"/>
                             <constraint firstItem="quP-Xy-T8a" firstAttribute="leading" secondItem="SIE-Uh-Zny" secondAttribute="leading" id="Uwd-au-XGM"/>
                             <constraint firstItem="quP-Xy-T8a" firstAttribute="top" secondItem="SIE-Uh-Zny" secondAttribute="top" id="WtC-tJ-yxN"/>
                             <constraint firstItem="BoZ-jc-2Y8" firstAttribute="trailing" secondItem="yH1-wC-dgp" secondAttribute="trailing" constant="20" id="Zpo-eq-sic"/>
@@ -120,7 +130,9 @@
                             <constraint firstItem="yH1-wC-dgp" firstAttribute="centerY" secondItem="WAb-IC-g0u" secondAttribute="centerY" id="e7F-R3-jY5"/>
                             <constraint firstItem="6TY-NX-SWX" firstAttribute="centerY" secondItem="WAb-IC-g0u" secondAttribute="centerY" id="h2O-Ho-SVD"/>
                             <constraint firstItem="86g-tV-S8L" firstAttribute="top" secondItem="quP-Xy-T8a" secondAttribute="bottom" constant="-40" identifier="searchField top" id="hcn-5f-Q24"/>
+                            <constraint firstItem="BoZ-jc-2Y8" firstAttribute="top" secondItem="vpu-Kt-no2" secondAttribute="bottom" constant="-60" id="rSW-s5-spw"/>
                             <constraint firstItem="yH1-wC-dgp" firstAttribute="leading" secondItem="6TY-NX-SWX" secondAttribute="trailing" constant="20" id="sAV-es-CGn"/>
+                            <constraint firstItem="vpu-Kt-no2" firstAttribute="leading" secondItem="SIE-Uh-Zny" secondAttribute="leading" id="zU4-zl-YgR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BoZ-jc-2Y8"/>
                     </view>
