@@ -12,7 +12,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Definitions
     
-    @IBOutlet weak var fakeNavBarView: UIView!
+    @IBOutlet weak var fakeNavBarView: UIVisualEffectView!
     
     @IBOutlet weak var documentTextView: UITextView!
     
@@ -130,8 +130,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             self.view.addSubview(blurEffectView)
             self.view.sendSubviewToBack(blurEffectView)
-            self.view.sendSubviewToBack(documentTextView)
             self.view.sendSubviewToBack(searchField)
+            self.view.sendSubviewToBack(documentTextView)
         }
     }
     
@@ -202,9 +202,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         searchBarIsShown = true
         self.upConstraint?.constant = 8
         UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
-            if (self.isViewLoaded && self.view.window != nil) {
-                self.view.layoutIfNeeded()
-            }
+            self.view.layoutIfNeeded()
         }, completion: nil)
         self.searchField.becomeFirstResponder()
     }
@@ -213,9 +211,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
         searchBarIsShown = false
         self.upConstraint?.constant = -40
         UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
-            if (self.isViewLoaded && self.view.window != nil) {
-                 self.view.layoutIfNeeded()
-            }
+            self.view.layoutIfNeeded()
         }, completion: nil)
         self.searchField.resignFirstResponder()
     }

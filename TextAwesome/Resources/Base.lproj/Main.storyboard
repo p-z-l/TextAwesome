@@ -37,7 +37,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Find text..." textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="86g-tV-S8L">
-                                <rect key="frame" x="111" y="44" width="256" height="34"/>
+                                <rect key="frame" x="111" y="64" width="256" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="256" id="ovk-Fp-w0M"/>
                                 </constraints>
@@ -48,7 +48,7 @@
                                     <action selector="searchFieldHitReturn:" destination="M2k-L8-Olo" eventType="primaryActionTriggered" id="5Dv-JT-ds0"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quP-Xy-T8a">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quP-Xy-T8a" customClass="UIVisualEffectView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -119,7 +119,7 @@
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="bottom" secondItem="BoZ-jc-2Y8" secondAttribute="bottom" id="cAM-HD-1M7"/>
                             <constraint firstItem="yH1-wC-dgp" firstAttribute="centerY" secondItem="WAb-IC-g0u" secondAttribute="centerY" id="e7F-R3-jY5"/>
                             <constraint firstItem="6TY-NX-SWX" firstAttribute="centerY" secondItem="WAb-IC-g0u" secondAttribute="centerY" id="h2O-Ho-SVD"/>
-                            <constraint firstItem="86g-tV-S8L" firstAttribute="top" secondItem="quP-Xy-T8a" secondAttribute="bottom" constant="-60" identifier="searchField top" id="hcn-5f-Q24"/>
+                            <constraint firstItem="86g-tV-S8L" firstAttribute="top" secondItem="quP-Xy-T8a" secondAttribute="bottom" constant="-40" identifier="searchField top" id="hcn-5f-Q24"/>
                             <constraint firstItem="yH1-wC-dgp" firstAttribute="leading" secondItem="6TY-NX-SWX" secondAttribute="trailing" constant="20" id="sAV-es-CGn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BoZ-jc-2Y8"/>
