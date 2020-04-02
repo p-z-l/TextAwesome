@@ -32,6 +32,13 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     
     // MARK: ViewController lifecycle
     
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(title: "Find", action: #selector(toggleSearchField), input: "f", modifierFlags: .command),
+            UIKeyCommand(title: "Close Document", action: #selector(dismissDocumentViewController), input: "w", modifierFlags: .command),
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,7 +89,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         self.searchField.resignFirstResponder()
     }
     
-    @IBAction func dismissDocumentViewController() {
+    @IBAction @objc func dismissDocumentViewController() {
         self.saveFile()
         dismiss(animated: true) {
             self.document?.close(completionHandler: nil)
@@ -96,12 +103,14 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     }
     
     @IBAction func btSearchTouchUpInside(_ sender: UIButton) {
+        self.toggleSearchField()
+    }
+    
+    @objc func toggleSearchField() {
         if searchBarIsShown {
             self.hideSearchField()
-            self.resetTextAttribute()
         } else {
             self.showSearchField()
-            self.textSearch(caseSensitive: false)
         }
     }
     
@@ -117,6 +126,27 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     
     @objc func keyboardWillHide(_ notification: Notification) {
         self.resetTextViewContentInset()
+    }
+    
+    @objc func showSearchField() {
+        searchBarIsShown = true
+        self.upConstraint?.constant = 8
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        self.searchField.becomeFirstResponder()
+        self.textSearch(caseSensitive: false)
+    }
+    
+    @objc func hideSearchField() {
+        searchBarIsShown = false
+        self.upConstraint?.constant = -40
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        self.searchField.resignFirstResponder()
+        self.resetTextAttribute()
+        self.documentTextView.becomeFirstResponder()
     }
     
     // MARK: UITextViewDelegate
@@ -205,22 +235,4 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     }
     
     @IBOutlet weak var upConstraint: NSLayoutConstraint!
-    
-    private func showSearchField() {
-        searchBarIsShown = true
-        self.upConstraint?.constant = 8
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        self.searchField.becomeFirstResponder()
-    }
-    
-    private func hideSearchField() {
-        searchBarIsShown = false
-        self.upConstraint?.constant = -40
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        self.searchField.resignFirstResponder()
-    }
 }
