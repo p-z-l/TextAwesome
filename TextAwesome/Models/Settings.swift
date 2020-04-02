@@ -37,4 +37,13 @@ class Settings {
             UserDefaults.standard.set(newSize, forKey: Constants.fontSizeKey)
         }
     }
+    
+    static var caseSensitiveTextSearching: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Constants.caseSensitiveKey)
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue, forKey: Constants.caseSensitiveKey)
+        }
+    }
 }

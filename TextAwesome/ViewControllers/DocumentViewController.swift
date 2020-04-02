@@ -82,7 +82,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     // MARK: Actions
     
     @IBAction func searchFieldEditingChanged(_ sender: UITextField) {
-        self.textSearch(caseSensitive: false)
+        self.textSearch()
     }
     
     @IBAction func searchFieldHitReturn(_ sender: UITextField) {
@@ -135,7 +135,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
             self.view.layoutIfNeeded()
         }, completion: nil)
         self.searchField.becomeFirstResponder()
-        self.textSearch(caseSensitive: false)
+        self.textSearch()
     }
     
     @objc func hideSearchField() {
@@ -157,7 +157,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     
     func textViewDidChange(_ textView: UITextView) {
         self.resetTextAttribute()
-        self.textSearch(caseSensitive: false)
+        self.textSearch()
     }
     
     // MARK: Private methods
@@ -223,10 +223,13 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
     }
     
-    private func textSearch(caseSensitive: Bool) {
+    private func textSearch() {
         self.resetTextAttribute()
         let attributedText = NSMutableAttributedString(attributedString: self.documentTextView.attributedText)
-        Utils.attributeMatchingResults(attributedText, pattern: self.searchField.text ?? "", caseSensitive: caseSensitive, attributes: [
+        Utils.attributeMatchingResults(attributedText,
+                                       pattern: self.searchField.text ?? "",
+                                       caseSensitive: Settings.caseSensitiveTextSearching,
+                                       attributes: [
             NSAttributedString.Key.backgroundColor: UIColor.yellow,
             NSAttributedString.Key.foregroundColor: UIColor.darkText
         ])

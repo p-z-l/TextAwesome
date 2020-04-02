@@ -61,10 +61,10 @@
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAb-IC-g0u">
-                                <rect key="frame" x="20" y="64" width="24" height="24"/>
+                                <rect key="frame" x="20" y="56" width="48" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="Dif-Tn-kew"/>
-                                    <constraint firstAttribute="height" constant="24" id="csG-Gw-4ZS"/>
+                                    <constraint firstAttribute="width" constant="48" id="Dif-Tn-kew"/>
+                                    <constraint firstAttribute="height" constant="32" id="csG-Gw-4ZS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,10 +76,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yH1-wC-dgp">
-                                <rect key="frame" x="327" y="64" width="28" height="24"/>
+                                <rect key="frame" x="307" y="56" width="48" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="Y80-Al-SEw"/>
-                                    <constraint firstAttribute="width" constant="28" id="cqh-Om-G7M"/>
+                                    <constraint firstAttribute="height" constant="32" id="Y80-Al-SEw"/>
+                                    <constraint firstAttribute="width" constant="48" id="cqh-Om-G7M"/>
                                 </constraints>
                                 <state key="normal" image="keyboard.chevron.compact.down" catalog="system"/>
                                 <connections>
@@ -87,10 +87,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6TY-NX-SWX">
-                                <rect key="frame" x="283" y="64" width="24" height="24"/>
+                                <rect key="frame" x="239" y="56" width="48" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="Vfz-5d-jQg"/>
-                                    <constraint firstAttribute="height" constant="24" id="tpC-UB-NuY"/>
+                                    <constraint firstAttribute="width" constant="48" id="Vfz-5d-jQg"/>
+                                    <constraint firstAttribute="height" constant="32" id="tpC-UB-NuY"/>
                                 </constraints>
                                 <state key="normal" image="magnifyingglass.circle.fill" catalog="system"/>
                                 <connections>
@@ -98,7 +98,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Document.txt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDS-5W-Ot7">
-                                <rect key="frame" x="64" y="64" width="199" height="24"/>
+                                <rect key="frame" x="88" y="60" width="131" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="NL1-3B-bCV"/>
                                 </constraints>
@@ -113,7 +113,7 @@
                             <constraint firstItem="BoZ-jc-2Y8" firstAttribute="trailing" secondItem="vbp-Ai-KTL" secondAttribute="trailing" priority="1" id="2ms-Nf-DV2"/>
                             <constraint firstItem="6TY-NX-SWX" firstAttribute="leading" secondItem="QDS-5W-Ot7" secondAttribute="trailing" constant="20" id="6xf-g9-Uue"/>
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" priority="1" id="8De-ai-Sdd"/>
-                            <constraint firstItem="WAb-IC-g0u" firstAttribute="top" secondItem="BoZ-jc-2Y8" secondAttribute="top" constant="20" id="AKL-f0-h4m"/>
+                            <constraint firstItem="WAb-IC-g0u" firstAttribute="top" secondItem="BoZ-jc-2Y8" secondAttribute="top" constant="12" id="AKL-f0-h4m"/>
                             <constraint firstItem="WAb-IC-g0u" firstAttribute="leading" secondItem="BoZ-jc-2Y8" secondAttribute="leading" constant="20" id="Kzm-xe-W1C"/>
                             <constraint firstItem="QDS-5W-Ot7" firstAttribute="centerY" secondItem="WAb-IC-g0u" secondAttribute="centerY" id="MRF-9h-rNq"/>
                             <constraint firstItem="vbp-Ai-KTL" firstAttribute="bottom" secondItem="BoZ-jc-2Y8" secondAttribute="bottom" id="MpJ-Gs-tbd"/>
@@ -256,6 +256,27 @@
                                                         <action selector="fontSizeSliderChanged:" destination="b0g-1n-umz" eventType="valueChanged" id="yVP-df-RlG"/>
                                                     </connections>
                                                 </slider>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" footerTitle="" id="1qJ-0D-29b">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="2PX-fl-uUl" style="IBUITableViewCellStyleDefault" id="P6u-1F-sM1">
+                                        <rect key="frame" x="0.0" y="340.66666412353516" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P6u-1F-sM1" id="Z3K-kx-jbZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Case sensitive text searching" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2PX-fl-uUl">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>

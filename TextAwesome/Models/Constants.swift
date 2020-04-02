@@ -12,6 +12,7 @@ class Constants {
     // UserDefault Keys
     static let fontStyleKey = "TextAwesome_FontStyle"
     static let fontSizeKey = "TextAwesome_FontSize"
+    static let caseSensitiveKey = "TextAwesome_CaseSensitiveTextSearching"
     
     static let fontDict : [FontStyle:String] = [
         .monoSpace: "Menlo",
@@ -32,15 +33,5 @@ class Constants {
         FileType(defaultName: "New C++ File", fileExtension: "cpp"),
         FileType(defaultName: "New Objective-C File", fileExtension: "m"),
         FileType(defaultName: "New Header File", fileExtension: "h"),
-    ]
-    
-    static let lowToUpCase : [Character:Character] = [
-        "a":"A","b":"B","c":"C","d":"D",
-        "e":"E","f":"F","g":"G","h":"H",
-        "i":"I","j":"J","k":"K","l":"L",
-        "m":"M","n":"N","o":"O","p":"P",
-        "q":"Q","r":"R","s":"S","t":"T",
-        "u":"U","v":"V","w":"W","x":"X",
-        "y":"Y","z":"Z",
     ]
 }
