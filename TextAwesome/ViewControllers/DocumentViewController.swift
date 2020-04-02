@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DocumentViewController: UIViewController, UITextViewDelegate {
+class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInteractionDelegate {
     
     // MARK: Definitions
     
@@ -17,6 +17,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var documentTextView: UITextView!
     
     @IBOutlet weak var btDismiss: UIButton!
+    
+    @IBOutlet weak var btSearch: UIButton!
+    
+    @IBOutlet weak var btResignKeyboard: UIButton!
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -30,6 +34,13 @@ class DocumentViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Cursor support
+        if #available(iOS 13.4, *) {
+            self.btDismiss.isPointerInteractionEnabled = true
+            self.btSearch.isPointerInteractionEnabled = true
+            self.btResignKeyboard.isPointerInteractionEnabled = true
+        }
         
         // Access the document
         document?.open(completionHandler: { (success) in
