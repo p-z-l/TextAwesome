@@ -11,6 +11,8 @@
 - Customized font style & font size
 - Text searching
 - Basic code highlight for Swift
+- iPadOS cursor support
+- iPadOS keyboard shortcuts support
 
 ## TODO
 - More customizations
@@ -18,3 +20,4 @@
 - Better Markdown support
 - RTF/RTFD support
 - Undo & Redo
+- Search & Replacing
