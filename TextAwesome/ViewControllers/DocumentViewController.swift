@@ -36,6 +36,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         return [
             UIKeyCommand(title: "Find", action: #selector(toggleSearchField), input: "f", modifierFlags: .command),
             UIKeyCommand(title: "Close Document", action: #selector(dismissDocumentViewController), input: "w", modifierFlags: .command),
+            UIKeyCommand(title: "Save Document", action: #selector(saveFile), input: "s", modifierFlags: .command),
+            UIKeyCommand(title: "Escape", action: #selector(resignKeyboardTouchUpInside(_:)), input: UIKeyCommand.inputEscape, attributes: .hidden)
         ]
     }
     
@@ -96,10 +98,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         }
     }
     
-    @IBAction func resignKeyboardTouchUpInside(_ sender: UIButton) {
+    @objc @IBAction func resignKeyboardTouchUpInside(_ sender: UIButton) {
         self.saveFile()
         self.documentTextView.resignFirstResponder()
         self.searchField.resignFirstResponder()
+        self.view.becomeFirstResponder()
     }
     
     @IBAction func btSearchTouchUpInside(_ sender: UIButton) {
@@ -147,6 +150,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         self.searchField.resignFirstResponder()
         self.resetTextAttribute()
         self.documentTextView.becomeFirstResponder()
+        self.view.becomeFirstResponder()
     }
     
     // MARK: UITextViewDelegate
@@ -179,7 +183,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
     }
     
-    private func saveFile() {
+    @objc private func saveFile() {
         document?.userText = documentTextView.text
         if let url = document?.fileURL {
             document?.save(to: url, for: .forOverwriting, completionHandler:
@@ -191,6 +195,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
                 
             })
         }
+        self.view.becomeFirstResponder()
     }
     
     private func setupSettings() {
