@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if !launchedBefore  {
+            print("First launch")
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
+            // Initialize Settings
+            Settings.fontStyle = .monoSpace
+            Settings.fontSize = 18
+            Settings.caseSensitiveTextSearching = false
+            Settings.syntaxHighlight = true
+        }
         return true
     }
 

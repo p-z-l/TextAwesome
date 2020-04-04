@@ -14,6 +14,8 @@ class SettingsViewController: UITableViewController {
     
     let switchCaseSensitive = UISwitch()
     
+    let switchEnableSyntaxHighlight = UISwitch()
+    
     // MARK: Actions
     
     @IBAction func btDownTouchUpInside(_ sender: UIBarButtonItem) {
@@ -34,10 +36,15 @@ class SettingsViewController: UITableViewController {
 
         // Do any additional setup after loading the view.
         self.fontSizeSlider.value = Float(Settings.fontSize)
+        switchCaseSensitive.setOn(Settings.caseSensitiveTextSearching, animated: true)
+        switchEnableSyntaxHighlight.setOn(Settings.syntaxHighlight, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         Settings.caseSensitiveTextSearching = switchCaseSensitive.isOn
+        Settings.syntaxHighlight = switchEnableSyntaxHighlight.isOn
+        
+        print(Settings.syntaxHighlight)
     }
     
     // MARK: TableView
@@ -45,7 +52,8 @@ class SettingsViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         updateCells()
         self.setCellAccesoryView(atRow: 0, section: 2, view: switchCaseSensitive)
-        return 3
+        self.setCellAccesoryView(atRow: 0, section: 3, view: switchEnableSyntaxHighlight)
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -84,8 +92,6 @@ class SettingsViewController: UITableViewController {
             setCellSelection(atRow: 1, section: 0, selected: false)
             setCellSelection(atRow: 2, section: 0, selected: true)
         }
-        
-        switchCaseSensitive.setOn(Settings.caseSensitiveTextSearching, animated: true)
         
         // Update font size display
         let fontSizeText = "Font size: \(Settings.fontSize)"

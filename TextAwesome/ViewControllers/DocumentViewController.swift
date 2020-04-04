@@ -28,6 +28,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     
     private var searchBarIsShown = false
     
+    private var shouldSyntaxHighlight = true
+    
     var document: TextDocument?
     
     // MARK: ViewController lifecycle
@@ -79,6 +81,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
                                                object: nil)
         
         self.resetTextViewContentInset()
+        
+        self.shouldSyntaxHighlight = Settings.syntaxHighlight
     }
     
     // MARK: Actions
@@ -220,7 +224,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
             NSAttributedString.Key.font: font!
         ])
         let fileExtension = self.document!.fileURL.pathExtension
-        attributedText = CodeHighlighter.highlight(attributedText, fileExtension: fileExtension)
+        if self.shouldSyntaxHighlight {
+            attributedText = CodeHighlighter.highlight(attributedText, fileExtension: fileExtension)
+        }
         self.documentTextView.attributedText = attributedText
         self.documentTextView.selectedTextRange = selectedTextRange
         self.documentTextView.scrollRangeToVisible(selectedRange)

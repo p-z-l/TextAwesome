@@ -13,6 +13,7 @@ class Constants {
     static let fontStyleKey = "TextAwesome_FontStyle"
     static let fontSizeKey = "TextAwesome_FontSize"
     static let caseSensitiveKey = "TextAwesome_CaseSensitiveTextSearching"
+    static let syntaxHighlightKey = "TextAwesome_SyntaxHighlight"
     
     static let fontDict : [FontStyle:String] = [
         .monoSpace: "Menlo",

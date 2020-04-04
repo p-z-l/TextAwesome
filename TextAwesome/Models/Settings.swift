@@ -27,11 +27,7 @@ class Settings {
     
     static var fontSize: CGFloat {
         get {
-            var size = CGFloat(UserDefaults.standard.float(forKey: Constants.fontSizeKey))
-            if size < 12 {
-                size = 18
-            }
-            return size
+            return CGFloat(UserDefaults.standard.float(forKey: Constants.fontSizeKey))
         }
         set(newSize) {
             UserDefaults.standard.set(newSize, forKey: Constants.fontSizeKey)
@@ -44,6 +40,15 @@ class Settings {
         }
         set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Constants.caseSensitiveKey)
+        }
+    }
+    
+    static var syntaxHighlight: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Constants.syntaxHighlightKey)
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue, forKey: Constants.syntaxHighlightKey)
         }
     }
 }
