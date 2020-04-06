@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="width" constant="256" id="ovk-Fp-w0M"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="searchFieldEditingChanged:" destination="M2k-L8-Olo" eventType="editingChanged" id="HX2-9c-YGt"/>
                                     <action selector="searchFieldHitReturn:" destination="M2k-L8-Olo" eventType="primaryActionTriggered" id="5Dv-JT-ds0"/>

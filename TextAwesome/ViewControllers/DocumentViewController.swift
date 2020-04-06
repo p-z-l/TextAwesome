@@ -30,6 +30,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     
     private var shouldSyntaxHighlight = true
     
+    private var selectedSearchResultIndex : Int?
+    
     var document: TextDocument?
     
     // MARK: ViewController lifecycle
@@ -83,6 +85,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         self.resetTextViewContentInset()
         
         self.shouldSyntaxHighlight = Settings.syntaxHighlight
+        
+        self.documentTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
     }
     
     // MARK: Actions
@@ -92,7 +96,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     }
     
     @IBAction func searchFieldHitReturn(_ sender: UITextField) {
-        self.searchField.resignFirstResponder()
+        self.selectNextTextSearchResult()
     }
     
     @IBAction @objc func dismissDocumentViewController() {
@@ -171,7 +175,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
     // MARK: Private methods
     
     private func resetTextViewContentInset() {
-        let safeAreaTopMargin = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+        let safeAreaTopMargin = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
         let top = self.fakeNavBarView.frame.height - safeAreaTopMargin
         UIView.animate(withDuration: 0.1) {
             self.documentTextView.contentInset = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
@@ -246,6 +250,39 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         ])
         
         self.documentTextView.attributedText = attributedText
+    }
+    
+    private func selectNextTextSearchResult() {
+        
+        guard self.searchBarIsShown else { return }
+        
+        self.resetTextAttribute()
+        self.textSearch()
+        let ranges = Utils.findNSRangeOfPattern(string: self.documentTextView.attributedText.string,
+                                                pattern: self.searchField.text ?? "",
+                                                caseSensitive: Settings.caseSensitiveTextSearching)
+        guard !ranges.isEmpty else { return }
+        
+        var rangeToSelect = ranges.first!
+        
+        if self.selectedSearchResultIndex != nil {
+            self.selectedSearchResultIndex! += 1
+            if self.selectedSearchResultIndex! >= ranges.count {
+                self.selectedSearchResultIndex = 0
+            }
+            let range = ranges[self.selectedSearchResultIndex!]
+            rangeToSelect = range
+        } else {
+            self.selectedSearchResultIndex = 0
+        }
+        
+        self.documentTextView.selectedRange = rangeToSelect
+        let attributedString = NSMutableAttributedString(attributedString: documentTextView.attributedText)
+        attributedString.addAttributes([
+            NSAttributedString.Key.backgroundColor : UIColor.red],
+                                       range: rangeToSelect)
+        documentTextView.attributedText = attributedString
+        self.documentTextView.scrollRangeToVisible(rangeToSelect)
     }
     
     @IBOutlet weak var upConstraint: NSLayoutConstraint!
