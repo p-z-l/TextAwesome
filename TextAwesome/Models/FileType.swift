@@ -9,6 +9,6 @@
 import UIKit
 
 struct FileType {
-    var defaultName: String
-    var fileExtension: String
+	var defaultName: String
+	var fileExtension: String
 }

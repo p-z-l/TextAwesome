@@ -8,4 +8,4 @@
 
 import Foundation
 
-public var langDictionaries = [[String:[String]]]()
+public var langDictionaries = [[String: [String]]]()
