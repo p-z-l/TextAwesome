@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			Settings.fontStyle = .monoSpace
 			Settings.fontSize = 18
 			Settings.caseSensitiveTextSearching = false
-			Settings.syntaxHighlight = true
+			Settings.enableSyntaxHighlight = false
 		}
 		return true
 	}

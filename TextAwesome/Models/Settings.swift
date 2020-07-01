@@ -51,7 +51,7 @@ struct Settings {
 		}
 	}
 
-	static var syntaxHighlight: Bool {
+	static var enableSyntaxHighlight: Bool {
 		get {
 			return UserDefaults.standard.bool(forKey: Constants.syntaxHighlightKey)
 		}

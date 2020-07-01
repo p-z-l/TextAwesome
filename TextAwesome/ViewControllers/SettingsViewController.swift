@@ -37,12 +37,12 @@ class SettingsViewController: UITableViewController {
 		// Do any additional setup after loading the view.
 		self.fontSizeSlider.value = Float(Settings.fontSize)
 		switchCaseSensitive.setOn(Settings.caseSensitiveTextSearching, animated: true)
-		switchEnableSyntaxHighlight.setOn(Settings.syntaxHighlight, animated: true)
+		switchEnableSyntaxHighlight.setOn(Settings.enableSyntaxHighlight, animated: true)
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
 		Settings.caseSensitiveTextSearching = switchCaseSensitive.isOn
-		Settings.syntaxHighlight = switchEnableSyntaxHighlight.isOn
+		Settings.enableSyntaxHighlight = switchEnableSyntaxHighlight.isOn
 	}
 
 	// MARK: TableView

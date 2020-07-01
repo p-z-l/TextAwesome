@@ -13,7 +13,7 @@
 		B3050F0A2432E5B500FCF2E3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050F092432E5B500FCF2E3 /* Utils.swift */; };
 		B32F632A2433529F00407BDD /* swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32F63292433529F00407BDD /* swift.swift */; };
 		B32F632D243352D300407BDD /* KeywordDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32F632C243352D300407BDD /* KeywordDictionary.swift */; };
-		B32F632F2433596000407BDD /* codeHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32F632E2433596000407BDD /* codeHighlighter.swift */; };
+		B32F632F2433596000407BDD /* CodeHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32F632E2433596000407BDD /* CodeHighlighter.swift */; };
 		B3C0655F2430F6D300B21238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C0655E2430F6D300B21238 /* AppDelegate.swift */; };
 		B3C065612430F6D300B21238 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C065602430F6D300B21238 /* DocumentBrowserViewController.swift */; };
 		B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C065622430F6D300B21238 /* DocumentViewController.swift */; };
@@ -33,7 +33,7 @@
 		B3050F092432E5B500FCF2E3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B32F63292433529F00407BDD /* swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift.swift; sourceTree = "<group>"; };
 		B32F632C243352D300407BDD /* KeywordDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDictionary.swift; sourceTree = "<group>"; };
-		B32F632E2433596000407BDD /* codeHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codeHighlighter.swift; sourceTree = "<group>"; };
+		B32F632E2433596000407BDD /* CodeHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighter.swift; sourceTree = "<group>"; };
 		B3C0655B2430F6D300B21238 /* TextAwesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextAwesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C0655E2430F6D300B21238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C065602430F6D300B21238 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		B32F6328243351FD00407BDD /* CodeHighlight */ = {
 			isa = PBXGroup;
 			children = (
-				B32F632E2433596000407BDD /* codeHighlighter.swift */,
+				B32F632E2433596000407BDD /* CodeHighlighter.swift */,
 				B32F632B243352A300407BDD /* Dictionaries */,
 			);
 			path = CodeHighlight;
@@ -219,7 +219,7 @@
 				B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */,
 				B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */,
 				B3C065612430F6D300B21238 /* DocumentBrowserViewController.swift in Sources */,
-				B32F632F2433596000407BDD /* codeHighlighter.swift in Sources */,
+				B32F632F2433596000407BDD /* CodeHighlighter.swift in Sources */,
 				B3EEA7AC2431F37800BFEB34 /* Constants.swift in Sources */,
 				B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */,
 				B32F632D243352D300407BDD /* KeywordDictionary.swift in Sources */,

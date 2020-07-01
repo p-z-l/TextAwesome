@@ -8,4 +8,32 @@
 
 import Foundation
 
-public var langDictionaries = [[String: [String]]]()
+class LibrariesManager : NSObject {
+    
+    override init() {}
+    
+    static var library = [LanguageLibrary]()
+    
+    static func library(of id: String) -> LanguageLibrary? {
+        for library in LibrariesManager.library {
+            if library.id == id {
+                return library
+            }
+        }
+        return nil
+    }
+}
+
+struct LanguageLibrary {
+    
+    var id: String {
+        didSet {
+            LibrariesManager.library.append(self)
+        }
+    }
+    var keywords: [String]?
+    var types: [String]?
+    var comments: [String]?
+    var numbers: [String]?
+    var strings: [String]?
+}

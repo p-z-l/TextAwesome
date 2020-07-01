@@ -59,6 +59,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        CodeHighlighter.loadLibraries()
 
 		// Cursor support
 		if #available(iOS 13.4, *) {
@@ -99,7 +101,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		self.resetTextViewContentInset()
 
-		self.shouldSyntaxHighlight = Settings.syntaxHighlight
+		self.shouldSyntaxHighlight = Settings.enableSyntaxHighlight
 
 		self.documentTextView.scrollRangeToVisible(
 			NSRange(location: 0, length: 0))
