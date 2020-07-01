@@ -15,10 +15,10 @@ class Constants {
 	static let caseSensitiveKey = "TextAwesome_CaseSensitiveTextSearching"
 	static let syntaxHighlightKey = "TextAwesome_SyntaxHighlight"
 
-	static let fontDict: [FontStyle: String] = [
-		.monoSpace: "Menlo",
-		.serif: "Helvetica Neue",
-		.sansSerif: "Times New Roman",
+	static let fontDict: [FontStyle: UIFont] = [
+        .monoSpace: UIFont.SFMono(ofSize: Settings.fontSize),
+        .serif: UIFont.NY(ofSize: Settings.fontSize),
+        .sansSerif: UIFont.SF(ofSize: Settings.fontSize),
 	]
 
 	static let fileTypes = [

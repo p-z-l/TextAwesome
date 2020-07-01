@@ -43,8 +43,6 @@ class SettingsViewController: UITableViewController {
 	override func viewWillDisappear(_ animated: Bool) {
 		Settings.caseSensitiveTextSearching = switchCaseSensitive.isOn
 		Settings.syntaxHighlight = switchEnableSyntaxHighlight.isOn
-
-		print(Settings.syntaxHighlight)
 	}
 
 	// MARK: TableView

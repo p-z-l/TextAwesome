@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 		if !launchedBefore {
-			print("First launch")
 			UserDefaults.standard.set(true, forKey: "launchedBefore")
 
 			// Initialize Settings

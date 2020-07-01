@@ -239,11 +239,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 	}
 
 	private func setupSettings() {
-
-		guard let fontName = Constants.fontDict[Settings.fontStyle] else {
-			return
-		}
-		let font = UIFont(name: fontName, size: Settings.fontSize)
+        
+        let font = Settings.fontStyle.uiFont
 
 		self.documentTextView.font = font
 		self.resetTextAttribute()
@@ -256,14 +253,12 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		guard let string = self.documentTextView.text else { return }
 		let textColor = UIColor(named: "Text Color")
-		let font = UIFont(
-			name: Constants.fontDict[Settings.fontStyle]!,
-			size: Settings.fontSize)
+        let font = Settings.fontStyle.uiFont
 		var attributedText = NSAttributedString(
 			string: string,
 			attributes: [
 				NSAttributedString.Key.foregroundColor: textColor!,
-				NSAttributedString.Key.font: font!,
+                NSAttributedString.Key.font: font,
 			])
 		let fileExtension = self.document!.fileURL.pathExtension
 		if self.shouldSyntaxHighlight {

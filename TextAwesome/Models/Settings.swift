@@ -10,9 +10,17 @@ import UIKit
 
 enum FontStyle: Int {
 	case monoSpace, serif, sansSerif
+    
+    var uiFont: UIFont {
+        if let font = Constants.fontDict[self] {
+            return font
+        } else {
+            return UIFont.SFMono(ofSize: Settings.fontSize)
+        }
+    }
 }
 
-class Settings {
+struct Settings {
 
 	static var fontStyle: FontStyle {
 		get {
