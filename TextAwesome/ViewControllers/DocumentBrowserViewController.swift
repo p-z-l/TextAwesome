@@ -26,9 +26,19 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController,
 			image: UIImage(systemName: "gear"), style: .plain, target: self,
 			action: #selector(showSettings))
 		self.additionalLeadingNavigationBarButtonItems.append(btSettings)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateInterfaceStyle),
+            name: .InterfaceStyleChanged,
+            object: nil)
 	}
 
 	// MARK: Actions
+    
+    @objc private func updateInterfaceStyle() {
+        self.overrideUserInterfaceStyle = Settings.interfaceStyle.uiUserInterfaceStyle
+    }
 
 	@objc private func showSettings() {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)

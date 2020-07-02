@@ -98,6 +98,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 			selector: #selector(keyboardWillHide(_:)),
 			name: UIResponder.keyboardWillHideNotification,
 			object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateInterfaceStyle),
+            name: .InterfaceStyleChanged,
+            object: nil)
 
 		self.resetTextViewContentInset()
 
@@ -142,8 +147,12 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 			self.showSearchField()
 		}
 	}
+    
+    @objc private func updateInterfaceStyle() {
+        self.overrideUserInterfaceStyle = Settings.interfaceStyle.uiUserInterfaceStyle
+    }
 
-	@objc func keyboardWillShow(_ notification: Notification) {
+	@objc private func keyboardWillShow(_ notification: Notification) {
 		self.resetTextViewContentInset()
 		if let keyboardFrame: NSValue =
 			notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
@@ -157,11 +166,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 		}
 	}
 
-	@objc func keyboardWillHide(_ notification: Notification) {
+	@objc private func keyboardWillHide(_ notification: Notification) {
 		self.resetTextViewContentInset()
 	}
 
-	@objc func showSearchField() {
+	@objc private func showSearchField() {
 		searchBarIsShown = true
 		self.upConstraint?.constant = 8
 		UIView.animate(

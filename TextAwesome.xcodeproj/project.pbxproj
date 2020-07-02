@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */; };
 		00ACA91E24AC8FF100BB93BF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */; };
 		B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050EFE2432D09500FCF2E3 /* FileType.swift */; };
 		B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		B3050EFE2432D09500FCF2E3 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeSelectViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				B3EEA7AB2431F37800BFEB34 /* Constants.swift */,
 				B3050F092432E5B500FCF2E3 /* Utils.swift */,
 				00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */,
+				0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */,
 				B32F6328243351FD00407BDD /* CodeHighlight */,
 			);
 			path = Models;
@@ -213,6 +216,7 @@
 			files = (
 				00ACA91E24AC8FF100BB93BF /* UIFont+Extension.swift in Sources */,
 				B3EEA7AA2431F03F00BFEB34 /* Settings.swift in Sources */,
+				0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */,
 				B3C065652430F6D300B21238 /* TextDocument.swift in Sources */,
 				B32F632A2433529F00407BDD /* swift.swift in Sources */,
 				B3EEA7AE2432045F00BFEB34 /* SettingsViewController.swift in Sources */,

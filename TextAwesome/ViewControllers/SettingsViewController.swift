@@ -51,22 +51,15 @@ class SettingsViewController: UITableViewController {
 		updateCells()
 		self.setCellAccesoryView(atRow: 0, section: 2, view: switchCaseSensitive)
 		self.setCellAccesoryView(atRow: 0, section: 3, view: switchEnableSyntaxHighlight)
-		return 4
+		return 5
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		switch indexPath.section {
-		case 0:
-			switch indexPath.row {
-			case 0:
-				Settings.fontStyle = .monoSpace
-			case 1:
-				Settings.fontStyle = .serif
-			case 2:
-				Settings.fontStyle = .sansSerif
-			default:
-				return
-			}
+        case 0:
+            Settings.fontStyle = FontStyle(rawValue: indexPath.row) ?? .monoSpace
+        case 4:
+            Settings.interfaceStyle = InterfaceStyle(rawValue: indexPath.row) ?? .system
 		default:
 			return
 		}
@@ -76,34 +69,34 @@ class SettingsViewController: UITableViewController {
 	// MARK: Private methods
 
 	private func updateCells() {
-		switch Settings.fontStyle {
-		case .monoSpace:
-			setCellSelection(atRow: 0, section: 0, selected: true)
-			setCellSelection(atRow: 1, section: 0, selected: false)
-			setCellSelection(atRow: 2, section: 0, selected: false)
-		case .serif:
-			setCellSelection(atRow: 0, section: 0, selected: false)
-			setCellSelection(atRow: 1, section: 0, selected: true)
-			setCellSelection(atRow: 2, section: 0, selected: false)
-		case .sansSerif:
-			setCellSelection(atRow: 0, section: 0, selected: false)
-			setCellSelection(atRow: 1, section: 0, selected: false)
-			setCellSelection(atRow: 2, section: 0, selected: true)
-		}
+        
+        // Update font styles
+        selectRow(Settings.fontStyle.rawValue, forSection: 0)
+        
+        // Update interface styles
+        selectRow(Settings.interfaceStyle.rawValue, forSection: 4)
 
 		// Update font size display
 		let fontSizeText = "Font size: \(Settings.fontSize)"
 		self.tableView.cellForRow(at: IndexPath(row: 0, section: 1))?.textLabel?.text = fontSizeText
 	}
-
-	private func setCellSelection(atRow row: Int, section: Int, selected isSelected: Bool) {
-		let indexPath = IndexPath(row: row, section: section)
-		if isSelected {
-			tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-		} else {
-			tableView.deselectRow(at: indexPath, animated: true)
-		}
-	}
+    
+    private func selectRow(_ row: Int, forSection section: Int) {
+        var indexPaths = [IndexPath]()
+        for cell in tableView.visibleCells {
+            guard let indexPath = tableView.indexPath(for: cell) else { continue }
+            if indexPath.section == section {
+                indexPaths.append(indexPath)
+            }
+        }
+        for indexPath in indexPaths {
+            if indexPath.row == row {
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            } else {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
+    }
 
 	private func setCellAccesoryView(atRow row: Int, section: Int, view: UIView) {
 		let indexPath = IndexPath(row: row, section: section)
