@@ -70,7 +70,7 @@ let swift = LanguageLibrary(
     ], comments: [
         Keyword("//(.+)")
         .requiresSeperator(start: false, end: false),
-        Keyword("/\\*(.*)\\*/")
+        Keyword("/\\*((.|\n)*)\\*/")
         .requiresSeperator(start: false, end: false),
     ], numbers: [
         Keyword("0")
@@ -95,6 +95,8 @@ let swift = LanguageLibrary(
         .requiresSeperator(start: false, end: false),
     ], strings: [
         Keyword("\"(.+)\"")
+        .requiresSeperator(start: false, end: false),
+        Keyword("\"\"\"((.|\n)*)\"\"\"")
         .requiresSeperator(start: false, end: false),
     ]
 )
