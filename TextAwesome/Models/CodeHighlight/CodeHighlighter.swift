@@ -40,10 +40,12 @@ struct CodeHighlighter {
             NSAttributedString.Key.foregroundColor : UIColor(named: "Text Color")!
         ])
         
-        func scan(for strings: [String]?, color: UIColor) {
-            guard strings != nil else { return }
-            let ranges = Utils.findNSRangeOfMultiplePatterns(
-                string: string, patterns: strings!, caseSensitive: true)
+        func scan(for keywords: [Keyword]?, color: UIColor) {
+            guard keywords != nil else { return }
+            var ranges = [NSRange]()
+            for keyword in keywords! {
+                ranges.append(contentsOf: keyword.rangesOfMatches(string))
+            }
             for range in ranges {
                 result.addAttributes(
                     [
@@ -53,10 +55,10 @@ struct CodeHighlighter {
 
         }
 
-        scan(for: library.keywords, color: .systemBlue)
-        scan(for: library.types, color: .systemGreen)
         scan(for: library.numbers, color: .systemPurple)
         scan(for: library.strings, color: .systemRed)
+        scan(for: library.types, color: .systemGreen)
+        scan(for: library.keywords, color: .systemBlue)
         scan(for: library.comments, color: .systemTeal)
         
         return result

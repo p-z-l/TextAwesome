@@ -1,5 +1,5 @@
 //
-//  KeywordDictionary.swift
+//  LanguageLibrary.swift
 //  TextAwesome
 //
 //  Created by Peter Luo on 2020/3/31.
@@ -31,9 +31,9 @@ struct LanguageLibrary {
             LibrariesManager.library.append(self)
         }
     }
-    var keywords: [String]?
-    var types: [String]?
-    var comments: [String]?
-    var numbers: [String]?
-    var strings: [String]?
+    var keywords: [Keyword]?
+    var types: [Keyword]?
+    var comments: [Keyword]?
+    var numbers: [Keyword]?
+    var strings: [Keyword]?
 }
