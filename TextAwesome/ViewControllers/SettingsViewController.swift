@@ -74,10 +74,10 @@ class SettingsViewController: UITableViewController {
 	// MARK: Private methods
 
 	private func updateCells() {
-        
+
         // Update font styles
         selectRow(Settings.fontStyle.rawValue, forSection: 0)
-        
+    
         // Update interface styles
         selectRow(Settings.interfaceStyle.rawValue, forSection: 4)
 

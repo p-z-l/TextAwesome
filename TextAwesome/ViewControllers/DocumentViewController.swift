@@ -35,6 +35,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 	private var selectedSearchResultIndex: Int?
 
 	var document: TextDocument?
+    
+    let codeHighlighter = CodeHighlighter()
 
 	// MARK: ViewController lifecycle
 
@@ -59,8 +61,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
-        CodeHighlighter.loadLibraries()
 
 		// Cursor support
 		if #available(iOS 13.4, *) {
@@ -265,25 +265,16 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 		let selectedRange = documentTextView.selectedRange
 
 		guard let string = self.documentTextView.text else { return }
-		let textColor = UIColor(named: "Text Color")
-        let font = Settings.fontStyle.uiFont
-		var attributedText = NSAttributedString(
-			string: string,
-			attributes: [
-				NSAttributedString.Key.foregroundColor: textColor!,
-                NSAttributedString.Key.font: font,
-			])
 		let fileExtension = self.document!.fileURL.pathExtension
+        var attributedText = NSAttributedString(string: string)
 		if self.shouldSyntaxHighlight {
-			attributedText = CodeHighlighter.highlight(
-				attributedText, fileExtension: fileExtension)
+            attributedText = codeHighlighter.highlightedCode(for: attributedText, fileExtension: fileExtension)
 		}
 		self.documentTextView.attributedText = attributedText
 		self.documentTextView.selectedTextRange = selectedTextRange
 		self.documentTextView.scrollRangeToVisible(selectedRange)
 
-		self.documentTextView.scrollIndicatorInsets =
-			self.documentTextView.contentInset
+		self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
 	}
 
 	private func textSearch() {

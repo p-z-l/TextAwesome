@@ -44,6 +44,9 @@ let swift = LanguageLibrary(
         "init",
         "deinit",
         "as",
+        "some ",
+        "self",
+        "mutating",
     ],
     types: [
         "Array",
