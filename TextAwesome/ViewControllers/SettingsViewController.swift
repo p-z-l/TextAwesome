@@ -66,6 +66,10 @@ class SettingsViewController: UITableViewController {
 		}
 		updateCells()
 	}
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        updateCells()
+    }
 
 	// MARK: Private methods
 
