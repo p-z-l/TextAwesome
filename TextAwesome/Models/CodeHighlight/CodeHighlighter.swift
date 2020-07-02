@@ -12,32 +12,43 @@ struct CodeHighlighter {
     
     init() {
         self.loadLibraries()
+        self.loadThemes()
     }
     
     func loadLibraries() {
-        LibrariesManager.library.append(swift)
+        LibrariesManager.libraries.append(swift)
+    }
+    
+    func loadThemes() {
+        ThemesManager.themes.append(basic)
     }
     
     func highlightedCode(for string: String, fileExtension: String) -> NSAttributedString {
+        guard let theme = ThemesManager.theme(of: "basic") else {
+            return NSAttributedString(string: string)
+        }
         guard let library = LibrariesManager.library(of: fileExtension) else {
             return NSAttributedString(string: string)
         }
-        return self.colorize(string, forLibrary: library)
+        return self.colorize(string, forLibrary: library, theme: theme)
     }
     
     func highlightedCode(for attributedString: NSAttributedString, fileExtension: String) -> NSAttributedString {
         let string = attributedString.string
-        guard let library = LibrariesManager.library(of: fileExtension) else {
-            return NSAttributedString(string: string)
+        guard let theme = ThemesManager.theme(of: "basic") else {
+            return attributedString
         }
-        return self.colorize(string, forLibrary: library)
+        guard let library = LibrariesManager.library(of: fileExtension) else {
+            return attributedString
+        }
+        return self.colorize(string, forLibrary: library, theme: theme)
 	}
     
-    private func colorize(_ string: String, forLibrary library: LanguageLibrary) -> NSAttributedString {
+    private func colorize(_ string: String, forLibrary library: LanguageLibrary, theme: SyntaxTheme) -> NSAttributedString {
         
         let result = NSMutableAttributedString(string: string, attributes: [
             NSAttributedString.Key.font : Settings.fontStyle.uiFont,
-            NSAttributedString.Key.foregroundColor : UIColor(named: "Text Color")!
+            NSAttributedString.Key.foregroundColor : theme.textColor
         ])
         
         func scan(for keywords: [Keyword]?, color: UIColor) {
@@ -55,11 +66,11 @@ struct CodeHighlighter {
 
         }
 
-        scan(for: library.numbers, color: .systemPurple)
-        scan(for: library.strings, color: .systemRed)
-        scan(for: library.types, color: .systemGreen)
-        scan(for: library.keywords, color: .systemBlue)
-        scan(for: library.comments, color: .systemTeal)
+        scan(for: library.numbers, color: theme.numbersColor)
+        scan(for: library.strings, color: theme.stringsColor)
+        scan(for: library.types, color: theme.typesColor)
+        scan(for: library.keywords, color: theme.keywordsColor)
+        scan(for: library.comments, color: theme.commentsColor)
         
         return result
     }

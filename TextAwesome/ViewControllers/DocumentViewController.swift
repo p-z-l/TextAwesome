@@ -112,6 +112,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		self.documentTextView.scrollRangeToVisible(
 			NSRange(location: 0, length: 0))
+        
+        self.documentTextView.backgroundColor = basic.backgroundColor
 	}
 
 	// MARK: Actions
@@ -267,7 +269,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		guard let string = self.documentTextView.text else { return }
 		let fileExtension = self.document!.fileURL.pathExtension
-        var attributedText = NSAttributedString(string: string)
+        var attributedText = NSAttributedString(string: string,attributes: [
+            NSAttributedString.Key.font : Settings.fontStyle.uiFont,
+            NSAttributedString.Key.foregroundColor : ThemesManager.theme(of: "basic")!.textColor
+        ])
 		if self.shouldSyntaxHighlight {
             attributedText = codeHighlighter.highlightedCode(for: attributedText, fileExtension: fileExtension)
 		}
