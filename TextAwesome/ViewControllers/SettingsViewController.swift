@@ -39,6 +39,10 @@ class SettingsViewController: UITableViewController {
 		switchEnableSyntaxHighlight.setOn(Settings.enableSyntaxHighlight, animated: true)
         
         updateCells()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateInterfaceStyle), name: .InterfaceStyleChanged, object: nil)
+        
+        updateInterfaceStyle()
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
@@ -72,6 +76,11 @@ class SettingsViewController: UITableViewController {
     }
 
 	// MARK: Private methods
+    
+    @objc private func updateInterfaceStyle() {
+        self.overrideUserInterfaceStyle = Settings.interfaceStyle.uiUserInterfaceStyle
+        self.navigationController?.overrideUserInterfaceStyle = Settings.interfaceStyle.uiUserInterfaceStyle
+    }
 
 	private func updateCells() {
 

@@ -152,6 +152,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
     
     @objc private func updateInterfaceStyle() {
         self.overrideUserInterfaceStyle = Settings.interfaceStyle.uiUserInterfaceStyle
+        self.documentTextView.keyboardAppearance = Settings.interfaceStyle.uiKeyboardAppearance
     }
 
 	@objc private func keyboardWillShow(_ notification: Notification) {

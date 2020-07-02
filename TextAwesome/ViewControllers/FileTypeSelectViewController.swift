@@ -12,7 +12,15 @@ class FileTypeTableViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateInterfaceStyle), name: .InterfaceStyleChanged, object: nil)
+        
+        updateInterfaceStyle()
 	}
+    
+    @objc private func updateInterfaceStyle() {
+        self.overrideUserInterfaceStyle = Settings.interfaceStyle.uiUserInterfaceStyle
+    }
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		self.dismiss(animated: true, completion: nil)

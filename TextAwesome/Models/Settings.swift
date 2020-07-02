@@ -24,13 +24,14 @@ enum InterfaceStyle: Int {
     case system, light, dark
     
     var uiUserInterfaceStyle : UIUserInterfaceStyle {
+        return UIUserInterfaceStyle(rawValue: self.rawValue) ?? .unspecified
+    }
+    
+    var uiKeyboardAppearance : UIKeyboardAppearance {
         switch self {
-        case .system:
-            return .unspecified
-        case .light:
-            return .light
-        case .dark:
-            return .dark
+        case .system : return .default
+        case .light  : return .light
+        case .dark   : return .dark
         }
     }
 }
