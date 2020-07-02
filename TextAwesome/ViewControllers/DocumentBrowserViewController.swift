@@ -32,6 +32,8 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController,
             selector: #selector(updateInterfaceStyle),
             name: .InterfaceStyleChanged,
             object: nil)
+        
+        updateInterfaceStyle()
 	}
 
 	// MARK: Actions

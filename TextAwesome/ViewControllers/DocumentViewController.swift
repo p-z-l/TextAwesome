@@ -103,6 +103,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
             selector: #selector(updateInterfaceStyle),
             name: .InterfaceStyleChanged,
             object: nil)
+        
+        updateInterfaceStyle()
 
 		self.resetTextViewContentInset()
 
