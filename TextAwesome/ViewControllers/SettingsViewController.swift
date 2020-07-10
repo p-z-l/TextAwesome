@@ -38,11 +38,16 @@ class SettingsViewController: UITableViewController {
 		switchCaseSensitive.setOn(Settings.caseSensitiveTextSearching, animated: true)
 		switchEnableSyntaxHighlight.setOn(Settings.enableSyntaxHighlight, animated: true)
         
-        updateCells()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(updateInterfaceStyle), name: .InterfaceStyleChanged, object: nil)
         
         updateInterfaceStyle()
+        
+        updateCells()
+        
+        // Setup font style cells
+        tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.font = UIFont.SFMono(ofSize: UIFont.labelFontSize)
+        tableView.cellForRow(at: IndexPath(row: 1, section: 0))?.textLabel?.font = UIFont.NY(ofSize: UIFont.labelFontSize)
+        tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.textLabel?.font = UIFont.SF(ofSize: UIFont.labelFontSize)
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {
@@ -53,9 +58,8 @@ class SettingsViewController: UITableViewController {
 	// MARK: TableView
 
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		updateCells()
-		self.setCellAccesoryView(atRow: 0, section: 2, view: switchCaseSensitive)
-		self.setCellAccesoryView(atRow: 0, section: 3, view: switchEnableSyntaxHighlight)
+		self.setCellAccesoryView(atRow: 0, section: 3, view: switchCaseSensitive)
+		self.setCellAccesoryView(atRow: 0, section: 4, view: switchEnableSyntaxHighlight)
 		return 5
 	}
 
@@ -63,17 +67,20 @@ class SettingsViewController: UITableViewController {
 		switch indexPath.section {
         case 0:
             Settings.fontStyle = FontStyle(rawValue: indexPath.row) ?? .monoSpace
-        case 4:
+        case 1:
             Settings.interfaceStyle = InterfaceStyle(rawValue: indexPath.row) ?? .system
+        case 4:
+            if indexPath.row == 1 {
+                tableView.deselectRow(at: indexPath, animated: true)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let themeSelectionVC = storyboard.instantiateViewController(identifier: "ThemeSelection")
+                self.navigationController?.pushViewController(themeSelectionVC, animated: true)
+            }
 		default:
 			return
 		}
 		updateCells()
 	}
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        updateCells()
-    }
 
 	// MARK: Private methods
     
@@ -85,32 +92,15 @@ class SettingsViewController: UITableViewController {
 	private func updateCells() {
 
         // Update font styles
-        selectRow(Settings.fontStyle.rawValue, forSection: 0)
+        tableView.selectInSection(row: Settings.fontStyle.rawValue, section: 0)
     
         // Update interface styles
-        selectRow(Settings.interfaceStyle.rawValue, forSection: 4)
+        tableView.selectInSection(row: Settings.interfaceStyle.rawValue, section: 1)
 
 		// Update font size display
 		let fontSizeText = "Font size: \(Settings.fontSize)"
-		self.tableView.cellForRow(at: IndexPath(row: 0, section: 1))?.textLabel?.text = fontSizeText
+		self.tableView.cellForRow(at: IndexPath(row: 0, section: 2))?.textLabel?.text = fontSizeText
 	}
-    
-    private func selectRow(_ row: Int, forSection section: Int) {
-        var indexPaths = [IndexPath]()
-        for cell in tableView.visibleCells {
-            guard let indexPath = tableView.indexPath(for: cell) else { continue }
-            if indexPath.section == section {
-                indexPaths.append(indexPath)
-            }
-        }
-        for indexPath in indexPaths {
-            if indexPath.row == row {
-                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-            } else {
-                tableView.deselectRow(at: indexPath, animated: true)
-            }
-        }
-    }
 
 	private func setCellAccesoryView(atRow row: Int, section: Int, view: UIView) {
 		let indexPath = IndexPath(row: row, section: section)

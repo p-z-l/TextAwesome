@@ -36,7 +36,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 	var document: TextDocument?
     
-    let codeHighlighter = CodeHighlighter()
+    var codeHighlighter = CodeHighlighter()
 
 	// MARK: ViewController lifecycle
 
@@ -87,6 +87,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		self.documentTextView.delegate = self
 		self.documentTextView.allowsEditingTextAttributes = true
+        
+        if let fileExtension = document?.fileURL.pathExtension {
+            self.codeHighlighter = CodeHighlighter(fileExtension: fileExtension)
+        }
 
 		NotificationCenter.default.addObserver(
 			self,
@@ -103,8 +107,14 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
             selector: #selector(updateInterfaceStyle),
             name: .InterfaceStyleChanged,
             object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateFont),
+            name: .FontSizeChanged,
+            object: nil)
         
         updateInterfaceStyle()
+        updateFont()
 
 		self.resetTextViewContentInset()
 
@@ -253,14 +263,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 		}
 		self.view.becomeFirstResponder()
 	}
-
-	private func setupSettings() {
-        
-        let font = Settings.fontStyle.uiFont
-
-		self.documentTextView.font = font
-		self.resetTextAttribute()
-	}
+    
+    @objc private func updateFont() {
+        documentTextView.font = UIFont(descriptor: Settings.fontStyle.uiFont.fontDescriptor, size: Settings.fontSize)
+    }
 
 	private func resetTextAttribute() {
 		// Get cursor position
@@ -269,18 +275,17 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		guard let string = self.documentTextView.text else { return }
 		let fileExtension = self.document!.fileURL.pathExtension
-        var attributedText = NSAttributedString(string: string,attributes: [
-            NSAttributedString.Key.font : Settings.fontStyle.uiFont,
-            NSAttributedString.Key.foregroundColor : ThemesManager.theme(of: "basic")!.textColor
-        ])
-		if self.shouldSyntaxHighlight {
-            attributedText = codeHighlighter.highlightedCode(for: attributedText, fileExtension: fileExtension)
+        var attributedText = NSAttributedString(string: string)
+        if Settings.enableSyntaxHighlight {
+            attributedText = codeHighlighter.highlightedCode(for: string, fileExtension: fileExtension)
 		}
-		self.documentTextView.attributedText = attributedText
-		self.documentTextView.selectedTextRange = selectedTextRange
-		self.documentTextView.scrollRangeToVisible(selectedRange)
+		documentTextView.attributedText = attributedText
+		documentTextView.selectedTextRange = selectedTextRange
+		documentTextView.scrollRangeToVisible(selectedRange)
+        
+        documentTextView.font = Settings.fontStyle.uiFont
 
-		self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
+		documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
 	}
 
 	private func textSearch() {

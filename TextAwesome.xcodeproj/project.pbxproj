@@ -10,6 +10,8 @@
 		00231A8924ADDD2300D643D1 /* Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8824ADDD2300D643D1 /* Keyword.swift */; };
 		00231A8C24AE1CDD00D643D1 /* SyntaxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8B24AE1CDD00D643D1 /* SyntaxTheme.swift */; };
 		00231A8E24AE1E8300D643D1 /* basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8D24AE1E8300D643D1 /* basic.swift */; };
+		00231A9024AEC30A00D643D1 /* SyntaxThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */; };
+		00231A9224AED3D200D643D1 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A9124AED3D200D643D1 /* UITableViewExtension.swift */; };
 		0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */; };
 		00ACA91E24AC8FF100BB93BF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */; };
 		B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050EFE2432D09500FCF2E3 /* FileType.swift */; };
@@ -34,6 +36,8 @@
 		00231A8824ADDD2300D643D1 /* Keyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyword.swift; sourceTree = "<group>"; };
 		00231A8B24AE1CDD00D643D1 /* SyntaxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxTheme.swift; sourceTree = "<group>"; };
 		00231A8D24AE1E8300D643D1 /* basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basic.swift; sourceTree = "<group>"; };
+		00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxThemeTableViewController.swift; sourceTree = "<group>"; };
+		00231A9124AED3D200D643D1 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		B3050EFE2432D09500FCF2E3 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				B3C065602430F6D300B21238 /* DocumentBrowserViewController.swift */,
 				B3C065622430F6D300B21238 /* DocumentViewController.swift */,
 				B3EEA7AD2432045F00BFEB34 /* SettingsViewController.swift */,
+				00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */,
 				B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */,
 			);
 			path = ViewControllers;
@@ -155,6 +160,7 @@
 				B3050F092432E5B500FCF2E3 /* Utils.swift */,
 				00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */,
 				0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */,
+				00231A9124AED3D200D643D1 /* UITableViewExtension.swift */,
 				B32F6328243351FD00407BDD /* CodeHighlight */,
 			);
 			path = Models;
@@ -242,6 +248,7 @@
 				B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */,
 				B3C065612430F6D300B21238 /* DocumentBrowserViewController.swift in Sources */,
 				B32F632F2433596000407BDD /* CodeHighlighter.swift in Sources */,
+				00231A9224AED3D200D643D1 /* UITableViewExtension.swift in Sources */,
 				B3EEA7AC2431F37800BFEB34 /* Constants.swift in Sources */,
 				00231A8E24AE1E8300D643D1 /* basic.swift in Sources */,
 				B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */,
@@ -249,6 +256,7 @@
 				00231A8924ADDD2300D643D1 /* Keyword.swift in Sources */,
 				B3C0655F2430F6D300B21238 /* AppDelegate.swift in Sources */,
 				B3050F0A2432E5B500FCF2E3 /* Utils.swift in Sources */,
+				00231A9024AEC30A00D643D1 /* SyntaxThemeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

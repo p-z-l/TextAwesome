@@ -25,11 +25,12 @@ struct LibrariesManager {
 
 struct LanguageLibrary {
     
-    var id       : String
-    var keywords : [Keyword]?
-    var types    : [Keyword]?
-    var comments : [Keyword]?
-    var numbers  : [Keyword]?
-    var strings  : [Keyword]?
+    var id          : String
+    var keywords    : [Keyword]?
+    var types       : [Keyword]?
+    var comments    : [Keyword]?
+    var numbers     : [Keyword]?
+    var strings     : [Keyword]?
+    var identifiers : [Keyword]?
     
 }

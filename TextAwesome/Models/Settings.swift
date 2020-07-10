@@ -39,11 +39,12 @@ enum InterfaceStyle: Int {
 struct Settings {
     
     struct Keys {
-        static var fontStyle = "TextAwesome_FontStyle"
-        static var fontSize = "TextAwesome_FontSize"
+        static var fontStyle                  = "TextAwesome_FontStyle"
+        static var fontSize                   = "TextAwesome_FontSize"
         static var caseSensitiveTextSearching = "TextAwesome_CaseSensitiveTextSearching"
-        static var syntaxHighlight = "TextAwesome_SyntaxHighlight"
-        static var interfaceStyle = "TextAwesome_InterfaceStyle"
+        static var syntaxHighlight            = "TextAwesome_SyntaxHighlight"
+        static var interfaceStyle             = "TextAwesome_InterfaceStyle"
+        static var syntaxThemeID              = "TextAwesome_SyntaxThemeID"
     }
 
 	static var fontStyle: FontStyle {
@@ -93,6 +94,32 @@ struct Settings {
             let raw = newValue.rawValue
             UserDefaults.standard.set(raw, forKey: Settings.Keys.interfaceStyle)
             NotificationCenter.default.post(Notification(name: .InterfaceStyleChanged))
+        }
+    }
+    
+    static var syntaxTheme: SyntaxTheme {
+        get {
+            if let id = UserDefaults.standard.string(forKey: Settings.Keys.syntaxThemeID) {
+                return ThemesManager.theme(of: id)!
+            } else {
+                return ThemesManager.theme(of: "basic")!
+            }
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue.id, forKey: Settings.Keys.syntaxThemeID)
+        }
+    }
+    
+    static var syntaxThemeID: String {
+        get {
+            if let id = UserDefaults.standard.string(forKey: Settings.Keys.syntaxThemeID) {
+                return id
+            } else {
+                return "basic"
+            }
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue, forKey: Settings.Keys.syntaxThemeID)
         }
     }
     

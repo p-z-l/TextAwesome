@@ -10,41 +10,43 @@ import UIKit
 
 struct CodeHighlighter {
     
-    init() {
+    private var library: LanguageLibrary?
+    
+    init(fileExtension: String) {
         self.loadLibraries()
         self.loadThemes()
+        
+        self.library = LibrariesManager.library(of: fileExtension)
     }
     
-    func loadLibraries() {
+    init() {
+        self.init(fileExtension: "")
+    }
+    
+    private func loadLibraries() {
+        LibrariesManager.libraries.removeAll()
         LibrariesManager.libraries.append(swift)
     }
     
-    func loadThemes() {
+    private func loadThemes() {
+        ThemesManager.themes.removeAll()
         ThemesManager.themes.append(basic)
     }
     
     func highlightedCode(for string: String, fileExtension: String) -> NSAttributedString {
-        guard let theme = ThemesManager.theme(of: "basic") else {
-            return NSAttributedString(string: string)
-        }
-        guard let library = LibrariesManager.library(of: fileExtension) else {
-            return NSAttributedString(string: string)
-        }
-        return self.colorize(string, forLibrary: library, theme: theme)
+        let theme = Settings.syntaxTheme
+        return self.colorize(string, theme: theme)
     }
     
     func highlightedCode(for attributedString: NSAttributedString, fileExtension: String) -> NSAttributedString {
         let string = attributedString.string
-        guard let theme = ThemesManager.theme(of: "basic") else {
-            return attributedString
-        }
-        guard let library = LibrariesManager.library(of: fileExtension) else {
-            return attributedString
-        }
-        return self.colorize(string, forLibrary: library, theme: theme)
+        let theme = Settings.syntaxTheme
+        return self.colorize(string, theme: theme)
 	}
     
-    private func colorize(_ string: String, forLibrary library: LanguageLibrary, theme: SyntaxTheme) -> NSAttributedString {
+    private func colorize(_ string: String, theme: SyntaxTheme) -> NSAttributedString {
+        
+        guard library != nil else { return NSAttributedString(string: string) }
         
         let result = NSMutableAttributedString(string: string, attributes: [
             NSAttributedString.Key.font : Settings.fontStyle.uiFont,
@@ -58,19 +60,16 @@ struct CodeHighlighter {
                 ranges.append(contentsOf: keyword.rangesOfMatches(string))
             }
             for range in ranges {
-                result.addAttributes(
-                    [
-                        NSAttributedString.Key.foregroundColor: color
-                    ], range: range)
+                result.addAttribute(.foregroundColor, value: color, range: range)
             }
-
         }
-
-        scan(for: library.numbers, color: theme.numbersColor)
-        scan(for: library.strings, color: theme.stringsColor)
-        scan(for: library.types, color: theme.typesColor)
-        scan(for: library.keywords, color: theme.keywordsColor)
-        scan(for: library.comments, color: theme.commentsColor)
+        
+        scan(for: library!.numbers, color: theme.numbersColor)
+        scan(for: library!.types, color: theme.typesColor)
+        scan(for: library!.identifiers, color: theme.identifiersColor)
+        scan(for: library!.keywords, color: theme.keywordsColor)
+        scan(for: library!.strings, color: theme.stringsColor)
+        scan(for: library!.comments, color: theme.commentsColor)
         
         return result
     }

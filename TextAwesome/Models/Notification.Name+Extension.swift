@@ -11,5 +11,6 @@ import UIKit
 extension Notification.Name {
     
     static let InterfaceStyleChanged = Notification.Name("InterfaceStyleChanged")
+    static let FontSizeChanged = Notification.Name("FontSizeChanged")
     
 }

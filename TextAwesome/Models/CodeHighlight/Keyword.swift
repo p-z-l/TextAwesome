@@ -10,17 +10,23 @@ import Foundation
 
 struct Keyword {
     
-    init(pattern: String, requiresSepertorStart: Bool, requiresSeperatorEnd: Bool) {
+    init(_ pattern: String, requiresSepertorStart: Bool = true, requiresSeperatorEnd: Bool = true) {
         self.pattern = pattern
         self.requiresSeperatorStart = requiresSepertorStart
         self.requiresSeperatorEnd = requiresSeperatorEnd
     }
     
-    init(_ pattern: String) {
-        self.init(pattern: pattern, requiresSepertorStart: true, requiresSeperatorEnd: true)
+    static func array(_ patterns: String...,
+                      requiresSeperatorStart: Bool = false,
+                      requiresSeperatorEnd: Bool = false) -> [Keyword] {
+        var results = [Keyword]()
+        for pattern in patterns {
+            results.append(Keyword(pattern))
+        }
+        return results
     }
     
-    private let seperatorsPattern = "[\n|\t| |,|.|/|?|!|+|-|*|/|=|(|)|[|]|{|}|<|>:|]"
+    fileprivate static let seperatorsPattern = "[\0|\n|\t| |,|.|/|?|!|+|-|*|/|=|(|)|[|]|{|}|<|>:|]"
     
     fileprivate(set) var pattern: String
     
@@ -43,12 +49,16 @@ struct Keyword {
     private var regex: NSRegularExpression {
         var pattern = self.pattern
         if requiresSeperatorStart {
-            pattern = "\(seperatorsPattern)\(pattern)"
+            pattern = "\(Keyword.seperatorsPattern)\(pattern)"
         }
         if requiresSeperatorEnd {
-            pattern = "\(pattern)\(seperatorsPattern)"
+            pattern = "\(pattern)\(Keyword.seperatorsPattern)"
         }
-        return try! NSRegularExpression(pattern: pattern)
+        do{
+            return try NSRegularExpression(pattern: pattern)
+        } catch {
+            fatalError("Failed to initilize NSRegularExpression using pattern: \(pattern)")
+        }
     }
     
     fileprivate(set) var requiresSeperatorStart: Bool
@@ -63,7 +73,7 @@ struct Keyword {
         } else if end == nil {
             requiresAtEnd = true
         }
-        return Keyword(pattern: self.pattern,
+        return Keyword(self.pattern,
                        requiresSepertorStart: requiresOnStart!,
                        requiresSeperatorEnd: requiresAtEnd!)
     }

@@ -33,5 +33,6 @@ struct SyntaxTheme {
     var commentsColor   : UIColor
     var numbersColor    : UIColor
     var stringsColor    : UIColor
+    var identifiersColor     : UIColor
     
 }
