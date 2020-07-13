@@ -15,6 +15,7 @@ let swift = LanguageLibrary(
         "let",
         "var",
         "if",
+        "else",
         "switch",
         "func",
         "struct",
@@ -49,8 +50,16 @@ let swift = LanguageLibrary(
         "final",
         "typealias",
         "inout",
-        "@[a-zA-Z]+",
-        "(.+)<(.+)>"
+        "for",
+        "while",
+        "in",
+        "do",
+        "catch",
+        "try",
+        "throw",
+        "where",
+        "extension",
+        "@[a-zA-Z]+"
     ),
     types: Keyword.array(
         "Array",
@@ -71,7 +80,8 @@ let swift = LanguageLibrary(
         "Float64",
         "Double",
         "Bool",
-        "(NS|UI)[A-Z][a-zA-Z]+"
+        "(NS|UI)[A-Z][a-zA-Z]+",
+        "(.+)<(.+)>"
     ), comments: Keyword.array(
         "//(.+)",
         "/\\*((.|\n)*)\\*/",
