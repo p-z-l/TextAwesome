@@ -48,7 +48,9 @@ let swift = LanguageLibrary(
         "return",
         "final",
         "typealias",
-        "@[a-zA-Z]+"
+        "inout",
+        "@[a-zA-Z]+",
+        "(.+)<(.+)>"
     ),
     types: Keyword.array(
         "Array",
@@ -94,9 +96,10 @@ let swift = LanguageLibrary(
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ), identifiers: Keyword.array(
-//        "(.+)\\(",
-//        requiresSeperatorStart: true,
-//        requiresSeperatorEnd: false
+//        "\\b(.+)\\(",
+//        requiresSeperatorStart: false,
+//        requiresSeperatorEnd: false,
+//        endIgnore: 1
     )
 )
 

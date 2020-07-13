@@ -17,11 +17,21 @@ struct Keyword {
     }
     
     static func array(_ patterns: String...,
-                      requiresSeperatorStart: Bool = false,
-                      requiresSeperatorEnd: Bool = false) -> [Keyword] {
+                      requiresSeperatorStart: Bool = true,
+                      requiresSeperatorEnd: Bool = true,
+                      startIgnore: Int = 0,
+                      endIgnore: Int = 0) -> [Keyword] {
         var results = [Keyword]()
         for pattern in patterns {
-            results.append(Keyword(pattern))
+            let keyword : Keyword = {
+                var result = Keyword(pattern)
+                result.requiresSeperatorStart = requiresSeperatorStart
+                result.requiresSeperatorEnd = requiresSeperatorEnd
+                result.startIgnore(startIgnore)
+                result.endIgnore(endIgnore)
+                return result
+            }()
+            results.append(keyword)
         }
         return results
     }
@@ -30,21 +40,9 @@ struct Keyword {
     
     fileprivate(set) var pattern: String
     
-    private var startIgnorance: Int {
-        if requiresSeperatorEnd {
-            return 1
-        } else {
-            return 0
-        }
-    }
+    private var startIgnorance = 0
     
-    private var endIgnorance: Int {
-        if requiresSeperatorEnd {
-            return 1
-        } else {
-            return 0
-        }
-    }
+    private var endIgnorance = 0
     
     private var regex: NSRegularExpression {
         var pattern = self.pattern
@@ -65,6 +63,14 @@ struct Keyword {
     
     fileprivate(set) var requiresSeperatorEnd: Bool
     
+    mutating func startIgnore(_ ignorance: Int) {
+        self.startIgnorance = ignorance
+    }
+    
+    mutating func endIgnore(_ ignorance: Int) {
+        self.endIgnorance = ignorance
+    }
+    
     func requiresSeperator(start: Bool? = nil, end: Bool? = nil) -> Keyword {
         var requiresOnStart = start
         var requiresAtEnd = end
@@ -82,9 +88,23 @@ struct Keyword {
         var results = [NSRange]()
         let range = NSRange(location: 0, length: string.count)
         let matches = regex.matches(in: string, options: [], range: range)
+        let start : Int = {
+            if self.requiresSeperatorStart {
+                return self.startIgnorance + 1
+            } else {
+                return self.startIgnorance
+            }
+        }()
+        let end : Int = {
+            if self.requiresSeperatorEnd {
+                return self.endIgnorance + 1
+            } else {
+                return self.endIgnorance
+            }
+        }()
         for match in matches {
-            let range = NSRange(location: match.range.location+startIgnorance,
-                                length: match.range.length-endIgnorance-startIgnorance)
+            let range = NSRange(location: match.range.location+start,
+                                length: match.range.length-end-start)
             results.append(range)
         }
         return results

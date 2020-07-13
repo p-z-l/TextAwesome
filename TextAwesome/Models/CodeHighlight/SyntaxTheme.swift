@@ -25,14 +25,14 @@ struct ThemesManager {
 
 struct SyntaxTheme {
     
-    var id              : String
-    var textColor       : UIColor
-    var backgroundColor : UIColor
-    var keywordsColor   : UIColor
-    var typesColor      : UIColor
-    var commentsColor   : UIColor
-    var numbersColor    : UIColor
-    var stringsColor    : UIColor
+    var id                   : String
+    var textColor            : UIColor
+    var backgroundColor      : UIColor
+    var keywordsColor        : UIColor
+    var typesColor           : UIColor
+    var commentsColor        : UIColor
+    var numbersColor         : UIColor
+    var stringsColor         : UIColor
     var identifiersColor     : UIColor
     
 }
