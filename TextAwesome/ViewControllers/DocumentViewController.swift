@@ -37,6 +37,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 	var document: TextDocument?
     
     var codeHighlighter = CodeHighlighter()
+    
+    private var shouldCodeHighlight = false
 
 	// MARK: ViewController lifecycle
 
@@ -79,6 +81,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 				self.documentTextView.attributedText = NSAttributedString(
 					string: text ?? "")
 
+                self.shouldCodeHighlight = LibrariesManager.hasLibrary(of: self.document?.fileURL.pathExtension)
+                
 				self.resetTextAttribute()
 			} else {
 				print("Error opening Document.")
@@ -123,7 +127,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 		self.documentTextView.scrollRangeToVisible(
 			NSRange(location: 0, length: 0))
         
-        self.documentTextView.backgroundColor = basic.backgroundColor
+        self.documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor
 	}
 
 	// MARK: Actions
@@ -269,11 +273,14 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
     }
 
 	private func resetTextAttribute() {
+        
+        guard self.shouldCodeHighlight else { return }
+        guard let string = self.documentTextView.text else { return }
+        
 		// Get cursor position
 		let selectedTextRange = documentTextView.selectedTextRange
 		let selectedRange = documentTextView.selectedRange
 
-		guard let string = self.documentTextView.text else { return }
 		let fileExtension = self.document!.fileURL.pathExtension
         var attributedText = NSAttributedString(string: string)
         if Settings.enableSyntaxHighlight {

@@ -21,6 +21,16 @@ struct LibrariesManager {
         return nil
     }
     
+    static func hasLibrary(of id: String?) -> Bool {
+        guard id != nil else { return false }
+        for library in LibrariesManager.libraries {
+            if library.id == id {
+                return true
+            }
+        }
+        return false
+    }
+    
 }
 
 struct LanguageLibrary {
