@@ -26,6 +26,7 @@ struct CodeHighlighter {
     private func loadLibraries() {
         LibrariesManager.libraries.removeAll()
         LibrariesManager.libraries.append(swift)
+        LibrariesManager.libraries.append(py)
     }
     
     private func loadThemes() {

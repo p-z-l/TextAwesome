@@ -58,7 +58,12 @@ let swift = LanguageLibrary(
         "try",
         "throw",
         "where",
+        "true",
+        "false",
         "extension",
+        "break",
+        "continue",
+        "is",
         "@[a-zA-Z]+"
     ),
     types: Keyword.array(

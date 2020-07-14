@@ -12,6 +12,7 @@
 		00231A8E24AE1E8300D643D1 /* basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8D24AE1E8300D643D1 /* basic.swift */; };
 		00231A9024AEC30A00D643D1 /* SyntaxThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */; };
 		00231A9224AED3D200D643D1 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A9124AED3D200D643D1 /* UITableViewExtension.swift */; };
+		0071D44724BD4B60005FAD56 /* py.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071D44624BD4B60005FAD56 /* py.swift */; };
 		0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */; };
 		00ACA91E24AC8FF100BB93BF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */; };
 		B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050EFE2432D09500FCF2E3 /* FileType.swift */; };
@@ -38,6 +39,7 @@
 		00231A8D24AE1E8300D643D1 /* basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basic.swift; sourceTree = "<group>"; };
 		00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxThemeTableViewController.swift; sourceTree = "<group>"; };
 		00231A9124AED3D200D643D1 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		0071D44624BD4B60005FAD56 /* py.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = py.swift; sourceTree = "<group>"; };
 		0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		B3050EFE2432D09500FCF2E3 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				B32F63292433529F00407BDD /* swift.swift */,
+				0071D44624BD4B60005FAD56 /* py.swift */,
 			);
 			name = LanguageLibraries;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				B32F632F2433596000407BDD /* CodeHighlighter.swift in Sources */,
 				00231A9224AED3D200D643D1 /* UITableViewExtension.swift in Sources */,
 				B3EEA7AC2431F37800BFEB34 /* Constants.swift in Sources */,
+				0071D44724BD4B60005FAD56 /* py.swift in Sources */,
 				00231A8E24AE1E8300D643D1 /* basic.swift in Sources */,
 				B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */,
 				B32F632D243352D300407BDD /* LanguageLibrary.swift in Sources */,

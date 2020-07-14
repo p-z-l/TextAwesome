@@ -10,7 +10,7 @@ import UIKit
 
 let basic = SyntaxTheme(
     id: "basic",
-    textColor: UIColor(named: "Text Color")!,
+    textColor: .label,
     backgroundColor: .systemBackground,
     keywordsColor: .systemPurple,
     typesColor: .systemTeal,
