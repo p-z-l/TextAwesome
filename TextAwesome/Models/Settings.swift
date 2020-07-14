@@ -12,10 +12,13 @@ enum FontStyle: Int {
 	case monoSpace, serif, sansSerif
     
     var uiFont: UIFont {
-        if let font = Constants.fontDict[self] {
-            return font
-        } else {
-            return UIFont.SFMono(ofSize: Settings.fontSize)
+        switch self {
+        case .monoSpace:
+            return .SFMono(ofSize: Settings.fontSize)
+        case .serif:
+            return .NY(ofSize: Settings.fontSize)
+        case .sansSerif:
+            return .SF(ofSize: Settings.fontSize)
         }
     }
 }

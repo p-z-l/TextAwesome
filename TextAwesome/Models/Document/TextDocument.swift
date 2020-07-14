@@ -14,7 +14,6 @@ class TextDocument: UIDocument {
 
 	override init(fileURL url: URL) {
 		super.init(fileURL: url)
-
 	}
 
 	override func contents(forType typeName: String) throws -> Any {

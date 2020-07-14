@@ -25,7 +25,7 @@ class FileTypeTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		self.dismiss(animated: true, completion: nil)
 
-		let selectedFiletype = Constants.fileTypes[indexPath.row]
+		let selectedFiletype = FileType.supportedFileTypes[indexPath.row]
 
 		if let handler = selectionHandler {
 			handler(selectedFiletype)

@@ -269,7 +269,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 	}
     
     @objc private func updateFont() {
-        documentTextView.font = UIFont(descriptor: Settings.fontStyle.uiFont.fontDescriptor, size: Settings.fontSize)
+        documentTextView.font = Settings.fontStyle.uiFont
     }
 
 	private func resetTextAttribute() {
@@ -299,14 +299,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 		self.resetTextAttribute()
 		let attributedText = NSMutableAttributedString(
 			attributedString: self.documentTextView.attributedText)
-		Utils.attributeMatchingResults(
-			attributedText,
-			pattern: self.searchField.text ?? "",
-			caseSensitive: Settings.caseSensitiveTextSearching,
-			attributes: [
-				NSAttributedString.Key.backgroundColor: UIColor.yellow,
-				NSAttributedString.Key.foregroundColor: UIColor.darkText,
-			])
+        attributedText.highlight(pattern: self.searchField.text ?? "", caseSensitive: Settings.caseSensitiveTextSearching)
 
 		self.documentTextView.attributedText = attributedText
 	}
@@ -317,10 +310,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		self.resetTextAttribute()
 		self.textSearch()
-		let ranges = Utils.findNSRangeOfPattern(
-			string: self.documentTextView.attributedText.string,
-			pattern: self.searchField.text ?? "",
-			caseSensitive: Settings.caseSensitiveTextSearching)
+        let ranges = self.documentTextView.attributedText.string.rangesOfPattern(
+            self.searchField.text ?? "",
+            caseSensitive: Settings.caseSensitiveTextSearching)
 		guard !ranges.isEmpty else { return }
 
 		var rangeToSelect = ranges.first!
