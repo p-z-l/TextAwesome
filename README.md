@@ -1,4 +1,4 @@
-<img src="https://github.com/p-z-l/TextAwesome/raw/master/Banner.png" width="100%">
+<img src="https://github.com/p-z-l/TextAwesome/blob/develop/Banner.png" width="100%">
 
 **A lightweight text editor for iOS**
 
