@@ -336,7 +336,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Syntax Highlight (experimental)" footerTitle="Syntax highlight will only be applied in certain types of files" id="MYB-iw-r75">
+                            <tableViewSection headerTitle="Syntax Highlight" footerTitle="Syntax highlight will only be applied in certain types of files" id="MYB-iw-r75">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="lEv-bQ-j92" style="IBUITableViewCellStyleDefault" id="eW0-Qy-xm9">
                                         <rect key="frame" x="0.0" y="664.9999942779541" width="375" height="43.5"/>
@@ -355,15 +355,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="d2l-6H-fqg" rowHeight="0.0" style="IBUITableViewCellStyleDefault" id="hCk-56-RY4">
-                                        <rect key="frame" x="0.0" y="708.4999942779541" width="375" height="1.1920928955078125e-07"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="d2l-6H-fqg" style="IBUITableViewCellStyleDefault" id="hCk-56-RY4">
+                                        <rect key="frame" x="0.0" y="708.4999942779541" width="375" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hCk-56-RY4" id="lHF-Hk-xeI">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="1.1920928955078125e-07"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Syntax theme: basic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d2l-6H-fqg">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="1.1920928955078125e-07"/>
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

@@ -13,6 +13,8 @@
 		00231A9024AEC30A00D643D1 /* SyntaxThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */; };
 		00231A9224AED3D200D643D1 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A9124AED3D200D643D1 /* UITableView+Extension.swift */; };
 		004C8B0E24BDD3BE0013002F /* html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C8B0D24BDD3BE0013002F /* html.swift */; };
+		0058DA5424BEAD1F008844E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */; };
+		0058DA5624BEADE8008844E1 /* onedark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5524BEADE8008844E1 /* onedark.swift */; };
 		0071D44724BD4B60005FAD56 /* py.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071D44624BD4B60005FAD56 /* py.swift */; };
 		0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */; };
 		00ACA91E24AC8FF100BB93BF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */; };
@@ -44,6 +46,8 @@
 		00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxThemeTableViewController.swift; sourceTree = "<group>"; };
 		00231A9124AED3D200D643D1 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		004C8B0D24BDD3BE0013002F /* html.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = html.swift; sourceTree = "<group>"; };
+		0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0058DA5524BEADE8008844E1 /* onedark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onedark.swift; sourceTree = "<group>"; };
 		0071D44624BD4B60005FAD56 /* py.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = py.swift; sourceTree = "<group>"; };
 		0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				00231A8D24AE1E8300D643D1 /* basic.swift */,
+				0058DA5524BEADE8008844E1 /* onedark.swift */,
 			);
 			path = SyntaxThemes;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				00231A9124AED3D200D643D1 /* UITableView+Extension.swift */,
 				00CDFFA924BDAE53001A1117 /* NSMutableAttributedString+Extension.swift */,
 				00BAD85D24BDB18200E33EC4 /* String+Extension.swift */,
+				0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,8 +291,10 @@
 				00CDFFAA24BDAE53001A1117 /* NSMutableAttributedString+Extension.swift in Sources */,
 				00BAD85E24BDB18200E33EC4 /* String+Extension.swift in Sources */,
 				00231A9224AED3D200D643D1 /* UITableView+Extension.swift in Sources */,
+				0058DA5424BEAD1F008844E1 /* UIColor+Extension.swift in Sources */,
 				0071D44724BD4B60005FAD56 /* py.swift in Sources */,
 				00231A8E24AE1E8300D643D1 /* basic.swift in Sources */,
+				0058DA5624BEADE8008844E1 /* onedark.swift in Sources */,
 				B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */,
 				B32F632D243352D300407BDD /* LanguageLibrary.swift in Sources */,
 				00231A8924ADDD2300D643D1 /* Token.swift in Sources */,

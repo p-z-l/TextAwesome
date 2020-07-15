@@ -13,9 +13,6 @@ struct CodeHighlighter {
     private var library: LanguageLibrary?
     
     init(fileExtension: String) {
-        self.loadLibraries()
-        self.loadThemes()
-        
         self.library = LibrariesManager.library(of: fileExtension)
     }
     
@@ -23,7 +20,7 @@ struct CodeHighlighter {
         self.init(fileExtension: "")
     }
     
-    private func loadLibraries() {
+    static func loadLibraries() {
         LibrariesManager.libraries.removeAll()
         
         LibrariesManager.libraries.append(css)
@@ -32,10 +29,11 @@ struct CodeHighlighter {
         LibrariesManager.libraries.append(swift)
     }
     
-    private func loadThemes() {
+    static func loadThemes() {
         ThemesManager.themes.removeAll()
         
         ThemesManager.themes.append(basic)
+        ThemesManager.themes.append(onedark)
     }
     
     func highlightedCode(for string: String, fileExtension: String) -> NSAttributedString {

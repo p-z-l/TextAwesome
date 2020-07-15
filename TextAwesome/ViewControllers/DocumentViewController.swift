@@ -128,6 +128,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 			NSRange(location: 0, length: 0))
         
         self.documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor
+        self.documentTextView.textColor = Settings.syntaxTheme.textColor
 	}
 
 	// MARK: Actions

@@ -88,6 +88,10 @@ class SettingsViewController: UITableViewController {
         self.overrideUserInterfaceStyle = Settings.interfaceStyle.uiUserInterfaceStyle
         self.navigationController?.overrideUserInterfaceStyle = Settings.interfaceStyle.uiUserInterfaceStyle
     }
+    
+    @objc private func updateSyntaxTheme() {
+        updateCells()
+    }
 
 	private func updateCells() {
 
@@ -100,6 +104,10 @@ class SettingsViewController: UITableViewController {
 		// Update font size display
 		let fontSizeText = "Font size: \(Settings.fontSize)"
 		self.tableView.cellForRow(at: IndexPath(row: 0, section: 2))?.textLabel?.text = fontSizeText
+        
+        // Update syntax theme display
+        let syntaxThemeText = "Syntax theme: \(Settings.syntaxThemeID)"
+        self.tableView.cellForRow(at: IndexPath(row: 1, section: 4))?.textLabel?.text = syntaxThemeText
 	}
 
 	private func setCellAccesoryView(atRow row: Int, section: Int, view: UIView) {
