@@ -10,7 +10,7 @@ import Foundation
 
 let py = LanguageLibrary(
     id: "py",
-    keywords: Keyword.array(
+    keywords: Token.array(
         "and",
         "as",
         "asserte",
@@ -45,25 +45,25 @@ let py = LanguageLibrary(
         "with",
         "yield"
     ),
-    types: Keyword.array(
+    types: Token.array(
     ),
-    comments: Keyword.array(
+    comments: Token.array(
         "#(.+)",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),
-    numbers: Keyword.array(
+    numbers: Token.array(
         "[0-9]+",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),
-    strings: Keyword.array(
+    strings: Token.array(
         "'(.+)'",
         "\"(.+)\"",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),
-    identifiers: Keyword.array(
+    identifiers: Token.array(
         "print"
     )
 )

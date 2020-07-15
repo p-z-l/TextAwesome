@@ -36,11 +36,11 @@ struct LibrariesManager {
 struct LanguageLibrary {
     
     var id          : String
-    var keywords    : [Keyword]?
-    var types       : [Keyword]?
-    var comments    : [Keyword]?
-    var numbers     : [Keyword]?
-    var strings     : [Keyword]?
-    var identifiers : [Keyword]?
+    var keywords    : [Token]?
+    var types       : [Token]?
+    var comments    : [Token]?
+    var numbers     : [Token]?
+    var strings     : [Token]?
+    var identifiers : [Token]?
     
 }

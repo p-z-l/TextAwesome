@@ -11,18 +11,18 @@ import Foundation
 let html = LanguageLibrary(
     id: "html",
     keywords: [
-        Keyword("<[a-zA-Z0-9]+", requiresSepertorStart: false, startIgnorance: 1),
-        Keyword("</[a-zA-Z0-9]+", requiresSepertorStart: false, startIgnorance: 2)
+        Token("<[a-zA-Z0-9]+", requiresSepertorStart: false, startIgnorance: 1),
+        Token("</[a-zA-Z0-9]+", requiresSepertorStart: false, startIgnorance: 2)
     ],
     types: nil,
     comments: [
-        Keyword("<!--(.*)-->", requiresSepertorStart: false, requiresSeperatorEnd: false)
+        Token("<!--(.*)-->", requiresSepertorStart: false, requiresSeperatorEnd: false)
     ],
     numbers: nil,
     strings: [
-        Keyword("\"(.*)\"")
+        Token("\"(.*)\"")
     ],
     identifiers: [
-        Keyword("[a-zA-Z0-9]+=", requiresSepertorStart: false, requiresSeperatorEnd: false, endIgnorance: 1)
+        Token("[a-zA-Z0-9]+=", requiresSepertorStart: false, requiresSeperatorEnd: false, endIgnorance: 1)
     ]
 )

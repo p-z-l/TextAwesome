@@ -10,7 +10,7 @@ import Foundation
 
 let swift = LanguageLibrary(
     id: "swift",
-    keywords: Keyword.array(
+    keywords: Token.array(
         "#selector",
         "@[a-zA-Z]+",
         "as",
@@ -67,7 +67,7 @@ let swift = LanguageLibrary(
         "while",
         "willSet"
     ),
-    types: Keyword.array(
+    types: Token.array(
         "(.+)<(.+)>",
         "(NS|UI)[A-Z][a-zA-Z]+",
         "Array",
@@ -89,23 +89,23 @@ let swift = LanguageLibrary(
         "Int8",
         "String"
     ),
-        comments: Keyword.array(
+        comments: Token.array(
         "//(.*)",
         "/\\*(.*)\\*/",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
-    ),numbers: Keyword.array(
+    ),numbers: Token.array(
         "[0-9]+",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),
-        strings: Keyword.array(
+        strings: Token.array(
         "\"(.*)\"",
         "\"\"\"(.*)\"\"\"",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),
-        identifiers: Keyword.array(
+        identifiers: Token.array(
 //        "\\b(.+)\\(",
 //        requiresSeperatorStart: false,
 //        requiresSeperatorEnd: false,

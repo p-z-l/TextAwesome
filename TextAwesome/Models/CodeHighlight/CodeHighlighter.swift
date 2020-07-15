@@ -57,7 +57,7 @@ struct CodeHighlighter {
             NSAttributedString.Key.foregroundColor : theme.textColor
         ])
         
-        func scan(for keywords: [Keyword]?, color: UIColor) {
+        func scan(for keywords: [Token]?, color: UIColor) {
             guard keywords != nil else { return }
             var ranges = [NSRange]()
             for keyword in keywords! {
