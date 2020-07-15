@@ -10,14 +10,13 @@
 - Dark Mode support
 - Customized font style & font size
 - Text searching
-- Basic code highlight for Swift
+- Syntax highlight for Swift, Python, HTML
 - iPadOS cursor support
 - iPadOS keyboard shortcuts support
 
 ## TODO
-- More customizations
-- Better code Highlighting
 - Better Markdown support
 - RTF/RTFD support
-- Undo & Redo
+- Better undo/redo
 - Search & Replacing
+- Multiple syntax themes
