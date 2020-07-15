@@ -8,9 +8,7 @@
 
 import UIKit
 
-class DocumentViewController: UIViewController, UITextViewDelegate,
-	UIPointerInteractionDelegate
-{
+class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInteractionDelegate {
 
 	// MARK: Definitions
 
@@ -30,15 +28,21 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 	private var searchBarIsShown = false
 
-	private var shouldSyntaxHighlight = true
+    private lazy var shouldSyntaxHighlight : Bool = {
+        if !LibrariesManager.hasLibrary(of: self.document?.fileURL.pathExtension) {
+            return false
+        }
+        if !Settings.enableSyntaxHighlight {
+            return false
+        }
+        return true
+    }()
 
 	private var selectedSearchResultIndex: Int?
 
 	var document: TextDocument?
     
-    var codeHighlighter = CodeHighlighter()
-    
-    private var shouldCodeHighlight = false
+    lazy var codeHighlighter = CodeHighlighter(fileExtension: document?.fileURL.pathExtension ?? "")
 
 	// MARK: ViewController lifecycle
 
@@ -72,16 +76,13 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 		}
 
 		// Access the document
-		document?.open(completionHandler: { (success) in
+        document?.open(completionHandler: { [self] (success) in
 			if success {
 				// Display the content of the document, e.g.:
 				self.nameLabel.text = self.document?.fileURL.lastPathComponent
 
 				let text = self.document?.userText
-				self.documentTextView.attributedText = NSAttributedString(
-					string: text ?? "")
-
-                self.shouldCodeHighlight = LibrariesManager.hasLibrary(of: self.document?.fileURL.pathExtension)
+                self.documentTextView.text = text
                 
 				self.resetTextAttribute()
 			} else {
@@ -91,10 +92,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		self.documentTextView.delegate = self
 		self.documentTextView.allowsEditingTextAttributes = true
-        
-        if let fileExtension = document?.fileURL.pathExtension {
-            self.codeHighlighter = CodeHighlighter(fileExtension: fileExtension)
-        }
 
 		NotificationCenter.default.addObserver(
 			self,
@@ -122,13 +119,16 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		self.resetTextViewContentInset()
 
-		self.shouldSyntaxHighlight = Settings.enableSyntaxHighlight
-
 		self.documentTextView.scrollRangeToVisible(
 			NSRange(location: 0, length: 0))
         
-        self.documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor
-        self.documentTextView.textColor = Settings.syntaxTheme.textColor
+        documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor
+        if shouldSyntaxHighlight {
+            resetTextAttribute()
+        } else {
+            documentTextView.font = Settings.fontStyle.uiFont
+            documentTextView.textColor = Settings.syntaxTheme.textColor
+        }
 	}
 
 	// MARK: Actions
@@ -274,8 +274,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 	private func resetTextAttribute() {
         
-        guard self.shouldCodeHighlight else { return }
-        guard let string = self.documentTextView.text else { return }
+        guard Settings.enableSyntaxHighlight && shouldSyntaxHighlight,
+              let string = self.documentTextView.text else { return }
         
 		// Get cursor position
 		let selectedTextRange = documentTextView.selectedTextRange
@@ -283,9 +283,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 		let fileExtension = self.document!.fileURL.pathExtension
         var attributedText = NSAttributedString(string: string)
-        if Settings.enableSyntaxHighlight {
-            attributedText = codeHighlighter.highlightedCode(for: string, fileExtension: fileExtension)
-		}
+        attributedText = codeHighlighter.highlightedCode(for: string, fileExtension: fileExtension)
 		documentTextView.attributedText = attributedText
 		documentTextView.selectedTextRange = selectedTextRange
 		documentTextView.scrollRangeToVisible(selectedRange)

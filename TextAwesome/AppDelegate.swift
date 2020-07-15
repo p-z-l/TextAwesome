@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			Settings.fontStyle = .monoSpace
 			Settings.fontSize = 18
 			Settings.caseSensitiveTextSearching = false
-			Settings.enableSyntaxHighlight = false
+			Settings.enableSyntaxHighlight = true
 		}
         CodeHighlighter.loadLibraries()
         CodeHighlighter.loadThemes()
