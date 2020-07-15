@@ -43,7 +43,7 @@ struct Token {
         return results
     }
     
-    fileprivate static let seperatorsPattern = "[\0|\n|\t| |,|.|/|?|!|+|-|*|/|=|(|)|[|]|{|}|<|>:|]"
+    fileprivate static let seperatorsPattern = "[\0|\n|\t| |,|.|/|?|!|+|-|*|/|=|(|)|[|]|{|}|<|>:|;]"
     
     fileprivate(set) var pattern: String
     

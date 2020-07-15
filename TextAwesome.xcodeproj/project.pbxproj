@@ -20,6 +20,7 @@
 		00CDFFAA24BDAE53001A1117 /* NSMutableAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDFFA924BDAE53001A1117 /* NSMutableAttributedString+Extension.swift */; };
 		00D84FE524BEA44E00DF4D73 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 00D84FE424BEA44D00DF4D73 /* README.md */; };
 		00D84FE724BEA45100DF4D73 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 00D84FE624BEA45100DF4D73 /* LICENSE.txt */; };
+		00D84FE924BEA59400DF4D73 /* css.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D84FE824BEA59400DF4D73 /* css.swift */; };
 		B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050EFE2432D09500FCF2E3 /* FileType.swift */; };
 		B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */; };
 		B32F632A2433529F00407BDD /* swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32F63292433529F00407BDD /* swift.swift */; };
@@ -50,6 +51,7 @@
 		00CDFFA924BDAE53001A1117 /* NSMutableAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		00D84FE424BEA44D00DF4D73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		00D84FE624BEA45100DF4D73 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		00D84FE824BEA59400DF4D73 /* css.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = css.swift; sourceTree = "<group>"; };
 		B3050EFE2432D09500FCF2E3 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		B3050F002432D18800FCF2E3 /* FileTypeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeSelectViewController.swift; sourceTree = "<group>"; };
 		B32F63292433529F00407BDD /* swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				B32F63292433529F00407BDD /* swift.swift */,
 				0071D44624BD4B60005FAD56 /* py.swift */,
 				004C8B0D24BDD3BE0013002F /* html.swift */,
+				00D84FE824BEA59400DF4D73 /* css.swift */,
 			);
 			path = LanguageLibraries;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */,
 				B32F632D243352D300407BDD /* LanguageLibrary.swift in Sources */,
 				00231A8924ADDD2300D643D1 /* Token.swift in Sources */,
+				00D84FE924BEA59400DF4D73 /* css.swift in Sources */,
 				B3C0655F2430F6D300B21238 /* AppDelegate.swift in Sources */,
 				00231A9024AEC30A00D643D1 /* SyntaxThemeTableViewController.swift in Sources */,
 			);
