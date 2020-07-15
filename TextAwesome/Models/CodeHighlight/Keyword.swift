@@ -10,10 +10,17 @@ import Foundation
 
 struct Keyword {
     
-    init(_ pattern: String, requiresSepertorStart: Bool = true, requiresSeperatorEnd: Bool = true) {
+    init(_ pattern: String,
+         requiresSepertorStart: Bool = true,
+         requiresSeperatorEnd: Bool = true,
+         startIgnorance: Int = 0,
+         endIgnorance: Int = 0
+         ) {
         self.pattern = pattern
         self.requiresSeperatorStart = requiresSepertorStart
         self.requiresSeperatorEnd = requiresSeperatorEnd
+        self.startIgnorance = startIgnorance
+        self.endIgnorance = endIgnorance
     }
     
     static func array(_ patterns: String...,
@@ -40,9 +47,9 @@ struct Keyword {
     
     fileprivate(set) var pattern: String
     
-    private var startIgnorance = 0
+    var startIgnorance = 0
     
-    private var endIgnorance = 0
+    var endIgnorance = 0
     
     private var regex: NSRegularExpression {
         var pattern = self.pattern
@@ -69,6 +76,16 @@ struct Keyword {
     
     mutating func endIgnore(_ ignorance: Int) {
         self.endIgnorance = ignorance
+    }
+    
+    func ignore(start: Int = 0, end: Int = 0) -> Keyword {
+        return Keyword(
+            self.pattern,
+            requiresSepertorStart: self.requiresSeperatorStart,
+            requiresSeperatorEnd: self.requiresSeperatorEnd,
+            startIgnorance: start,
+            endIgnorance: end
+        )
     }
     
     func requiresSeperator(start: Bool? = nil, end: Bool? = nil) -> Keyword {

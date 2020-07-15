@@ -28,6 +28,7 @@ let swift = LanguageLibrary(
         "extension",
         "false",
         "fileprivate",
+        "fileprivate\\(set\\)",
         "final",
         "for",
         "func",
@@ -89,26 +90,17 @@ let swift = LanguageLibrary(
         "String"
     ),
         comments: Keyword.array(
-        "//(.+)",
-        "/\\*((.|\n)*)\\*/",
+        "//(.*)",
+        "/\\*(.*)\\*/",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),numbers: Keyword.array(
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
+        "[0-9]+",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),
         strings: Keyword.array(
-        "\"(.+)\"",
+        "\"(.*)\"",
         "\"\"\"(.*)\"\"\"",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false

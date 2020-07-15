@@ -12,6 +12,7 @@
 		00231A8E24AE1E8300D643D1 /* basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8D24AE1E8300D643D1 /* basic.swift */; };
 		00231A9024AEC30A00D643D1 /* SyntaxThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */; };
 		00231A9224AED3D200D643D1 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A9124AED3D200D643D1 /* UITableView+Extension.swift */; };
+		004C8B0E24BDD3BE0013002F /* html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C8B0D24BDD3BE0013002F /* html.swift */; };
 		0071D44724BD4B60005FAD56 /* py.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071D44624BD4B60005FAD56 /* py.swift */; };
 		0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */; };
 		00ACA91E24AC8FF100BB93BF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */; };
@@ -39,6 +40,7 @@
 		00231A8D24AE1E8300D643D1 /* basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basic.swift; sourceTree = "<group>"; };
 		00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxThemeTableViewController.swift; sourceTree = "<group>"; };
 		00231A9124AED3D200D643D1 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		004C8B0D24BDD3BE0013002F /* html.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = html.swift; sourceTree = "<group>"; };
 		0071D44624BD4B60005FAD56 /* py.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = py.swift; sourceTree = "<group>"; };
 		0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				B32F63292433529F00407BDD /* swift.swift */,
 				0071D44624BD4B60005FAD56 /* py.swift */,
+				004C8B0D24BDD3BE0013002F /* html.swift */,
 			);
 			path = LanguageLibraries;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				B3EEA7AA2431F03F00BFEB34 /* Settings.swift in Sources */,
 				00231A8C24AE1CDD00D643D1 /* SyntaxTheme.swift in Sources */,
 				0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */,
+				004C8B0E24BDD3BE0013002F /* html.swift in Sources */,
 				B3C065652430F6D300B21238 /* TextDocument.swift in Sources */,
 				B32F632A2433529F00407BDD /* swift.swift in Sources */,
 				B3EEA7AE2432045F00BFEB34 /* SettingsViewController.swift in Sources */,

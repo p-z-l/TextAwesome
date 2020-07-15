@@ -225,7 +225,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate,
 
 	func textViewDidChange(_ textView: UITextView) {
 		self.resetTextAttribute()
-		self.textSearch()
 	}
 
 	// MARK: Private methods
