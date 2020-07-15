@@ -63,6 +63,8 @@ let swift = LanguageLibrary(
         "try",
         "typealias",
         "var",
+        "weak",
+        "lazy",
         "where",
         "while",
         "willSet"
