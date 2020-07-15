@@ -64,6 +64,7 @@ class SettingsViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
 		switch indexPath.section {
         case 0:
             Settings.fontStyle = FontStyle(rawValue: indexPath.row) ?? .monoSpace
@@ -71,7 +72,6 @@ class SettingsViewController: UITableViewController {
             Settings.interfaceStyle = InterfaceStyle(rawValue: indexPath.row) ?? .system
         case 4:
             if indexPath.row == 1 {
-                tableView.deselectRow(at: indexPath, animated: true)
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let themeSelectionVC = storyboard.instantiateViewController(identifier: "ThemeSelection")
                 self.navigationController?.pushViewController(themeSelectionVC, animated: true)
