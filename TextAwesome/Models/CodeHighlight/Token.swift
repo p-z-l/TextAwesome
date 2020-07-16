@@ -43,7 +43,7 @@ struct Token {
         return results
     }
     
-    fileprivate static let seperatorsPattern = "[\0|\n|\t| |,|.|/|?|!|+|-|*|/|=|(|)|[|]|{|}|<|>:|;]"
+    fileprivate static let seperatorsPattern = "\\b"
     
     fileprivate(set) var pattern: String
     
@@ -105,23 +105,9 @@ struct Token {
         var results = [NSRange]()
         let range = NSRange(location: 0, length: string.count)
         let matches = regex.matches(in: string, options: [], range: range)
-        let start : Int = {
-            if self.requiresSeperatorStart {
-                return self.startIgnorance + 1
-            } else {
-                return self.startIgnorance
-            }
-        }()
-        let end : Int = {
-            if self.requiresSeperatorEnd {
-                return self.endIgnorance + 1
-            } else {
-                return self.endIgnorance
-            }
-        }()
         for match in matches {
-            let range = NSRange(location: match.range.location+start,
-                                length: match.range.length-end-start)
+            let range = NSRange(location: match.range.location+startIgnorance,
+                                length: match.range.length-startIgnorance-endIgnorance)
             results.append(range)
         }
         return results
