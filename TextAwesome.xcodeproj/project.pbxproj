@@ -15,6 +15,7 @@
 		004AD3F024C0719900428EB6 /* c.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004AD3EF24C0719900428EB6 /* c.swift */; };
 		004C8B0E24BDD3BE0013002F /* html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C8B0D24BDD3BE0013002F /* html.swift */; };
 		0052685224C0787E0014FFF6 /* spacemacs_dark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052685124C0787E0014FFF6 /* spacemacs_dark.swift */; };
+		0052685424C07A1A0014FFF6 /* spacemacs_light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052685324C07A1A0014FFF6 /* spacemacs_light.swift */; };
 		0058DA5424BEAD1F008844E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */; };
 		0058DA5624BEADE8008844E1 /* onedark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5524BEADE8008844E1 /* onedark.swift */; };
 		0071D44724BD4B60005FAD56 /* py.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071D44624BD4B60005FAD56 /* py.swift */; };
@@ -50,6 +51,7 @@
 		004AD3EF24C0719900428EB6 /* c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = c.swift; sourceTree = "<group>"; };
 		004C8B0D24BDD3BE0013002F /* html.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = html.swift; sourceTree = "<group>"; };
 		0052685124C0787E0014FFF6 /* spacemacs_dark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spacemacs_dark.swift; sourceTree = "<group>"; };
+		0052685324C07A1A0014FFF6 /* spacemacs_light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spacemacs_light.swift; sourceTree = "<group>"; };
 		0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		0058DA5524BEADE8008844E1 /* onedark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onedark.swift; sourceTree = "<group>"; };
 		0071D44624BD4B60005FAD56 /* py.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = py.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				00231A8D24AE1E8300D643D1 /* basic.swift */,
 				0058DA5524BEADE8008844E1 /* onedark.swift */,
 				0052685124C0787E0014FFF6 /* spacemacs_dark.swift */,
+				0052685324C07A1A0014FFF6 /* spacemacs_light.swift */,
 			);
 			path = SyntaxThemes;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				B3EEA7AE2432045F00BFEB34 /* SettingsViewController.swift in Sources */,
 				B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */,
 				0052685224C0787E0014FFF6 /* spacemacs_dark.swift in Sources */,
+				0052685424C07A1A0014FFF6 /* spacemacs_light.swift in Sources */,
 				B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */,
 				B3C065612430F6D300B21238 /* DocumentBrowserViewController.swift in Sources */,
 				B32F632F2433596000407BDD /* CodeHighlighter.swift in Sources */,
