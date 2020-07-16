@@ -35,6 +35,7 @@ struct CodeHighlighter {
         
         ThemesManager.themes.append(basic)
         ThemesManager.themes.append(onedark)
+        ThemesManager.themes.append(spacemacs_dark)
     }
     
     func highlightedCode(for string: String, fileExtension: String) -> NSAttributedString {
