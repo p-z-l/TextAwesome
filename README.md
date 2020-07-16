@@ -10,7 +10,7 @@
 - Dark Mode support
 - Customized font style & font size
 - Text searching
-- Syntax highlight for Swift, Python, HTML
+- Syntax highlight for Swift, Python, HTML, C
 - iPadOS cursor support
 - iPadOS keyboard shortcuts support
 
