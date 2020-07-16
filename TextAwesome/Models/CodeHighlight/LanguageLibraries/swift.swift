@@ -91,23 +91,24 @@ let swift = LanguageLibrary(
         "Int8",
         "String"
     ),
-        comments: Token.array(
+    comments: Token.array(
         "//(.*)",
         "/\\*(.*)\\*/",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
-    ),numbers: Token.array(
+    ),
+    numbers: Token.array(
         "[0-9]+",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),
-        strings: Token.array(
+    strings: Token.array(
         "\"(.*)\"",
         "\"\"\"(.*)\"\"\"",
         requiresSeperatorStart: false,
         requiresSeperatorEnd: false
     ),
-        identifiers: Token.array(
+    identifiers: Token.array(
 //        "\\b(.+)\\(",
 //        requiresSeperatorStart: false,
 //        requiresSeperatorEnd: false,

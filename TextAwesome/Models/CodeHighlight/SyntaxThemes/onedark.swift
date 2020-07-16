@@ -17,5 +17,6 @@ let onedark = SyntaxTheme(
     commentsColor: UIColor(0x3f4451),
     numbersColor: UIColor(0xc99c6e),
     stringsColor: UIColor(0x98c379),
-    identifiersColor: UIColor(0x61afef)
+    identifiersColor: UIColor(0x61afef),
+    macrosColor: UIColor(0xc678dd)
 )

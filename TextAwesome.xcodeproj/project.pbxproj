@@ -12,6 +12,7 @@
 		00231A8E24AE1E8300D643D1 /* basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8D24AE1E8300D643D1 /* basic.swift */; };
 		00231A9024AEC30A00D643D1 /* SyntaxThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */; };
 		00231A9224AED3D200D643D1 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A9124AED3D200D643D1 /* UITableView+Extension.swift */; };
+		004AD3F024C0719900428EB6 /* c.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004AD3EF24C0719900428EB6 /* c.swift */; };
 		004C8B0E24BDD3BE0013002F /* html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C8B0D24BDD3BE0013002F /* html.swift */; };
 		0058DA5424BEAD1F008844E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */; };
 		0058DA5624BEADE8008844E1 /* onedark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5524BEADE8008844E1 /* onedark.swift */; };
@@ -45,6 +46,7 @@
 		00231A8D24AE1E8300D643D1 /* basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basic.swift; sourceTree = "<group>"; };
 		00231A8F24AEC30A00D643D1 /* SyntaxThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxThemeTableViewController.swift; sourceTree = "<group>"; };
 		00231A9124AED3D200D643D1 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		004AD3EF24C0719900428EB6 /* c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = c.swift; sourceTree = "<group>"; };
 		004C8B0D24BDD3BE0013002F /* html.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = html.swift; sourceTree = "<group>"; };
 		0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		0058DA5524BEADE8008844E1 /* onedark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onedark.swift; sourceTree = "<group>"; };
@@ -106,10 +108,11 @@
 		00088DFA24BDABCA0036D0AD /* LanguageLibraries */ = {
 			isa = PBXGroup;
 			children = (
-				B32F63292433529F00407BDD /* swift.swift */,
-				0071D44624BD4B60005FAD56 /* py.swift */,
-				004C8B0D24BDD3BE0013002F /* html.swift */,
+				004AD3EF24C0719900428EB6 /* c.swift */,
 				00D84FE824BEA59400DF4D73 /* css.swift */,
+				004C8B0D24BDD3BE0013002F /* html.swift */,
+				0071D44624BD4B60005FAD56 /* py.swift */,
+				B32F63292433529F00407BDD /* swift.swift */,
 			);
 			path = LanguageLibraries;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				004C8B0E24BDD3BE0013002F /* html.swift in Sources */,
 				B3C065652430F6D300B21238 /* TextDocument.swift in Sources */,
 				B32F632A2433529F00407BDD /* swift.swift in Sources */,
+				004AD3F024C0719900428EB6 /* c.swift in Sources */,
 				B3EEA7AE2432045F00BFEB34 /* SettingsViewController.swift in Sources */,
 				B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */,
 				B3C065632430F6D300B21238 /* DocumentViewController.swift in Sources */,

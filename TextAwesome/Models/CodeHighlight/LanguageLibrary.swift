@@ -42,5 +42,6 @@ struct LanguageLibrary {
     var numbers     : [Token]?
     var strings     : [Token]?
     var identifiers : [Token]?
+    var macros      : [Token]?
     
 }

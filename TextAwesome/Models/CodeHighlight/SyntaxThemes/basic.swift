@@ -17,5 +17,6 @@ let basic = SyntaxTheme(
     commentsColor: .systemGreen,
     numbersColor: .systemBlue,
     stringsColor: .systemPink,
-    identifiersColor: .systemIndigo
+    identifiersColor: .systemIndigo,
+    macrosColor: .systemOrange
 )

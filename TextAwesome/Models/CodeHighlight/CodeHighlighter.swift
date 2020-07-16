@@ -23,6 +23,7 @@ struct CodeHighlighter {
     static func loadLibraries() {
         LibrariesManager.libraries.removeAll()
         
+        LibrariesManager.libraries.append(c)
         LibrariesManager.libraries.append(css)
         LibrariesManager.libraries.append(html)
         LibrariesManager.libraries.append(py)
@@ -71,6 +72,7 @@ struct CodeHighlighter {
         scan(for: library!.types, color: theme.typesColor)
         scan(for: library!.identifiers, color: theme.identifiersColor)
         scan(for: library!.keywords, color: theme.keywordsColor)
+        scan(for: library!.macros, color: theme.macrosColor)
         scan(for: library!.strings, color: theme.stringsColor)
         scan(for: library!.comments, color: theme.commentsColor)
         
