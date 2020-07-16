@@ -31,12 +31,13 @@ struct Token {
         var results = [Token]()
         for pattern in patterns {
             let keyword : Token = {
-                var result = Token(pattern)
-                result.requiresSeperatorStart = requiresSeperatorStart
-                result.requiresSeperatorEnd = requiresSeperatorEnd
-                result.startIgnore(startIgnore)
-                result.endIgnore(endIgnore)
-                return result
+                return Token(
+                    pattern,
+                    requiresSepertorStart: requiresSeperatorStart,
+                    requiresSeperatorEnd: requiresSeperatorEnd,
+                    startIgnorance: startIgnore,
+                    endIgnorance: endIgnore
+                )
             }()
             results.append(keyword)
         }
@@ -69,14 +70,6 @@ struct Token {
     fileprivate(set) var requiresSeperatorStart: Bool
     
     fileprivate(set) var requiresSeperatorEnd: Bool
-    
-    mutating func startIgnore(_ ignorance: Int) {
-        self.startIgnorance = ignorance
-    }
-    
-    mutating func endIgnore(_ ignorance: Int) {
-        self.endIgnorance = ignorance
-    }
     
     func ignore(start: Int = 0, end: Int = 0) -> Token {
         return Token(
