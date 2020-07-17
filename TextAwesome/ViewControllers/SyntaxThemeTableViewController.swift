@@ -32,6 +32,7 @@ class SyntaxThemeTableViewController: UITableViewController {
         cell.backgroundColor = representedTheme.backgroundColor
         cell.textLabel?.textColor = representedTheme.textColor
         cell.textLabel?.text = representedTheme.id
+        cell.textLabel?.font = Settings.fontStyle.uiFont
         cell.selectionStyle = .none
         cell.tintColor = representedTheme.keywordsColor
         if cell.textLabel?.text == Settings.syntaxThemeID {

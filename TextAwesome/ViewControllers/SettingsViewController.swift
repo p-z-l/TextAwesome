@@ -68,7 +68,7 @@ class SettingsViewController: UITableViewController {
 		switch indexPath.section {
         case 0:
             Settings.fontStyle = FontStyle(rawValue: indexPath.row) ?? .monoSpace
-        case 1:
+        case 2:
             Settings.interfaceStyle = InterfaceStyle(rawValue: indexPath.row) ?? .system
         case 4:
             if indexPath.row == 1 {
@@ -99,15 +99,16 @@ class SettingsViewController: UITableViewController {
         tableView.selectInSection(row: Settings.fontStyle.rawValue, section: 0)
     
         // Update interface styles
-        tableView.selectInSection(row: Settings.interfaceStyle.rawValue, section: 1)
+        tableView.selectInSection(row: Settings.interfaceStyle.rawValue, section: 2)
 
 		// Update font size display
-		let fontSizeText = "Font size: \(Settings.fontSize)"
-		self.tableView.cellForRow(at: IndexPath(row: 0, section: 2))?.textLabel?.text = fontSizeText
-        
-        // Update syntax theme display
-        let syntaxThemeText = "Syntax theme: \(Settings.syntaxThemeID)"
-        self.tableView.cellForRow(at: IndexPath(row: 1, section: 4))?.textLabel?.text = syntaxThemeText
+        if let fontSizeCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 1)),
+           fontSizeCell.textLabel != nil {
+            let fontSizeText = "\(Settings.fontSize)pt"
+            let displayFont = UIFont(descriptor: fontSizeCell.textLabel!.font.fontDescriptor, size: Settings.fontSize)
+            fontSizeCell.textLabel?.text = fontSizeText
+            fontSizeCell.textLabel?.font = displayFont
+        }
 	}
 
 	private func setCellAccesoryView(atRow row: Int, section: Int, view: UIView) {
