@@ -219,10 +219,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 
 	// MARK: UITextViewDelegate
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        resetTextViewContentInset()
-    }
-    
 	func textViewDidEndEditing(_ textView: UITextView) {
 		saveFile()
 	}
