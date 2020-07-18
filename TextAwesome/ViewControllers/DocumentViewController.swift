@@ -42,7 +42,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 
 	var document: TextDocument?
     
-    lazy var codeHighlighter = CodeHighlighter(fileExtension: document?.fileURL.pathExtension ?? "")
+    lazy var codeHighlighter = CodeHighlighter(
+        fileExtension: document?.fileURL.pathExtension ?? "",
+        themeName: Settings.syntaxThemeID
+        )
 
 	// MARK: ViewController lifecycle
 

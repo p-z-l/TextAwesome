@@ -11,9 +11,11 @@ import UIKit
 struct CodeHighlighter {
     
     private var library: TokenLibrary?
+    private var theme: SyntaxTheme
     
-    init(fileExtension: String = "") {
+    init(fileExtension: String = "", themeName: String = "basic") {
         self.library = LibrariesManager.library(of: fileExtension)
+        self.theme = ThemesManager.theme(of: themeName) ?? ThemesManager.theme(of: "basic")!
     }
     
     static func loadLibraries() {
@@ -37,13 +39,11 @@ struct CodeHighlighter {
     }
     
     func highlightedCode(for string: String, fileExtension: String) -> NSAttributedString {
-        let theme = Settings.syntaxTheme
         return self.colorize(string, theme: theme)
     }
     
     func highlightedCode(for attributedString: NSAttributedString, fileExtension: String) -> NSAttributedString {
         let string = attributedString.string
-        let theme = Settings.syntaxTheme
         return self.colorize(string, theme: theme)
 	}
     
