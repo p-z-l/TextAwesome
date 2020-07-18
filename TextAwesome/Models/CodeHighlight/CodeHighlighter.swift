@@ -40,11 +40,11 @@ struct CodeHighlighter {
         ThemesManager.themes.append(spacemacs_light)
     }
     
-    func highlightedCode(for string: String, fileExtension: String) -> NSAttributedString {
+    func highlightedCode(for string: String) -> NSAttributedString {
         return self.colorize(string, theme: theme)
     }
     
-    func highlightedCode(for attributedString: NSAttributedString, fileExtension: String) -> NSAttributedString {
+    func highlightedCode(for attributedString: NSAttributedString) -> NSAttributedString {
         let string = attributedString.string
         return self.colorize(string, theme: theme)
 	}

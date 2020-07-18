@@ -293,10 +293,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 		// Get cursor position
 		let selectedTextRange = documentTextView.selectedTextRange
 		let selectedRange = documentTextView.selectedRange
-
-		let fileExtension = self.document!.fileURL.pathExtension
+        
         var attributedText = NSAttributedString(string: string)
-        attributedText = codeHighlighter.highlightedCode(for: string, fileExtension: fileExtension)
+        attributedText = codeHighlighter.highlightedCode(for: string)
 		documentTextView.attributedText = attributedText
 		documentTextView.selectedTextRange = selectedTextRange
 		documentTextView.scrollRangeToVisible(selectedRange)
