@@ -8,7 +8,7 @@
 
 import Foundation
 
-let swift = LanguageLibrary(
+let swift = TokenLibrary(
     id: "swift",
     keywords: Token.array(
         "#selector",

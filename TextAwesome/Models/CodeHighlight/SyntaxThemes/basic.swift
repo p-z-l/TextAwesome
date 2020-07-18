@@ -10,13 +10,13 @@ import UIKit
 
 let basic = SyntaxTheme(
     id: "basic",
-    textColor: .label,
-    backgroundColor: .systemBackground,
-    keywordsColor: .systemPurple,
-    typesColor: .systemTeal,
-    commentsColor: .systemGreen,
-    numbersColor: .systemBlue,
-    stringsColor: .systemPink,
-    identifiersColor: .systemIndigo,
-    macrosColor: .systemOrange
+    textColor: Color(0x000000),
+    backgroundColor: Color(0xffffff),
+    keywordsColor: Color(0x0000ff),
+    typesColor: Color(0x0b4f79),
+    commentsColor: Color(0x008000),
+    numbersColor: Color(0xffffff),
+    stringsColor: Color(0xa31515),
+    identifiersColor: Color(0x2B839F),
+    macrosColor: Color(0x0000FF)
 )

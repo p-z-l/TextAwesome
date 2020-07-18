@@ -29,12 +29,12 @@ class SyntaxThemeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "ThemeCell")
         let representedTheme = ThemesManager.themes[indexPath.row]
-        cell.backgroundColor = representedTheme.backgroundColor
-        cell.textLabel?.textColor = representedTheme.textColor
+        cell.backgroundColor = representedTheme.backgroundColor.uiColor
+        cell.textLabel?.textColor = representedTheme.textColor.uiColor
         cell.textLabel?.text = representedTheme.id
         cell.textLabel?.font = Settings.fontStyle.uiFont
         cell.selectionStyle = .none
-        cell.tintColor = representedTheme.keywordsColor
+        cell.tintColor = representedTheme.keywordsColor.uiColor
         if cell.textLabel?.text == Settings.syntaxThemeID {
             cell.accessoryType = .checkmark
         }

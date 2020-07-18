@@ -8,7 +8,7 @@
 
 import Foundation
 
-let py = LanguageLibrary(
+let py = TokenLibrary(
     id: "py",
     keywords: Token.array(
         "and",

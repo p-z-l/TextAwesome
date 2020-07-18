@@ -110,25 +110,23 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
             object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(updateFont),
+            selector: #selector(resetTextAttribute),
             name: .FontSizeChanged,
             object: nil)
         
         updateInterfaceStyle()
-        updateFont()
-
-		self.resetTextViewContentInset()
-
-		self.documentTextView.scrollRangeToVisible(
-			NSRange(location: 0, length: 0))
         
-        documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor
+        documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor.uiColor
         if shouldSyntaxHighlight {
             resetTextAttribute()
         } else {
             documentTextView.font = Settings.fontStyle.uiFont
-            documentTextView.textColor = Settings.syntaxTheme.textColor
+            documentTextView.textColor = Settings.syntaxTheme.textColor.uiColor
         }
+        
+        resetTextViewContentInset(ignoreStatusBar: true, animated: false)
+        documentTextView.scrollRangeToVisible(
+            NSRange(location: 0, length: 0))
 	}
 
 	// MARK: Actions
@@ -207,7 +205,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 		searchBarIsShown = false
 		self.upConstraint?.constant = -40
 		UIView.animate(
-			withDuration: 0.2, delay: 0,
+            withDuration: UIView.inheritedAnimationDuration,
+            delay: 0,
 			options: UIView.AnimationOptions.curveEaseInOut,
 			animations: {
 				self.view.layoutIfNeeded()
@@ -219,27 +218,46 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 	}
 
 	// MARK: UITextViewDelegate
-
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        resetTextViewContentInset()
+    }
+    
 	func textViewDidEndEditing(_ textView: UITextView) {
-		self.saveFile()
+		saveFile()
 	}
 
 	func textViewDidChange(_ textView: UITextView) {
-		self.resetTextAttribute()
+		resetTextAttribute()
 	}
 
 	// MARK: Private methods
 
-	private func resetTextViewContentInset() {
-		let safeAreaTopMargin =
-			UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
-		let top = self.fakeNavBarView.frame.height - safeAreaTopMargin
-		UIView.animate(withDuration: 0.1) {
+    private func resetTextViewContentInset(ignoreStatusBar: Bool = false, animated: Bool = true) {
+        let top : CGFloat = {
+            if ignoreStatusBar {
+                return self.fakeNavBarView.frame.height
+            } else {
+                let safeAreaTopMargin = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+                return self.fakeNavBarView.frame.height - safeAreaTopMargin
+            }
+        }()
+        let animationDuration : TimeInterval = {
+            if animated {
+                return UIView.inheritedAnimationDuration
+            } else {
+                return 0.0
+            }
+        }()
+		UIView.animate(withDuration: animationDuration) {
 			self.documentTextView.contentInset = UIEdgeInsets(
-				top: top, left: 0, bottom: 0, right: 0)
+				top: top,
+                left: 0,
+                bottom:0,
+                right: 0
+            )
 		}
-		self.documentTextView.scrollIndicatorInsets =
-			self.documentTextView.contentInset
+		documentTextView.scrollIndicatorInsets = documentTextView.contentInset
 	}
 
 	private func adjustTextViewContentInsetToFitKeyboard(distance: CGFloat) {
@@ -267,12 +285,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 		}
 		self.view.becomeFirstResponder()
 	}
-    
-    @objc private func updateFont() {
-        documentTextView.font = Settings.fontStyle.uiFont
-    }
 
-	private func resetTextAttribute() {
+	@objc private func resetTextAttribute() {
         
         guard Settings.enableSyntaxHighlight && shouldSyntaxHighlight,
               let string = self.documentTextView.text else { return }
@@ -287,8 +301,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 		documentTextView.attributedText = attributedText
 		documentTextView.selectedTextRange = selectedTextRange
 		documentTextView.scrollRangeToVisible(selectedRange)
-        
-        documentTextView.font = Settings.fontStyle.uiFont
 
 		documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
 	}

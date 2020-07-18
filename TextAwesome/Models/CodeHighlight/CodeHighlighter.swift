@@ -10,14 +10,10 @@ import UIKit
 
 struct CodeHighlighter {
     
-    private var library: LanguageLibrary?
+    private var library: TokenLibrary?
     
-    init(fileExtension: String) {
+    init(fileExtension: String = "") {
         self.library = LibrariesManager.library(of: fileExtension)
-    }
-    
-    init() {
-        self.init(fileExtension: "")
     }
     
     static func loadLibraries() {
@@ -37,7 +33,6 @@ struct CodeHighlighter {
         ThemesManager.themes.append(onedark)
         ThemesManager.themes.append(spacemacs_dark)
         ThemesManager.themes.append(spacemacs_light)
-        ThemesManager.themes.append(XcodeBasic)
     }
     
     func highlightedCode(for string: String, fileExtension: String) -> NSAttributedString {
@@ -57,7 +52,7 @@ struct CodeHighlighter {
         
         let result = NSMutableAttributedString(string: string, attributes: [
             NSAttributedString.Key.font : Settings.fontStyle.uiFont,
-            NSAttributedString.Key.foregroundColor : theme.textColor
+            NSAttributedString.Key.foregroundColor : theme.textColor.uiColor
         ])
         
         func scan(for keywords: [Token]?, color: UIColor) {
@@ -71,13 +66,13 @@ struct CodeHighlighter {
             }
         }
         
-        scan(for: library!.numbers, color: theme.numbersColor)
-        scan(for: library!.types, color: theme.typesColor)
-        scan(for: library!.identifiers, color: theme.identifiersColor)
-        scan(for: library!.keywords, color: theme.keywordsColor)
-        scan(for: library!.macros, color: theme.macrosColor)
-        scan(for: library!.strings, color: theme.stringsColor)
-        scan(for: library!.comments, color: theme.commentsColor)
+        scan(for: library!.numbers, color: theme.numbersColor.uiColor)
+        scan(for: library!.types, color: theme.typesColor.uiColor)
+        scan(for: library!.identifiers, color: theme.identifiersColor.uiColor)
+        scan(for: library!.keywords, color: theme.keywordsColor.uiColor)
+        scan(for: library!.macros, color: theme.macrosColor.uiColor)
+        scan(for: library!.strings, color: theme.stringsColor.uiColor)
+        scan(for: library!.comments, color: theme.commentsColor.uiColor)
         
         return result
     }

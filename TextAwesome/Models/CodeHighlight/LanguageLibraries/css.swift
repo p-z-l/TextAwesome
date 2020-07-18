@@ -8,7 +8,7 @@
 
 import Foundation
 
-let css = LanguageLibrary(
+let css = TokenLibrary(
     id: "css",
     keywords: [
         Token("(.+) ?\\{", requiresSepertorStart: false, requiresSeperatorEnd: false, endIgnorance: 1)

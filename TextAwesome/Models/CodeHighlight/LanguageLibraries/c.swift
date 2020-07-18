@@ -8,7 +8,7 @@
 
 import Foundation
 
-let c = LanguageLibrary(
+let c = TokenLibrary(
     id: "c",
     keywords: Token.array(
         "break",

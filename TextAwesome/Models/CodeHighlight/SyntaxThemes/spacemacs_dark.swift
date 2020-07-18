@@ -10,13 +10,13 @@ import UIKit
 
 let spacemacs_dark = SyntaxTheme(
     id: "spacemacs_dark",
-    textColor: UIColor(0xb2b2b2),
-    backgroundColor: UIColor(0x1f2023),
-    keywordsColor: UIColor(0x4F97D7),
-    typesColor: UIColor(0xc13b67),
-    commentsColor: UIColor(0x25919e),
-    numbersColor: UIColor(0x92439d),
-    stringsColor: UIColor(0x278561),
-    identifiersColor: UIColor(0xad54b8),
-    macrosColor: UIColor(0xaf5d38)
+    textColor: Color(0xb2b2b2),
+    backgroundColor: Color(0x1f2023),
+    keywordsColor: Color(0x4F97D7),
+    typesColor: Color(0xc13b67),
+    commentsColor: Color(0x25919e),
+    numbersColor: Color(0x92439d),
+    stringsColor: Color(0x278561),
+    identifiersColor: Color(0xad54b8),
+    macrosColor: Color(0xaf5d38)
 )

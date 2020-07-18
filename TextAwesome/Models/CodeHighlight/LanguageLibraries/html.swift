@@ -8,7 +8,7 @@
 
 import Foundation
 
-let html = LanguageLibrary(
+let html = TokenLibrary(
     id: "html",
     keywords: [
         Token("<[a-zA-Z0-9]+", requiresSepertorStart: false, startIgnorance: 1),

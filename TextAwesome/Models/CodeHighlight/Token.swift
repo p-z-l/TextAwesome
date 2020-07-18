@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Token {
+struct Token: Codable {
     
     init(_ pattern: String,
          requiresSepertorStart: Bool = true,
