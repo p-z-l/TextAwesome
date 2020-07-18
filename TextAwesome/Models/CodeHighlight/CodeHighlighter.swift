@@ -30,7 +30,8 @@ struct CodeHighlighter {
         ThemesManager.themes.removeAll()
         
         ThemesManager.themes.append(basic)
-        ThemesManager.themes.append(onedark)
+        ThemesManager.themes.append(one_dark)
+        ThemesManager.themes.append(one_light)
         ThemesManager.themes.append(spacemacs_dark)
         ThemesManager.themes.append(spacemacs_light)
     }

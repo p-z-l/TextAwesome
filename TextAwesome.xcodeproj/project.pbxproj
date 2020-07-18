@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00178F1824C2A53D00E23109 /* one_light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00178F1724C2A53D00E23109 /* one_light.swift */; };
 		00231A8924ADDD2300D643D1 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8824ADDD2300D643D1 /* Token.swift */; };
 		00231A8C24AE1CDD00D643D1 /* SyntaxTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8B24AE1CDD00D643D1 /* SyntaxTheme.swift */; };
 		00231A8E24AE1E8300D643D1 /* basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00231A8D24AE1E8300D643D1 /* basic.swift */; };
@@ -17,7 +18,7 @@
 		0052685224C0787E0014FFF6 /* spacemacs_dark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052685124C0787E0014FFF6 /* spacemacs_dark.swift */; };
 		0052685424C07A1A0014FFF6 /* spacemacs_light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0052685324C07A1A0014FFF6 /* spacemacs_light.swift */; };
 		0058DA5424BEAD1F008844E1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */; };
-		0058DA5624BEADE8008844E1 /* onedark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5524BEADE8008844E1 /* onedark.swift */; };
+		0058DA5624BEADE8008844E1 /* one_dark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5524BEADE8008844E1 /* one_dark.swift */; };
 		0071D44724BD4B60005FAD56 /* py.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071D44624BD4B60005FAD56 /* py.swift */; };
 		0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */; };
 		00ACA91E24AC8FF100BB93BF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00178F1724C2A53D00E23109 /* one_light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = one_light.swift; sourceTree = "<group>"; };
 		00231A8824ADDD2300D643D1 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		00231A8B24AE1CDD00D643D1 /* SyntaxTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxTheme.swift; sourceTree = "<group>"; };
 		00231A8D24AE1E8300D643D1 /* basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basic.swift; sourceTree = "<group>"; };
@@ -53,7 +55,7 @@
 		0052685124C0787E0014FFF6 /* spacemacs_dark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spacemacs_dark.swift; sourceTree = "<group>"; };
 		0052685324C07A1A0014FFF6 /* spacemacs_light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spacemacs_light.swift; sourceTree = "<group>"; };
 		0058DA5324BEAD1F008844E1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		0058DA5524BEADE8008844E1 /* onedark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onedark.swift; sourceTree = "<group>"; };
+		0058DA5524BEADE8008844E1 /* one_dark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = one_dark.swift; sourceTree = "<group>"; };
 		0071D44624BD4B60005FAD56 /* py.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = py.swift; sourceTree = "<group>"; };
 		0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -104,7 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				00231A8D24AE1E8300D643D1 /* basic.swift */,
-				0058DA5524BEADE8008844E1 /* onedark.swift */,
+				0058DA5524BEADE8008844E1 /* one_dark.swift */,
+				00178F1724C2A53D00E23109 /* one_light.swift */,
 				0052685124C0787E0014FFF6 /* spacemacs_dark.swift */,
 				0052685324C07A1A0014FFF6 /* spacemacs_light.swift */,
 			);
@@ -294,6 +297,7 @@
 				B32F632A2433529F00407BDD /* swift.swift in Sources */,
 				004AD3F024C0719900428EB6 /* c.swift in Sources */,
 				B3EEA7AE2432045F00BFEB34 /* SettingsViewController.swift in Sources */,
+				00178F1824C2A53D00E23109 /* one_light.swift in Sources */,
 				B3050EFF2432D09500FCF2E3 /* FileType.swift in Sources */,
 				0052685224C0787E0014FFF6 /* spacemacs_dark.swift in Sources */,
 				0052685424C07A1A0014FFF6 /* spacemacs_light.swift in Sources */,
@@ -306,7 +310,7 @@
 				0058DA5424BEAD1F008844E1 /* UIColor+Extension.swift in Sources */,
 				0071D44724BD4B60005FAD56 /* py.swift in Sources */,
 				00231A8E24AE1E8300D643D1 /* basic.swift in Sources */,
-				0058DA5624BEADE8008844E1 /* onedark.swift in Sources */,
+				0058DA5624BEADE8008844E1 /* one_dark.swift in Sources */,
 				B3050F012432D18800FCF2E3 /* FileTypeSelectViewController.swift in Sources */,
 				B32F632D243352D300407BDD /* TokenLibrary.swift in Sources */,
 				00231A8924ADDD2300D643D1 /* Token.swift in Sources */,

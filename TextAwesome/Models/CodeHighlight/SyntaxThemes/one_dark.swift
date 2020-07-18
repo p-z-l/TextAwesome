@@ -1,5 +1,5 @@
 //
-//  onedark.swift
+//  one_dark.swift
 //  TextAwesome
 //
 //  Created by Peter Luo on 2020/7/15.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-let onedark = SyntaxTheme(
-    id: "onedark",
+let one_dark = SyntaxTheme(
+    id: "one_dark",
     textColor: Color(0xabb2bf),
     backgroundColor: Color(0x282c34),
     keywordsColor: Color(0xc678dd),
