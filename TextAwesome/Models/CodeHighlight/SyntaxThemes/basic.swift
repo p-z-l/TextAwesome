@@ -6,8 +6,6 @@
 //  Copyright © 2020 Peter Luo. All rights reserved.
 //
 
-import UIKit
-
 let basic = SyntaxTheme(
     id: "basic",
     textColor: Color(0x000000),

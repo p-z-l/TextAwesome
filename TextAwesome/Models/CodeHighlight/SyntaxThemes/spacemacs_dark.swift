@@ -6,8 +6,6 @@
 //  Copyright © 2020 Peter Luo. All rights reserved.
 //
 
-import UIKit
-
 let spacemacs_dark = SyntaxTheme(
     id: "spacemacs_dark",
     textColor: Color(0xb2b2b2),

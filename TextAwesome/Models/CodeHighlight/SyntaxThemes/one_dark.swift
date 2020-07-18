@@ -6,8 +6,6 @@
 //  Copyright © 2020 Peter Luo. All rights reserved.
 //
 
-import UIKit
-
 let one_dark = SyntaxTheme(
     id: "one_dark",
     textColor: Color(0xabb2bf),

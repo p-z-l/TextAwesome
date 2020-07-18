@@ -6,8 +6,6 @@
 //  Copyright © 2020 Peter Luo. All rights reserved.
 //
 
-import UIKit
-
 let one_light = SyntaxTheme(
     id: "one_light",
     textColor: Color(0x383a41),
