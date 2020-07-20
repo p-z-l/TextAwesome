@@ -9,8 +9,8 @@
 - iOS Native document browser
 - Dark Mode support
 - Customized font style & font size
-- Text searching
-- Syntax highlight for Swift, Python, HTML, C
+- Text searching (supports regex)
+- High performance syntax highlight for Swift, Python, HTML, C
 - iPadOS cursor support
 - iPadOS keyboard shortcuts support
 

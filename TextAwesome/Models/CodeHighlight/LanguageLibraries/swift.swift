@@ -86,15 +86,9 @@ let swift = TokenLibrary(
         "Dictionary",
         "Double",
         "Float",
-        "Float16",
-        "Float32",
-        "Float64",
-        "Float8",
+        "Float(8|16|32|64)",
         "Int",
-        "Int16",
-        "Int32",
-        "Int64",
-        "Int8",
+        "Int(8|16|32|64)",
         "String"
     ),
     comments: Token.array(

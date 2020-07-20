@@ -23,6 +23,7 @@
 		0058DA5624BEADE8008844E1 /* one_dark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058DA5524BEADE8008844E1 /* one_dark.swift */; };
 		0071D44724BD4B60005FAD56 /* py.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071D44624BD4B60005FAD56 /* py.swift */; };
 		0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */; };
+		0096B24924C5AA0300189DB4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096B24824C5AA0300189DB4 /* Color.swift */; };
 		00ACA91E24AC8FF100BB93BF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */; };
 		00BAD85E24BDB18200E33EC4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BAD85D24BDB18200E33EC4 /* String+Extension.swift */; };
 		00CDFFAA24BDAE53001A1117 /* NSMutableAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CDFFA924BDAE53001A1117 /* NSMutableAttributedString+Extension.swift */; };
@@ -62,6 +63,7 @@
 		0058DA5524BEADE8008844E1 /* one_dark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = one_dark.swift; sourceTree = "<group>"; };
 		0071D44624BD4B60005FAD56 /* py.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = py.swift; sourceTree = "<group>"; };
 		0083227224AD91CE00D9BDB0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
+		0096B24824C5AA0300189DB4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		00ACA91D24AC8FF100BB93BF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		00BAD85D24BDB18200E33EC4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		00CDFFA924BDAE53001A1117 /* NSMutableAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extension.swift"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				B32F632E2433596000407BDD /* CodeHighlighter.swift */,
 				00231A8824ADDD2300D643D1 /* Token.swift */,
 				B32F632C243352D300407BDD /* TokenLibrary.swift */,
+				0096B24824C5AA0300189DB4 /* Color.swift */,
 				00231A8B24AE1CDD00D643D1 /* SyntaxTheme.swift */,
 				00088DFA24BDABCA0036D0AD /* LanguageLibraries */,
 				00088DF924BDABBC0036D0AD /* SyntaxThemes */,
@@ -299,6 +302,7 @@
 				00231A8C24AE1CDD00D643D1 /* SyntaxTheme.swift in Sources */,
 				0083227324AD91CE00D9BDB0 /* Notification.Name+Extension.swift in Sources */,
 				004C8B0E24BDD3BE0013002F /* html.swift in Sources */,
+				0096B24924C5AA0300189DB4 /* Color.swift in Sources */,
 				B3C065652430F6D300B21238 /* TextDocument.swift in Sources */,
 				B32F632A2433529F00407BDD /* swift.swift in Sources */,
 				004AD3F024C0719900428EB6 /* c.swift in Sources */,

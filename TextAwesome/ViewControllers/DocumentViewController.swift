@@ -83,11 +83,21 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 			if success {
 				// Display the content of the document, e.g.:
 				self.nameLabel.text = self.document?.fileURL.lastPathComponent
-
+                
+                
 				let text = self.document?.userText
                 self.documentTextView.text = text
                 
-				self.resetTextAttribute()
+                resetTextViewContentInset(ignoreStatusBar: true, animated: false)
+                
+                documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor.uiColor
+                documentTextView.font = Settings.fontStyle.uiFont
+                documentTextView.textColor = Settings.syntaxTheme.textColor.uiColor
+                
+                if shouldSyntaxHighlight {
+                    resetTextAttribute(stayOnCurrentPosition: false)
+                }
+                
 			} else {
 				print("Error opening Document.")
 			}
@@ -118,17 +128,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
             object: nil)
         
         updateInterfaceStyle()
-        
-        documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor.uiColor
-        if shouldSyntaxHighlight {
-            documentTextView.font = Settings.fontStyle.uiFont
-            documentTextView.textColor = Settings.syntaxTheme.textColor.uiColor
-            resetTextAttribute()
-        }
-        
-        resetTextViewContentInset(ignoreStatusBar: true, animated: false)
-        documentTextView.scrollRangeToVisible(
-            NSRange(location: 0, length: 0))
 	}
 
 	// MARK: Actions
@@ -284,7 +283,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 		self.view.becomeFirstResponder()
 	}
 
-	@objc private func resetTextAttribute() {
+    @objc private func resetTextAttribute(stayOnCurrentPosition: Bool = false) {
         
         guard Settings.enableSyntaxHighlight && shouldSyntaxHighlight,
               let string = self.documentTextView.text else { return }
@@ -298,9 +297,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
                 let selectedTextRange = self.documentTextView.selectedTextRange
                 let selectedRange = self.documentTextView.selectedRange
                 self.documentTextView.attributedText = attributedText
-                self.documentTextView.selectedTextRange = selectedTextRange
-                self.documentTextView.scrollRangeToVisible(selectedRange)
-                self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
+                if stayOnCurrentPosition {
+                    self.documentTextView.selectedTextRange = selectedTextRange
+                    self.documentTextView.scrollRangeToVisible(selectedRange)
+                    self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
+                }
             }
         }
 
