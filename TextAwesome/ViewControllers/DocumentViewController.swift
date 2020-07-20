@@ -10,7 +10,7 @@ import UIKit
 
 class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInteractionDelegate {
 
-	// MARK: Definitions
+	// MARK: Properties
 
 	@IBOutlet weak var fakeNavBarView: UIVisualEffectView!
 
@@ -46,27 +46,27 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         fileExtension: document?.fileURL.pathExtension ?? "",
         themeName: Settings.syntaxThemeID
         )
+    
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(
+                title: "Find", action: #selector(toggleSearchField), input: "f",
+                modifierFlags: .command),
+            UIKeyCommand(
+                title: "Close Document",
+                action: #selector(dismissDocumentViewController), input: "w",
+                modifierFlags: .command),
+            UIKeyCommand(
+                title: "Save Document", action: #selector(saveFile), input: "s",
+                modifierFlags: .command),
+            UIKeyCommand(
+                title: "Escape",
+                action: #selector(resignKeyboardTouchUpInside(_:)),
+                input: UIKeyCommand.inputEscape, attributes: .hidden),
+        ]
+    }
 
 	// MARK: ViewController lifecycle
-
-	override var keyCommands: [UIKeyCommand]? {
-		return [
-			UIKeyCommand(
-				title: "Find", action: #selector(toggleSearchField), input: "f",
-				modifierFlags: .command),
-			UIKeyCommand(
-				title: "Close Document",
-				action: #selector(dismissDocumentViewController), input: "w",
-				modifierFlags: .command),
-			UIKeyCommand(
-				title: "Save Document", action: #selector(saveFile), input: "s",
-				modifierFlags: .command),
-			UIKeyCommand(
-				title: "Escape",
-				action: #selector(resignKeyboardTouchUpInside(_:)),
-				input: UIKeyCommand.inputEscape, attributes: .hidden),
-		]
-	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -121,10 +121,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         
         documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor.uiColor
         if shouldSyntaxHighlight {
-            resetTextAttribute()
-        } else {
             documentTextView.font = Settings.fontStyle.uiFont
             documentTextView.textColor = Settings.syntaxTheme.textColor.uiColor
+            resetTextAttribute()
         }
         
         resetTextViewContentInset(ignoreStatusBar: true, animated: false)
@@ -290,17 +289,21 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         guard Settings.enableSyntaxHighlight && shouldSyntaxHighlight,
               let string = self.documentTextView.text else { return }
         
-		// Get cursor position
-		let selectedTextRange = documentTextView.selectedTextRange
-		let selectedRange = documentTextView.selectedRange
-        
-        var attributedText = NSAttributedString(string: string)
-        attributedText = codeHighlighter.highlightedCode(for: string)
-		documentTextView.attributedText = attributedText
-		documentTextView.selectedTextRange = selectedTextRange
-		documentTextView.scrollRangeToVisible(selectedRange)
+        let syntaxHighlightQueue = DispatchQueue(label: "syntax highlight")
+        syntaxHighlightQueue.async {
+            var attributedText = NSAttributedString(string: string)
+            attributedText = self.codeHighlighter.highlightedCode(for: string)
+            DispatchQueue.main.async {
+                // Get cursor position
+                let selectedTextRange = self.documentTextView.selectedTextRange
+                let selectedRange = self.documentTextView.selectedRange
+                self.documentTextView.attributedText = attributedText
+                self.documentTextView.selectedTextRange = selectedTextRange
+                self.documentTextView.scrollRangeToVisible(selectedRange)
+                self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
+            }
+        }
 
-		documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
 	}
 
 	private func textSearch() {

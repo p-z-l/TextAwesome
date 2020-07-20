@@ -11,8 +11,6 @@ import Foundation
 let swift = TokenLibrary(
     id: "swift",
     keywords: Token.array(
-        "#selector",
-        "@[a-zA-Z]+",
         "as",
         "break",
         "catch",
@@ -61,6 +59,7 @@ let swift = TokenLibrary(
         "super",
         "switch",
         "throw",
+        "throws",
         "true",
         "try",
         "try",
@@ -71,10 +70,14 @@ let swift = TokenLibrary(
         "where",
         "while",
         "willSet"
+    ) + Token.array(
+        "#selector",
+        "@[a-zA-Z]+",
+        requiresSeperatorStart: false
     ),
     types: Token.array(
         "(.+)<(.+)>",
-        "(NS|UI)[A-Z][a-zA-Z]+",
+        "(NS|UI|CG|SK|SCN)[A-Z][a-zA-Z]+",
         "Array",
         "Bool",
         "Character",
