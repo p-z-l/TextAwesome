@@ -6,9 +6,11 @@
 //  Copyright © 2020 Peter Luo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct ThemesManager {
+    
+    private init() {}
     
     static var themes = [SyntaxTheme]()
     

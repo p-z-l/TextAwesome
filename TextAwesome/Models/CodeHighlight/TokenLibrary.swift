@@ -10,6 +10,8 @@ import Foundation
 
 struct LibrariesManager {
     
+    private init() {}
+    
     static var libraries = [TokenLibrary]()
     
     static func library(of id: String) -> TokenLibrary? {
