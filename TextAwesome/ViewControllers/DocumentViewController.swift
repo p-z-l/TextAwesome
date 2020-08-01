@@ -12,9 +12,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 
 	// MARK: Properties
 
-	@IBOutlet weak var fakeNavBarView: UIVisualEffectView!
-
-	@IBOutlet weak var documentTextView: UITextView!
+    @IBOutlet weak var titleBarView: UIView!
+    
+    @IBOutlet weak var documentTextView: UITextView!
 
 	@IBOutlet weak var btDismiss: UIButton!
 
@@ -26,7 +26,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 
 	@IBOutlet weak var searchField: UITextField!
 
-	private var searchBarIsShown = false
+    @IBOutlet weak var seperatorView: UIView!
+    
+    private var searchBarIsShown = false
 
     private lazy var shouldSyntaxHighlight : Bool = {
         if !LibrariesManager.hasLibrary(of: self.document?.fileURL.pathExtension) {
@@ -88,11 +90,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 				let text = self.document?.userText
                 self.documentTextView.text = text
                 
-                resetTextViewContentInset(ignoreStatusBar: true, animated: false)
-                
                 documentTextView.backgroundColor = Settings.syntaxTheme.backgroundColor.uiColor
                 documentTextView.font = Settings.fontStyle.uiFont
                 documentTextView.textColor = Settings.syntaxTheme.textColor.uiColor
+                seperatorView.backgroundColor = Settings.syntaxTheme.textColor.uiColor
+                titleBarView.backgroundColor = Settings.syntaxTheme.backgroundColor.uiColor
                 
                 if shouldSyntaxHighlight {
                     resetTextAttribute(stayOnCurrentPosition: false)
@@ -105,27 +107,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 
 		self.documentTextView.delegate = self
 		self.documentTextView.allowsEditingTextAttributes = true
-
-		NotificationCenter.default.addObserver(
-			self,
-			selector: #selector(keyboardWillShow(_:)),
-			name: UIResponder.keyboardWillShowNotification,
-			object: nil)
-		NotificationCenter.default.addObserver(
-			self,
-			selector: #selector(keyboardWillHide(_:)),
-			name: UIResponder.keyboardWillHideNotification,
-			object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateInterfaceStyle),
-            name: .InterfaceStyleChanged,
-            object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(resetTextAttribute),
-            name: .FontSizeChanged,
-            object: nil)
+        
+        setupObservers()
         
         updateInterfaceStyle()
 	}
@@ -137,7 +120,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 	}
 
 	@IBAction func searchFieldHitReturn(_ sender: UITextField) {
-		self.selectNextTextSearchResult()
 	}
 
 	@IBAction @objc func dismissDocumentViewController() {
@@ -150,7 +132,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 	@objc @IBAction func resignKeyboardTouchUpInside(_ sender: UIButton) {
 		self.saveFile()
 		self.documentTextView.resignFirstResponder()
-		self.searchField.resignFirstResponder()
+//		self.searchField.resignFirstResponder()
 		self.view.becomeFirstResponder()
 	}
 
@@ -171,24 +153,16 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
         self.documentTextView.keyboardAppearance = Settings.interfaceStyle.uiKeyboardAppearance
     }
 
-	@objc private func keyboardWillShow(_ notification: Notification) {
-		self.resetTextViewContentInset()
-		if let keyboardFrame: NSValue =
-			notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
-			as? NSValue
-		{
-			let keyboardRectangle = keyboardFrame.cgRectValue
-			let keyboardHeight = keyboardRectangle.height
-
-			self.adjustTextViewContentInsetToFitKeyboard(
-				distance: keyboardHeight)
-		}
+	@objc private func keyboardDidChangeFrame(_ notification: Notification) {
+        let keyboardHeight : CGFloat = {
+            guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+                else { return 0 }
+            return keyboardFrame.cgRectValue.height
+        }()
+        
+        adjustTextViewContentInsetToFitKeyboard(distance: keyboardHeight)
 	}
-
-	@objc private func keyboardWillHide(_ notification: Notification) {
-		self.resetTextViewContentInset()
-	}
-
+    
 	@objc private func showSearchField() {
 		searchBarIsShown = true
 		self.upConstraint?.constant = 8
@@ -198,7 +172,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 			animations: {
 				self.view.layoutIfNeeded()
 			}, completion: nil)
-		self.searchField.becomeFirstResponder()
+//		self.searchField.becomeFirstResponder()
 		self.textSearch()
 	}
 
@@ -212,7 +186,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 			animations: {
 				self.view.layoutIfNeeded()
 			}, completion: nil)
-		self.searchField.resignFirstResponder()
+//		self.searchField.resignFirstResponder()
 		self.resetTextAttribute()
 		self.documentTextView.becomeFirstResponder()
 		self.view.becomeFirstResponder()
@@ -230,38 +204,10 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 
 	// MARK: Private methods
 
-    private func resetTextViewContentInset(ignoreStatusBar: Bool = false, animated: Bool = true) {
-        let top : CGFloat = {
-            if ignoreStatusBar {
-                return self.fakeNavBarView.frame.height
-            } else {
-                let safeAreaTopMargin = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
-                return self.fakeNavBarView.frame.height - safeAreaTopMargin
-            }
-        }()
-        let animationDuration : TimeInterval = {
-            if animated {
-                return UIView.inheritedAnimationDuration
-            } else {
-                return 0.0
-            }
-        }()
-		UIView.animate(withDuration: animationDuration) {
-			self.documentTextView.contentInset = UIEdgeInsets(
-				top: top,
-                left: 0,
-                bottom:0,
-                right: 0
-            )
-		}
-		documentTextView.scrollIndicatorInsets = documentTextView.contentInset
-	}
-
 	private func adjustTextViewContentInsetToFitKeyboard(distance: CGFloat) {
-		let top = self.fakeNavBarView.frame.height
 		UIView.animate(withDuration: 0.1) {
 			self.documentTextView.contentInset = UIEdgeInsets(
-				top: top, left: 0, bottom: distance, right: 0)
+				top: 0, left: 0, bottom: distance, right: 0)
 		}
 		self.documentTextView.scrollIndicatorInsets =
 			self.documentTextView.contentInset
@@ -283,24 +229,25 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 		self.view.becomeFirstResponder()
 	}
 
-    @objc private func resetTextAttribute(stayOnCurrentPosition: Bool = false) {
+    @objc private func resetTextAttribute(stayOnCurrentPosition: Bool = true) {
         
         guard Settings.enableSyntaxHighlight && shouldSyntaxHighlight,
               let string = self.documentTextView.text else { return }
         
         let syntaxHighlightQueue = DispatchQueue(label: "syntax highlight")
-        syntaxHighlightQueue.async {
-            var attributedText = NSAttributedString(string: string)
-            attributedText = self.codeHighlighter.highlightedCode(for: string)
+        syntaxHighlightQueue.async { [self] in
             DispatchQueue.main.async {
                 // Get cursor position
-                let selectedTextRange = self.documentTextView.selectedTextRange
-                let selectedRange = self.documentTextView.selectedRange
+                let originalTextRange = documentTextView.selectedTextRange
+                let originalRange = documentTextView.selectedRange
+                let originalInset = documentTextView.contentInset
+                
+                let attributedText =  self.codeHighlighter.highlightedCode(for: string)
                 self.documentTextView.attributedText = attributedText
                 if stayOnCurrentPosition {
-                    self.documentTextView.selectedTextRange = selectedTextRange
-                    self.documentTextView.scrollRangeToVisible(selectedRange)
-                    self.documentTextView.scrollIndicatorInsets = self.documentTextView.contentInset
+                    self.documentTextView.selectedTextRange = originalTextRange
+                    self.documentTextView.scrollRangeToVisible(originalRange)
+                    self.documentTextView.scrollIndicatorInsets = originalInset
                 }
             }
         }
@@ -311,46 +258,28 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIPointerInt
 		self.resetTextAttribute()
 		let attributedText = NSMutableAttributedString(
 			attributedString: self.documentTextView.attributedText)
-        attributedText.highlight(pattern: self.searchField.text ?? "", caseSensitive: Settings.caseSensitiveTextSearching)
+//        attributedText.highlight(pattern: self.searchField.text ?? "", caseSensitive: Settings.caseSensitiveTextSearching)
 
 		self.documentTextView.attributedText = attributedText
 	}
-
-	private func selectNextTextSearchResult() {
-
-		guard self.searchBarIsShown else { return }
-
-		self.resetTextAttribute()
-		self.textSearch()
-        let ranges = self.documentTextView.attributedText.string.rangesOfPattern(
-            self.searchField.text ?? "",
-            caseSensitive: Settings.caseSensitiveTextSearching)
-		guard !ranges.isEmpty else { return }
-
-		var rangeToSelect = ranges.first!
-
-		if self.selectedSearchResultIndex != nil {
-			self.selectedSearchResultIndex! += 1
-			if self.selectedSearchResultIndex! >= ranges.count {
-				self.selectedSearchResultIndex = 0
-			}
-			let range = ranges[self.selectedSearchResultIndex!]
-			rangeToSelect = range
-		} else {
-			self.selectedSearchResultIndex = 0
-		}
-
-		self.documentTextView.selectedRange = rangeToSelect
-		let attributedString = NSMutableAttributedString(
-			attributedString: documentTextView.attributedText)
-		attributedString.addAttributes(
-			[
-				NSAttributedString.Key.backgroundColor: UIColor.red
-			],
-			range: rangeToSelect)
-		documentTextView.attributedText = attributedString
-		self.documentTextView.scrollRangeToVisible(rangeToSelect)
-	}
+    
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardDidChangeFrame(_:)),
+            name: UIResponder.keyboardDidChangeFrameNotification,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateInterfaceStyle),
+            name: .InterfaceStyleChanged,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(resetTextAttribute),
+            name: .FontSizeChanged,
+            object: nil)
+    }
 
 	@IBOutlet weak var upConstraint: NSLayoutConstraint!
 }

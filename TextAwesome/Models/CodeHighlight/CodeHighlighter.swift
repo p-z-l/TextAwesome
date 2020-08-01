@@ -60,12 +60,23 @@ struct CodeHighlighter {
         
         func scan(for keywords: [Token]?, color: UIColor) {
             guard keywords != nil else { return }
-            var ranges = [NSRange]()
+//            var ranges = [NSRange]()
+//            let regexGroup = DispatchGroup()
+//            for keyword in keywords! {
+//                regexGroup.enter()
+//                ranges.append(contentsOf: keyword.rangesOfMatches(string))
+//                regexGroup.leave()
+//            }
+//            regexGroup.notify(queue: .main) {
+//                for range in ranges {
+//                    result.addAttribute(.foregroundColor, value: color, range: range)
+//                }
+//            }
             for keyword in keywords! {
-                ranges.append(contentsOf: keyword.rangesOfMatches(string))
-            }
-            for range in ranges {
-                result.addAttribute(.foregroundColor, value: color, range: range)
+                let ranges = keyword.rangesOfMatches(string)
+                for range in ranges {
+                    result.addAttribute(.foregroundColor, value: color, range: range)
+                }
             }
         }
         
